@@ -1,0 +1,194 @@
+{% render 'section-class', id: 'home-hero', classes: 'hero-slider', attrs: 'full-slider,nav-light', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+{%- assign hero_fallbacks = 'or-hero-1.jpg,or-hero-2.jpg,or-hero-3.jpg' | split: ',' -%}
+{%- assign hero_nav_fallbacks = 'or-hero-nav-1.jpg,or-hero-nav-2.jpg,or-hero-3.jpg' | split: ',' -%}
+
+<div class="hero-center is-desktop">
+  <div class="hero-slider_nav-wrap u-container">
+    <div class="hero-slider_nav-list">
+      {%- for block in section.blocks -%}
+        {%- assign nav_fb = hero_nav_fallbacks[forloop.index0] | default: 'or-hero-nav-1.jpg' -%}
+        <div class="hero-slider_nav-item{% if forloop.first %} active{% endif %}" data-slide-nav="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div solo-img_hov="" class="slide-nav_layout">
+            <h2 italics="" class="hero-slider_num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</h2>
+            <div solo-img="" class="slide-nav_img">
+              {% render 'img', image: block.settings.nav_image, fallback: nav_fb, class: 'img-fill' %}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  <h2 italics="" class="hero-slider_scroll">{{ section.settings.scroll_label }}</h2>
+</div>
+
+<div class="hero-center is-mobile">
+  <h2 italics="" class="hero-slider_scroll is-next slider_btn">{{ section.settings.next_label }}</h2>
+</div>
+
+<div class="hero-slider_wrap" nav-light="">
+  <div class="hero-slider_list">
+    {%- for block in section.blocks -%}
+      {%- assign fb = hero_fallbacks[forloop.index0] | default: 'or-hero-1.jpg' -%}
+      <div class="hero-slider_item" style="display: {% if forloop.first %}flex{% else %}none{% endif %};">
+        <div class="hero-slide_visual u-cover-absolute">
+          <div class="g_visual_background"></div>
+          {% render 'img', image: block.settings.image, fallback: fb, class: 'hero-visual_el u-cover-absolute' %}
+          <div class="hero-visual_el-vid u-cover-absolute">
+            {%- if block.settings.video != blank -%}
+              {{ block.settings.video | video_tag: image_size: '1920x', autoplay: true, loop: true, muted: true, controls: false }}
+            {%- endif -%}
+          </div>
+          <div class="slide-overlay"></div>
+          <h2 italics="" class="hero-slider_num is-mobile">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</h2>
+        </div>
+        <div split="" class="site-info">
+          <div class="hero-intro_copy">
+            <a href="{{ block.settings.link_url }}"{% if block.settings.new_tab %} target="_blank"{% endif %} class="orgc-detail u-text-style-h2 w-inline-block">
+              <div data-text="{{ block.settings.link_label | escape }}" class="detail-wrap">
+                <div class="detail-text{% if forloop.first %} is-hero{% endif %}">{{ block.settings.link_label }}</div>
+              </div>
+            </a>
+            {%- comment -%}
+              A single-line title is emitted bare, exactly as in the reference; a
+              multi-line one keeps its rich-text paragraph and the p-contents helper.
+            {%- endcomment -%}
+            {%- assign title_html = block.settings.title -%}
+            {%- assign para_count = title_html | split: '<p' | size -%}
+            {%- assign multiline = false -%}
+            {%- if title_html contains '<br' -%}{%- assign multiline = true -%}{%- endif -%}
+            {%- if para_count <= 2 and multiline == false -%}
+              {%- assign title_flat = title_html | strip_html | strip -%}
+              <h2 class="u-text-style-h2 is-light hero-title">{{ title_flat }}</h2>
+            {%- else -%}
+              <h2 class="u-text-style-h2 is-light hero-title p-contents">{{ title_html }}</h2>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Home hero slider",
+  "tag": "section",
+  "class": "hero-slider",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "scroll_label",
+      "label": "Desktop hint",
+      "default": "Scroll"
+    },
+    {
+      "type": "text",
+      "id": "next_label",
+      "label": "Mobile hint",
+      "default": "Next"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video (optional)"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title",
+          "default": "<p>Explore our First Collection</p>"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "new_tab",
+          "label": "Open in new tab",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home hero slider",
+      "category": "Home",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "<p>Explore our First Collection</p>",
+            "link_label": "Shop Now",
+            "link_url": "/collections/all"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "<p>A modern expression of heritage</p>",
+            "link_label": "About us",
+            "link_url": "/pages/about"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "<p>Follow us on Instagram<br/>To join the journey</p>",
+            "link_label": "Community",
+            "link_url": "https://www.instagram.com/oddritual.gc/",
+            "new_tab": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

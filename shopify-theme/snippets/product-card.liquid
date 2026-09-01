@@ -1,0 +1,44 @@
+{%- comment -%}
+  Product card used by the draggable home slider and the collection grid.
+  Params: product, class (extra classes on .product-img_wrap)
+{%- endcomment -%}
+{%- assign wrap_class = class | default: 'is-slider' -%}
+<div role="listitem" class="product-card w-dyn-item">
+  <div class="product-block">
+    <div class="product-img_wrap {{ wrap_class }}">
+      {%- if product.featured_media -%}
+        <img
+          src="{{ product.featured_media | image_url: width: 1200 }}"
+          srcset="{{ product.featured_media | image_url: width: 500 }} 500w, {{ product.featured_media | image_url: width: 800 }} 800w, {{ product.featured_media | image_url: width: 1200 }} 1200w, {{ product.featured_media | image_url: width: 1600 }} 1600w, {{ product.featured_media | image_url: width: 1920 }} 1920w"
+          sizes="(max-width: 767px) 60vw, 25vw"
+          alt="{{ product.featured_media.alt | default: product.title | escape }}"
+          class="img-contain {{ wrap_class }}"
+          data-commerce-type="variation-image">
+      {%- else -%}
+        <img src="{{ 'or-product-the-caddie-jacket-navy.jpg' | asset_url }}" alt="{{ product.title | escape }}" class="img-contain {{ wrap_class }}" data-commerce-type="variation-image">
+      {%- endif -%}
+
+      {%- assign hover_media = product.media[1] -%}
+      {%- if hover_media -%}
+        <img src="{{ hover_media | image_url: width: 1200 }}" alt="" class="product-hover_img" loading="auto">
+      {%- else -%}
+        <img src="{{ 'or-product-hover-1.jpg' | asset_url }}" alt="" class="product-hover_img" loading="auto">
+      {%- endif -%}
+
+      <a arrow-trigger="" href="{{ product.url }}" class="slider-link w-inline-block">
+        <div class="product-block_info">
+          <div class="product-info">
+            <div class="body-upper">{{ product.title }}</div>
+            {%- if product.selected_or_first_available_variant.sku != blank -%}
+              <p class="body-upper text-grey">({{ product.selected_or_first_available_variant.sku }})</p>
+            {%- endif -%}
+          </div>
+          <div class="product-btn_flex">
+            <div class="price">{{ product.price | money }}</div>
+            <div arrow-wrap="" class="arrow-svg_holder">{% render 'icon-arrow' %}</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

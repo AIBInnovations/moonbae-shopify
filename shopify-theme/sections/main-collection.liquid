@@ -1,0 +1,114 @@
+{% render 'section-class', classes: 'page-collection u-container', attrs: 'count-items', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+{%- paginate collection.products by section.settings.products_per_page -%}
+<div class="page-inner">
+  <div nav-dark="" class="dark-section_wrap">
+    <div class="page-intro">
+      <div class="shop-contain u-container">
+        <div class="shop-intro_wrap">
+          <div class="split-grid u-grid-desktop m-flex m-gap_0">
+            <div class="split-col u-column-6 m-width_6">
+              <div class="body-upper">
+                <p>{{ collection.title | default: section.settings.fallback_title }}</p>
+              </div>
+            </div>
+            <div class="split-col u-column-2 m-col_6">
+              <div class="body-upper">{{ section.settings.eyebrow }}</div>
+            </div>
+            <div class="split-col u-column-4 u-text-align-right m-push_right m-col_6">
+              <p class="body-upper">(&nbsp;<span count-items="total">{{ collection.products_count }}</span>&nbsp;)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-col_wrap w-dyn-list" udy-collection="product">
+      <div role="list" class="product-col_list u-grid-desktop w-dyn-items">
+        {%- for product in collection.products -%}
+          {% render 'product-card-grid', product: product, view_label: section.settings.view_label %}
+        {%- else -%}
+          <div class="product-col_item u-column-4">
+            <p class="body-upper">{{ 'collections.general.no_matches' | t }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <div class="shop-contain u-container">
+        <div class="pagination body-upper">
+          {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">{{ paginate.previous.title }}</a>{%- endif -%}
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}">{{ paginate.next.title }}</a>{%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "div",
+  "class": "page-collection u-container",
+  "settings": [
+    {
+      "type": "text",
+      "id": "fallback_title",
+      "label": "Title when none set",
+      "default": "All Products"
+    },
+    {
+      "type": "richtext",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "<p>COLLECTION 01 & 02<br/>ORGC©️2026</p>"
+    },
+    {
+      "type": "text",
+      "id": "view_label",
+      "label": "Card hover label",
+      "default": "View Product"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 12,
+      "max": 48,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ]
+}
+{% endschema %}

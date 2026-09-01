@@ -1,0 +1,97 @@
+{% render 'section-class', classes: 'page-collection u-container', attrs: 'count-items', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+<div class="page-inner">
+  <div nav-dark="" class="dark-section_wrap">
+    <div class="page-intro">
+      <div class="shop-contain u-container">
+        <div class="shop-intro_wrap">
+          <div class="split-grid u-grid-desktop m-flex m-gap_0">
+            <div class="split-col u-column-6 m-width_6">
+              <div class="body-upper"><p>{{ section.settings.heading }}</p></div>
+            </div>
+            <div class="split-col u-column-6 u-text-align-right m-push_right m-col_6">
+              <p class="body-upper">(&nbsp;<span count-items="total">{{ collections.size }}</span>&nbsp;)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product-col_wrap w-dyn-list">
+      <div role="list" class="product-col_list u-grid-desktop w-dyn-items">
+        {%- for collection in collections -%}
+          <div role="listitem" class="product-col_item u-column-4 w-dyn-item">
+            <a count-items="item" overlay="trigger" href="{{ collection.url }}" class="cta-block w-inline-block">
+              <div cta-cursor_wrap="" class="product-img_wrap">
+                {%- if collection.featured_image -%}
+                  <img src="{{ collection.featured_image | image_url: width: 1200 }}" alt="{{ collection.title | escape }}" class="product-img">
+                {%- else -%}
+                  <img src="{{ 'or-gallery-1.jpg' | asset_url }}" alt="{{ collection.title | escape }}" class="product-img">
+                {%- endif -%}
+                <div overlay="el" class="product-overlay"></div>
+                <div cta-cursor_el="" class="cta-hover_el is-desktop">
+                  <div class="orgc-detail body-upper">
+                    {% render 'icon-bracket-left' %}
+                    <div class="detail-text">{{ section.settings.view_label }}</div>
+                    {% render 'icon-bracket-right' %}
+                  </div>
+                </div>
+              </div>
+              <div class="product-block_info is-alt">
+                <div class="product-info"><div class="body-upper">{{ collection.title }}</div></div>
+                <p class="body-upper">({{ collection.products_count }})</p>
+              </div>
+            </a>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "tag": "div",
+  "class": "page-collection u-container",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Collections"
+    },
+    {
+      "type": "text",
+      "id": "view_label",
+      "label": "Hover label",
+      "default": "View Collection"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ]
+}
+{% endschema %}

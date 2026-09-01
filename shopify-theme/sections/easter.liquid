@@ -1,0 +1,41 @@
+{% render 'section-class', id: 'shopify-section-easter', classes: 'easter-egg' %}
+
+<div data-cursor="close" class="easter-bg"></div>
+<div class="easter-outer">
+  <div class="easter-contain">
+    <div class="easter-layout u-grid-desktop">
+      <div class="easter-col u-column-6">
+        <div class="easter-icon_el">{%- if settings.logo_easter != blank -%}<img src="{{ settings.logo_easter | image_url: width: 1200 }}" alt="{{ shop.name | escape }}" class="brand-mark">{%- else -%}{% render 'icon-easter-icon' %}{%- endif -%}</div>
+        <div class="easter-text_wrap">
+          <div class="body-upper p-contents">{{ section.settings.text }}</div>
+        </div>
+      </div>
+      <div class="easter-col u-column-6">
+        <div class="easter-img_wrap">
+          {% render 'img', image: section.settings.image, fallback: 'or-easter.jpg', class: 'img-fill', sizes: '(max-width: 1388px) 100vw, 1388px' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Easter egg",
+  "tag": "div",
+  "class": "easter-egg",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Copy",
+      "default": "<p>Odd ritual golf club<br/>a modern expression of heritage<br/>ORGC©25</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,444 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Odd Ritual",
+    "theme_version": "1.0.0",
+    "theme_author": "Odd Ritual",
+    "theme_documentation_url": "https://shopify.dev/docs/themes",
+    "theme_support_url": "https://shopify.dev/docs/themes"
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "site_width",
+        "label": "Max site width (px)",
+        "min": 1200,
+        "max": 2400,
+        "step": 20,
+        "default": 1920,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "site_margin",
+        "label": "Page margin (px)",
+        "min": 8,
+        "max": 80,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "site_gutter",
+        "label": "Grid gutter (px)",
+        "min": 4,
+        "max": 48,
+        "step": 1,
+        "default": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "site_columns",
+        "label": "Grid columns",
+        "min": 6,
+        "max": 16,
+        "step": 1,
+        "default": 12
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_primary",
+        "label": "Primary (UI, body, headings)",
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_secondary",
+        "label": "Secondary (italic display numerals)",
+        "default": "instrument_serif_n4"
+      },
+      {
+        "type": "paragraph",
+        "content": "Type scale — the design is fluid, so these set the upper end of each clamp."
+      },
+      {
+        "type": "range",
+        "id": "size_body",
+        "label": "Body size (px)",
+        "min": 12,
+        "max": 22,
+        "step": 1,
+        "default": 16,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "size_h1",
+        "label": "Display / H1 (px)",
+        "min": 32,
+        "max": 128,
+        "step": 1,
+        "default": 42,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "size_h3",
+        "label": "H3 (px)",
+        "min": 24,
+        "max": 96,
+        "step": 1,
+        "default": 42,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "size_h4",
+        "label": "H4 (px)",
+        "min": 14,
+        "max": 48,
+        "step": 1,
+        "default": 22,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "These drive the whole design. Every section, the nav, footers and the cart inherit them."
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "Dark",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_light",
+        "label": "Light",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_brand",
+        "label": "Brand accent",
+        "default": "#050fff"
+      },
+      {
+        "type": "color",
+        "id": "color_light_grey",
+        "label": "Light grey (image grounds)",
+        "default": "#f4f4f4"
+      },
+      {
+        "type": "color",
+        "id": "color_light_faded",
+        "label": "Muted text on light",
+        "default": "#818181"
+      },
+      {
+        "type": "color",
+        "id": "color_faded_text",
+        "label": "Muted text on dark",
+        "default": "#cccccc"
+      }
+    ]
+  },
+  {
+    "name": "Brand marks",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Each mark falls back to the built-in Odd Ritual artwork when left empty. Upload SVG or PNG to replace one."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_nav",
+        "label": "Header wordmark"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_preloader",
+        "label": "Preloader wordmark"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_menu_crest",
+        "label": "Menu crest"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_intro_crest",
+        "label": "Intro crest"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_or_icon",
+        "label": "Made-locally icon"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_community",
+        "label": "Community heading artwork"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_footer",
+        "label": "Footer logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_easter",
+        "label": "Easter-egg icon"
+      }
+    ]
+  },
+  {
+    "name": "Preloader",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Eight images cycle behind the wordmark while the page loads. Bundled placeholders are used for any slot left empty."
+      },
+      {
+        "type": "image_picker",
+        "id": "preloader_image_1",
+        "label": "Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "preloader_image_2",
+        "label": "Image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "preloader_image_3",
+        "label": "Image 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "preloader_image_4",
+        "label": "Image 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "preloader_image_5",
+        "label": "Image 5"
+      },
+      {
+        "type": "image_picker",
+        "id": "preloader_image_6",
+        "label": "Image 6"
+      },
+      {
+        "type": "image_picker",
+        "id": "preloader_image_7",
+        "label": "Image 7"
+      },
+      {
+        "type": "image_picker",
+        "id": "preloader_image_8",
+        "label": "Image 8"
+      }
+    ]
+  },
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "html",
+        "id": "newsletter_embed",
+        "label": "Embed code",
+        "info": "Paste a Klaviyo / Mailchimp embed to replace the built-in form."
+      },
+      {
+        "type": "text",
+        "id": "newsletter_label",
+        "label": "Field label",
+        "default": "Email"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_placeholder",
+        "label": "Placeholder",
+        "default": "Email address"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_button",
+        "label": "Button label",
+        "default": "Sign up"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_name_label",
+        "label": "Name field label",
+        "default": "First name"
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter_terms",
+        "label": "Fine print",
+        "default": "<p>By signing up you agree to receive email from Odd Ritual. Unsubscribe any time.</p>"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_success_heading",
+        "label": "Success heading",
+        "default": "You're in."
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter_success_text",
+        "label": "Success copy",
+        "default": "<p>Welcome to the club — keep an eye on your inbox.</p>"
+      }
+    ]
+  },
+  {
+    "name": "Behaviour",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "smooth_scroll",
+        "label": "Smooth scrolling",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_cursor",
+        "label": "Custom cursor",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_preloader",
+        "label": "Show preloader",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Cart drawer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_open_on_add",
+        "label": "Open the drawer when something is added",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_nav_label",
+        "label": "Header link label",
+        "default": "Cart"
+      },
+      {
+        "type": "text",
+        "id": "cart_menu_label",
+        "label": "Menu link label",
+        "default": "My Cart"
+      },
+      {
+        "type": "text",
+        "id": "cart_nav_heading",
+        "label": "Header drawer heading",
+        "default": "My Cart"
+      },
+      {
+        "type": "text",
+        "id": "cart_menu_heading",
+        "label": "Menu drawer heading",
+        "default": "Your Cart"
+      },
+      {
+        "type": "text",
+        "id": "cart_close_label",
+        "label": "Close label",
+        "default": "close"
+      },
+      {
+        "type": "text",
+        "id": "cart_subtotal_label",
+        "label": "Subtotal label",
+        "default": "Subtotal"
+      },
+      {
+        "type": "text",
+        "id": "cart_shipping_label",
+        "label": "Shipping label",
+        "default": "Shipping"
+      },
+      {
+        "type": "text",
+        "id": "cart_shipping_note",
+        "label": "Shipping note",
+        "default": "Calculated at checkout"
+      },
+      {
+        "type": "text",
+        "id": "cart_checkout_label",
+        "label": "Checkout button",
+        "default": "Checkout"
+      },
+      {
+        "type": "text",
+        "id": "cart_remove_nav_label",
+        "label": "Remove label (header)",
+        "default": "Remove Item"
+      },
+      {
+        "type": "text",
+        "id": "cart_remove_menu_label",
+        "label": "Remove label (menu)",
+        "default": "Remove"
+      },
+      {
+        "type": "richtext",
+        "id": "cart_empty_text",
+        "label": "Empty cart copy",
+        "default": "<p>Come on, treat yourself.<br/>You deserve it</p>"
+      },
+      {
+        "type": "text",
+        "id": "cart_empty_link_label",
+        "label": "Empty cart link label",
+        "default": "Shop now"
+      },
+      {
+        "type": "url",
+        "id": "cart_empty_link_url",
+        "label": "Empty cart link URL"
+      },
+      {
+        "type": "text",
+        "id": "cart_error_text",
+        "label": "Error message",
+        "default": "Product is not available in this quantity."
+      }
+    ]
+  }
+]

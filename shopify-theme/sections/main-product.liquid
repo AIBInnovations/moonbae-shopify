@@ -1,0 +1,337 @@
+{% render 'section-class', classes: 'page-single u-container', attrs: 'nav-dark', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div class="single-layout">
+  <div class="single-grid u-grid-desktop">
+    <div class="single-img_col u-column-7">
+      <div class="single-featured_img">
+        {%- if product.featured_media -%}
+          <img
+            alt="{{ product.featured_media.alt | default: product.title | escape }}"
+            src="{{ product.featured_media | image_url: width: 1920 }}"
+            class="img-contain"
+            data-commerce-type="variation-image"
+            srcset="{{ product.featured_media | image_url: width: 500 }} 500w, {{ product.featured_media | image_url: width: 800 }} 800w, {{ product.featured_media | image_url: width: 1200 }} 1200w, {{ product.featured_media | image_url: width: 1600 }} 1600w, {{ product.featured_media | image_url: width: 1920 }} 1920w"
+            sizes="(max-width: 991px) 100vw, 58vw">
+        {%- else -%}
+          <img alt="{{ product.title | escape }}" src="{{ 'or-product-the-caddie-jacket-navy.jpg' | asset_url }}" class="img-contain" data-commerce-type="variation-image">
+        {%- endif -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="single-more_imgs w-dyn-list" data-commerce-type="more-images">
+          <div role="list" class="split-grid u-grid-desktop is-product_slider w-dyn-items">
+            {%- for media in product.media offset: 1 -%}
+              <div role="listitem" class="split-col u-column-6 w-dyn-item">
+                <div class="product-img_wrap">
+                  <img alt="{{ media.alt | escape }}" src="{{ media | image_url: width: 1200 }}" class="img-contain"
+                       srcset="{{ media | image_url: width: 500 }} 500w, {{ media | image_url: width: 800 }} 800w, {{ media | image_url: width: 1200 }} 1200w"
+                       sizes="(max-width: 991px) 50vw, 29vw">
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="single-content_col u-column-5 m-col_12">
+      <div class="single-product_options">
+        <div class="single-product_head">
+          <div class="split-grid u-grid-desktop">
+            <div class="split-col u-column-8 m-col_12">
+              <h1 class="product-title">{{ product.title }}</h1>
+              <h1 class="u-text-style-h4 f-5">{{ current_variant.sku }}</h1>
+            </div>
+            <div class="split-col u-column-4 u-text-align-right m-align_left">
+              <h1 data-commerce-type="variation-price" class="product-title price" data-product-price>{{ current_variant.price | money }}</h1>
+            </div>
+          </div>
+          <div class="product-description_wrap u-text-style-small f-5">
+            {{ product.description }}
+          </div>
+        </div>
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="product-toggle_section">
+            {%- for block in section.blocks -%}
+              {%- assign mf = product.metafields[block.settings.metafield_namespace][block.settings.metafield_key] -%}
+              {%- assign content = block.settings.text -%}
+              {%- if mf != blank -%}{%- assign content = mf | metafield_tag -%}{%- endif -%}
+              {%- if content != blank -%}
+                <div class="product-accordion" {{ block.shopify_attributes }}>
+                  <div class="product-toggle">
+                    <div class="product-info_title_block">
+                      <div class="body-upper">{{ block.settings.title }}</div>
+                    </div>
+                    <div class="accordion-dropdown">
+                      <div class="accordion-dropdown_content">
+                        <div class="u-text-style-small f-5">
+                          <div class="w-richtext" metafield-wrapper="pageItem">{{ content }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="toggle-icon">
+                      <div class="toggle-line"></div>
+                      <div class="toggle-line is-vert"></div>
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="add-to-cart_single">
+          {%- comment -%}
+            Written out rather than using {% form 'product' %}: the reference markup needs
+            data-node-type on the form element, and a hyphenated key is not valid Liquid in a tag
+            argument list. These are the exact fields Shopify's product form emits.
+          {%- endcomment -%}
+          <form method="post" action="{{ routes.cart_add_url }}" id="product_form_{{ product.id }}" accept-charset="UTF-8" class="w-commerce-commerceaddtocartform single-product_actions" enctype="multipart/form-data" data-node-type="commerce-add-to-cart-form">
+            <input type="hidden" name="form_type" value="product">
+            <input type="hidden" name="utf8" value="✓">
+
+            {%- comment -%}
+              Udesly's add-to-cart class does JSON.parse(form.querySelector('script').textContent)
+              in its constructor. Without this block it throws, the form is never bound, and
+              Add to Cart falls back to a full page POST instead of the drawer. Option values
+              are lower-cased to match the pill group's data-option-name and the select values.
+            {%- endcomment -%}
+            <script type="application/json" data-type="product-variations-data">
+              [
+              {%- for v in product.variants -%}
+                {%- capture v_weight -%}{% if v.weight %}{{ v.weight | weight_with_unit }}{% endif %}{%- endcapture -%}
+                {%- assign o1 = v.option1 | default: v.options[0] | default: '' -%}
+                {%- assign o2 = v.option2 | default: v.options[1] | default: '' -%}
+                {%- assign o3 = v.option3 | default: v.options[2] | default: '' -%}
+                {
+                  "id": {{ v.id | append: '' | json }},
+                  "weight": {{ v_weight | strip | json }},
+                  "length": "", "height": "", "width": "",
+                  "unit_price": {{ v.unit_price_measurement.reference_value | default: '' | append: '' | json }},
+                  "available": {{ v.available | json }},
+                  "sku": {{ v.sku | default: '' | json }},
+                  "barcode": {{ v.barcode | default: '' | json }},
+                  "price": {{ v.price | money | json }},
+                  "option1": {{ o1 | downcase | json }},
+                  "option2": {{ o2 | downcase | json }},
+                  "option3": {{ o3 | downcase | json }},
+                  "featured_image": {% if v.image %}{{ v.image | image_url: width: 1920 | json }}{% else %}""{% endif %},
+                  "more_images": null
+                }{% unless forloop.last %},{% endunless %}
+              {%- endfor -%}
+              ]
+            </script>
+            {%- unless product.has_only_default_variant -%}
+              <div data-node-type="add-to-cart-option-list" class="size-variation_btn">
+                {%- for option in product.options_with_values -%}
+                  <fieldset data-node-type="add-to-cart-option" class="option">
+                    <select data-node-type="add-to-cart-option-select" class="w-select" style="display: none;" name="option{{ option.position }}" data-option-index="{{ option.position }}">
+                      {%- for value in option.values -%}
+                        <option value="{{ value | downcase | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>
+                      {%- endfor -%}
+                    </select>
+                    <div data-node-type="add-to-cart-option-pill-group" class="size-button_group w-commerce-commerceaddtocartoptionpillgroup" aria-label="option{{ option.position }}">
+                      {%- for value in option.values -%}
+                        <div data-node-type="add-to-cart-option-pill" class="size-button w-commerce-commerceaddtocartoptionpill" data-option-name="{{ value | downcase | escape }}">
+                          <div data-node-type="block" class="body-upper size-choice">{{ value }}</div>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                    <div data-node-type="block" class="size-toggle">
+                      <div data-node-type="block" class="body-upper">
+                        {{ option.name }}:
+                        <span data-node-type="span" class="size-selected">&nbsp;</span>
+                      </div>
+                      <div data-node-type="block" class="toggle-icon">
+                        <div data-node-type="block" class="toggle-line"></div>
+                        <div data-node-type="block" class="toggle-line is-vert"></div>
+                      </div>
+                    </div>
+                  </fieldset>
+                {%- endfor -%}
+              </div>
+            {%- endunless -%}
+
+            <input type="submit"
+                   data-node-type="commerce-add-to-cart-button"
+                   data-loading-text="{{ section.settings.adding_label | escape }}"
+                   aria-busy="false"
+                   aria-haspopup="dialog"
+                   class="w-commerce-commerceaddtocartbutton add-to-cart_btn"
+                   value="{{ section.settings.add_label | escape }}"
+                   {% unless current_variant.available %}disabled{% endunless %}>
+            <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+            <input type="hidden" name="product-id" value="{{ product.id }}">
+          </form>
+
+          <div style="display:{% if current_variant.available %}none{% else %}block{% endif %}" class="w-commerce-commerceaddtocartoutofstock error-state" tabindex="0">
+            <div class="body-upper">{{ section.settings.sold_out_text }}</div>
+          </div>
+          <div aria-live="assertive" data-node-type="commerce-add-to-cart-error" style="display:none" class="w-commerce-commerceaddtocarterror error-state">
+            <div data-node-type="commerce-add-to-cart-error" class="body-upper"
+                 data-w-add-to-cart-quantity-error="{{ settings.cart_error_text | escape }}"
+                 data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart."
+                 data-w-add-to-cart-mixed-cart-error="You can’t purchase another product with a subscription."
+                 data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item."
+                 data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this store."
+                 data-w-add-to-cart-select-all-options-error="Please select an option in each set.">{{ settings.cart_error_text }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} Related products, exactly as the reference laid them out. {%- endcomment -%}
+{%- assign related = collections[section.settings.related_collection].products | default: product.collections.first.products -%}
+{%- if related.size > 0 -%}
+  <div class="single-product-col_wrap w-dyn-list" udy-collection="product">
+    <div role="list" class="single-product-col_list u-grid-desktop w-dyn-items">
+      {%- assign shown = 0 -%}
+      {%- for item in related -%}
+        {%- if item.id != product.id and shown < section.settings.related_count -%}
+          {%- assign shown = shown | plus: 1 -%}
+          {% render 'product-card-grid', product: item, item_class: 'single-product-col_item u-column-4' %}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "div",
+  "class": "page-single u-container",
+  "settings": [
+    {
+      "type": "text",
+      "id": "add_label",
+      "label": "Add to cart label",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "text",
+      "id": "adding_label",
+      "label": "Adding label",
+      "default": "Adding to cart..."
+    },
+    {
+      "type": "text",
+      "id": "sold_out_text",
+      "label": "Sold out message",
+      "default": "This product is out of stock."
+    },
+    {
+      "type": "header",
+      "content": "Related products"
+    },
+    {
+      "type": "collection",
+      "id": "related_collection",
+      "label": "Collection",
+      "info": "Leave empty to use the product's own collection."
+    },
+    {
+      "type": "range",
+      "id": "related_count",
+      "label": "How many",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Garment Details"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Content",
+          "info": "Used when the metafield below is empty."
+        },
+        {
+          "type": "text",
+          "id": "metafield_namespace",
+          "label": "Metafield namespace",
+          "default": "custom"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Metafield key"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "accordion",
+        "settings": {
+          "title": "Garment Details",
+          "metafield_namespace": "custom",
+          "metafield_key": "garment_details",
+          "text": "<p>• Outer: 100% cotton twill (230gsm)<br/>• Relaxed fit<br/>• Embroidered chest branding<br/>• Designed to age beautifully</p>"
+        }
+      },
+      {
+        "type": "accordion",
+        "settings": {
+          "title": "Wash Care",
+          "metafield_namespace": "custom",
+          "metafield_key": "wash_care",
+          "text": "<p>Washing:<br/>• Machine wash cold with like colors<br/>• Gentle cycle<br/>• Do not bleach<br/><br/>Drying:<br/>• Tumble dry low / hang to dry<br/>• Do not dry clean</p>"
+        }
+      },
+      {
+        "type": "accordion",
+        "settings": {
+          "title": "Shipping & Returns",
+          "metafield_namespace": "custom",
+          "metafield_key": "shipping_returns",
+          "text": "<p>Locally made | CT • RSA<br/>Shipping calculated at checkout.</p>"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

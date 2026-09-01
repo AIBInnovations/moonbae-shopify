@@ -1,0 +1,87 @@
+{% render 'section-class', classes: 'page-contain u-container is-section', attrs: 'nav-dark', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+<div class="or-info">
+  <div class="u-text-align-center">
+    <div class="text-style_alt-large">{{ section.settings.eyebrow }}</div>
+  </div>
+  <div class="split-grid u-grid-desktop">
+    <div class="u-column-3 is-hidden">
+      <div class="body-upper f-5"><p>{{ section.settings.left_label }}</p></div>
+    </div>
+    <div class="u-column-6 text-width">
+      <div class="u-vflex-center-top u-text-align-center">
+        <div class="body-upper f-5">{{ section.settings.text }}</div>
+      </div>
+    </div>
+    <div class="u-column-3 u-text-align-right is-hidden">
+      <div class="body-upper f-5"><p>{{ section.settings.right_label }}</p></div>
+    </div>
+  </div>
+  <div class="logo-icon_wrap">{%- if settings.logo_or_icon != blank -%}<img src="{{ settings.logo_or_icon | image_url: width: 1200 }}" alt="{{ shop.name | escape }}" class="brand-mark">{%- else -%}{% render 'icon-logo-icon' %}{%- endif -%}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Made locally",
+  "tag": "div",
+  "class": "page-contain u-container is-section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "<p>ORGC©2025<br/>Designed and made locally</p>"
+    },
+    {
+      "type": "text",
+      "id": "left_label",
+      "label": "Left label",
+      "default": "Cape Town"
+    },
+    {
+      "type": "text",
+      "id": "right_label",
+      "label": "Right label",
+      "default": "South Africa"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Copy",
+      "default": "<p>Our country is rich in culture, diversity, and heritage — producing locally is how we carry home with us, wherever we go. Made for us. By us.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Made locally",
+      "category": "Home"
+    }
+  ]
+}
+{% endschema %}

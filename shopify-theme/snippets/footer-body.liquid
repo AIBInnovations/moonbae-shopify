@@ -1,0 +1,113 @@
+{%- comment -%}
+  Footer body, shared by the light footer (home / cart) and the dark footer
+  (product, collection, policy pages). The small structural differences between the
+  two on the reference site are switched on `theme`.
+
+  Params:
+    theme    'light' (default) or 'dark'
+    section  the calling section — Shopify does not expose `section` inside
+             {% render %}, so it has to be handed in or every block loop is empty
+{%- endcomment -%}
+{%- assign theme = theme | default: 'light' -%}
+{%- if theme == 'dark' -%}
+  {%- assign top_grid = 'split-grid u-grid-desktop' -%}
+  {%- assign bottom_grid = 'split-grid u-grid-desktop m-footer_alt' -%}
+  {%- assign credit_grid = 'split-grid u-grid-desktop m-footer_alt' -%}
+  {%- assign centered_class = 'footer-col is-centered' -%}
+{%- else -%}
+  {%- assign top_grid = 'split-grid u-grid-desktop m-gap_0' -%}
+  {%- assign bottom_grid = 'split-grid u-grid-desktop' -%}
+  {%- assign credit_grid = 'split-grid u-grid-desktop m-gap_05' -%}
+  {%- assign centered_class = 'footer-col is-centered body-upper' -%}
+{%- endif -%}
+
+<div class="footer-contain u-container">
+  <div class="{{ top_grid }}">
+    <div class="split-col u-column-6 m-bot_15">
+      <div easter-trigger="" class="footer-logo_wrap">
+        {%- if settings.logo_footer != blank -%}
+          <img src="{{ settings.logo_footer | image_url: width: 1200 }}" alt="{{ shop.name | escape }}" class="brand-mark">
+        {%- else -%}
+          {% render 'icon-logo-footer' %}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="split-col u-column-3">
+      <div class="body-upper">{{ section.settings.tagline }}</div>
+    </div>
+    <div class="split-col u-column-3">
+      {%- if theme != 'dark' -%}
+        <div class="signup-head">{{ section.settings.signup_heading }}</div>
+      {%- endif -%}
+      {% render 'newsletter-form', id: theme %}
+      <div target-img_wrap="" class="footer-menu_imgs_wrap"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-contain u-container">
+  <div class="footer-bottom">
+    <div class="{{ bottom_grid }}">
+      {%- for block in section.blocks -%}
+        <div class="split-col u-column-3" {{ block.shopify_attributes }}>
+          <div class="footer-col">
+            <div class="footer-col has-line">
+              <div class="footer-body">
+                <p class="body-upper">{{ block.settings.heading }}</p>
+              </div>
+              <div class="footer-h_line is-desktop"></div>
+              <div{% if block.settings.hover_images %} img-hover_triggers-wrap=""{% endif %} class="footer-link_list">
+                {%- assign menu_links = linklists[block.settings.menu].links -%}
+                {%- if block.settings.menu != blank and menu_links.size > 0 -%}
+                  {%- for link in menu_links -%}
+                    <a{% if block.settings.hover_images %} img-hover_trigger=""{% endif %} text-btn="" href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %} class="footer-link is-menu w-inline-block{% if link.active %} w--current{% endif %}">
+                      <div class="footer-link_layout body-upper">
+                        <p>{{ link.title }}</p>
+                        <div text-btn-icon="" class="footer-link_icon">{% render 'icon-link-arrow' %}</div>
+                      </div>
+                    </a>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- for i in (1..4) -%}
+                    {%- assign label_key = 'link_' | append: i | append: '_label' -%}
+                    {%- assign url_key = 'link_' | append: i | append: '_url' -%}
+                    {%- assign label = block.settings[label_key] -%}
+                    {%- if label != blank -%}
+                      <a{% if block.settings.hover_images %} img-hover_trigger=""{% endif %} text-btn="" href="{{ block.settings[url_key] }}" class="footer-link is-menu w-inline-block">
+                        <div class="footer-link_layout body-upper">
+                          <p>{{ label }}</p>
+                          <div text-btn-icon="" class="footer-link_icon">{% render 'icon-link-arrow' %}</div>
+                        </div>
+                      </a>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="{{ credit_grid }}">
+      <div class="split-col u-column-9">
+        <div class="{{ centered_class }}">
+          <p>{{ section.settings.copyright }}</p>
+        </div>
+      </div>
+      <div class="split-col u-column-3 u-text-align-right">
+        <a{% if theme == 'dark' %} h-flip=""{% endif %} href="{{ section.settings.credit_url }}" target="_blank" class="footer-link_block w-inline-block">
+          <p class="body-upper text-tiny f-2">{{ section.settings.credit_label }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div target-imgs_hidden="" class="target-imgs_hidden">
+  {%- assign footer_fallbacks = 'or-menu-hover-1.jpg,or-menu-hover-2.jpg,or-menu-hover-3.jpg,or-menu-hover-4.jpg' | split: ',' -%}
+  {%- for file in footer_fallbacks -%}
+    {%- assign key = 'footer_image_' | append: forloop.index -%}
+    {% render 'img', image: section.settings[key], fallback: file, class: 'img-fill' %}
+  {%- endfor -%}
+</div>

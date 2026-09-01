@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+
+# Unrelated projects that happen to share this folder
+newportfolio/
+*.pdf
+
+# Build artifact — regenerate by zipping shopify-theme/
+odd-ritual-theme.zip
+
+# The captured source page is 47 MB of inlined base64; styles.css beside it is the
+# part that matters and is committed.
+reference/index.html
+
+# Local tooling
+node_modules/
+.mcp.json

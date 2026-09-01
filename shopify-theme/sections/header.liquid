@@ -1,0 +1,359 @@
+{%- comment -%}
+    Templates whose first screen sits on a light ground need the nav's dark treatment
+    from the server. The [nav-dark] / [nav-light] attributes only drive ScrollTrigger
+    once the visitor scrolls, so without this the nav is white-on-white on load.
+  {%- endcomment -%}
+  {%- assign light_ground_templates = 'product,collection,list-collections,search,blog,cart' | split: ',' -%}
+{%- assign nav_classes = 'nav-component' -%}
+{%- if light_ground_templates contains template.name -%}
+  {%- assign nav_classes = 'nav-component dark' -%}
+{%- endif -%}
+{% render 'section-class', classes: nav_classes %}
+
+<div img-hover_wrap="" data-nav="closed" class="nav">
+  <div data-menu-toggle="" class="overlay"></div>
+
+  <nav class="menu">
+    <div class="menu-bg">
+      <div class="bg-panel_full">
+        <div class="bg-panel_full-img">
+          {% render 'img', image: section.settings.menu_bg_image, fallback: 'or-menu-bg.jpg', class: 'img-fill', sizes: '(max-width: 1440px) 100vw, 1440px' %}
+          <div class="menu-extras">
+            <div class="bg-panel_contain u-container">
+              <div class="menu-bottom_layout u-grid-desktop m-centered">
+                <div data-menu-fade="" class="menu-footer_col u-column-6">
+                  <div class="menu-extras_logo">{%- if settings.logo_menu_crest != blank -%}<img src="{{ settings.logo_menu_crest | image_url: width: 1200 }}" alt="{{ shop.name | escape }}" class="brand-mark">{%- else -%}{% render 'icon-logo-crest-sm' %}{%- endif -%}</div>
+                </div>
+                <div data-menu-fade="" class="menu-footer_col u-column-4">
+                  <div class="menu-bot_wrap">
+                    <div class="u-text-style-alt">{{ section.settings.menu_tagline }}</div>
+                  </div>
+                </div>
+                <div data-menu-fade="" class="menu-footer_col u-column-2">
+                  <div class="product-info u-vflex-right-bottom">
+                    <div class="u-text-style-alt">{{ section.settings.menu_location }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-panel first"></div>
+      <div class="bg-panel"></div>
+    </div>
+
+    <div class="menu-inner">
+      <div class="menu-contain u-container">
+        <div class="menu-layout u-grid-desktop">
+          <div data-menu-fade="" class="menu-img_wrap u-column-1">
+            <div target-img_wrap="" class="menu-img_inner"></div>
+          </div>
+          <div class="menu-list_wrap u-column-5">
+            <div img-hover_triggers-wrap="" class="menu-list">
+              {%- comment -%}
+                A Shopify menu drives the list when one is picked; otherwise the six
+                manual link fields do, so the menu matches the reference on a new store.
+              {%- endcomment -%}
+              {%- assign menu_links = linklists[section.settings.menu].links -%}
+              {%- if section.settings.menu != blank and menu_links.size > 0 -%}
+                {%- for link in menu_links -%}
+                  <div img-hover_trigger="" class="menu-list-item">
+                    <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %} class="menu-link w-inline-block{% if link.active %} w--current{% endif %}">
+                      <h3 class="u-text-style-h2 is-menulink">{{ link.title }}</h3>
+                    </a>
+                  </div>
+                {%- endfor -%}
+              {%- else -%}
+                {%- for i in (1..6) -%}
+                  {%- assign label_key = 'link_' | append: i | append: '_label' -%}
+                  {%- assign url_key = 'link_' | append: i | append: '_url' -%}
+                  {%- assign label = section.settings[label_key] -%}
+                  {%- if label != blank -%}
+                    {%- assign url = section.settings[url_key] | default: '/' -%}
+                    <div img-hover_trigger="" class="menu-list-item">
+                      <a href="{{ url }}"{% if url == request.path %} aria-current="page"{% endif %} class="menu-link w-inline-block{% if url == request.path %} w--current{% endif %}">
+                        <h3 class="u-text-style-h2 is-menulink">{{ label }}</h3>
+                      </a>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
+            </div>
+          </div>
+          <div data-menu-fade="" class="menu-close_wrap u-column-1">
+            <div h-flip="" data-menu-toggle="" class="menu-close">
+              <div class="body-upper">{{ section.settings.close_label }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-contain u-container">
+        <div class="menu-bottom_layout u-grid-desktop is-menu">
+          <div data-menu-fade="" class="menu-footer_col u-column-5 col-start_7">
+            <div class="menu-bot_wrap">
+              {% render 'cart-drawer', variant: 'menu' %}
+              <div h-flip="" sub-trigger="" class="text-link">
+                <div class="body-upper">{{ section.settings.signup_label }}</div>
+              </div>
+            </div>
+          </div>
+          <div data-menu-fade="" class="menu-footer_col u-column-1">
+            <div class="product-info u-vflex-right-bottom">
+              <a h-flip="" href="{{ section.settings.social_url }}" target="_blank" class="text-link w-inline-block">
+                <div class="body-upper">{{ section.settings.social_label }}</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div target-imgs_hidden="" class="target-imgs_hidden">
+        {%- assign menu_fallbacks = 'or-menu-hover-1.jpg,or-menu-hover-2.jpg,or-menu-hover-3.jpg,or-menu-hover-4.jpg' | split: ',' -%}
+        {%- assign hover_count = 4 -%}
+        {%- if section.settings.menu != blank and menu_links.size > 0 -%}
+          {%- assign hover_count = menu_links.size -%}
+        {%- else -%}
+          {%- assign hover_count = 0 -%}
+          {%- for i in (1..6) -%}
+            {%- assign label_key = 'link_' | append: i | append: '_label' -%}
+            {%- if section.settings[label_key] != blank -%}{%- assign hover_count = hover_count | plus: 1 -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+        {%- for i in (1..hover_count) -%}
+          {%- assign key = 'menu_image_' | append: i -%}
+          {%- assign fb_index = i | minus: 1 | modulo: 4 -%}
+          {% render 'img', image: section.settings[key], fallback: menu_fallbacks[fb_index], class: 'img-fill' %}
+        {%- endfor -%}
+      </div>
+    </div>
+  </nav>
+</div>
+
+<nav class="orgc-nav">
+  <div class="nav-contain u-container">
+    <div class="nav-layout u-grid-column-2">
+      <div class="nav-col is-mobile">
+        <div h-fadeout="" role="button" data-menu-toggle="" class="menu-toggle">
+          <div class="menu-toggle_line"></div>
+          <div class="menu-toggle_line"></div>
+          <div class="menu-text_wrap">
+            <div class="menu-text_inner"><p class="body-upper">{{ section.settings.menu_label }}</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-col">
+        <a href="{{ routes.root_url }}"{% if request.page_type == 'index' %} aria-current="page"{% endif %} class="nav-logo_link w-inline-block{% if request.page_type == 'index' %} w--current{% endif %}" aria-label="{{ shop.name | escape }}">
+          {%- if settings.logo_nav != blank -%}<img src="{{ settings.logo_nav | image_url: width: 1200 }}" alt="{{ shop.name | escape }}" class="brand-mark">{%- else -%}{% render 'icon-logo-nav' %}{%- endif -%}
+        </a>
+      </div>
+
+      <div class="nav-col">
+        <div h-fadeout="" role="button" data-menu-toggle="" class="menu-toggle is-desktop">
+          <div class="menu-toggle_line"></div>
+          <div class="menu-toggle_line"></div>
+          <div class="menu-text_wrap">
+            <div class="menu-text_inner"><p class="body-upper">{{ section.settings.menu_label }}</p></div>
+          </div>
+        </div>
+        <div h-fadeout="" class="nav-links_layout">
+          <a h-flip="" href="{{ section.settings.shop_url }}" class="nav-link is-desktop w-inline-block">
+            <div class="body-upper">{{ section.settings.shop_label }}</div>
+          </a>
+          {% render 'cart-drawer', variant: 'nav' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "div",
+  "class": "nav-component",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "info": "Leave empty to use the manual links below."
+    },
+    {
+      "type": "text",
+      "id": "menu_label",
+      "label": "Menu toggle label",
+      "default": "Menu"
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Menu close label",
+      "default": "Close"
+    },
+    {
+      "type": "text",
+      "id": "shop_label",
+      "label": "Shop link label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "shop_url",
+      "label": "Shop link URL"
+    },
+    {
+      "type": "text",
+      "id": "signup_label",
+      "label": "Newsletter trigger label",
+      "default": "Join the fam"
+    },
+    {
+      "type": "text",
+      "id": "social_label",
+      "label": "Social label",
+      "default": "Instagram"
+    },
+    {
+      "type": "url",
+      "id": "social_url",
+      "label": "Social URL"
+    },
+    {
+      "type": "header",
+      "content": "Menu panel"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_bg_image",
+      "label": "Menu background image"
+    },
+    {
+      "type": "text",
+      "id": "menu_tagline",
+      "label": "Tagline",
+      "default": "Swing easy, Odd Ritual, ©2025"
+    },
+    {
+      "type": "text",
+      "id": "menu_location",
+      "label": "Location",
+      "default": "Cape Town, South Africa"
+    },
+    {
+      "type": "header",
+      "content": "Menu hover images"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image_1",
+      "label": "Link 1 image"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image_2",
+      "label": "Link 2 image"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image_3",
+      "label": "Link 3 image"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image_4",
+      "label": "Link 4 image"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image_5",
+      "label": "Link 5 image"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image_6",
+      "label": "Link 6 image"
+    },
+    {
+      "type": "header",
+      "content": "Menu links (used when no menu is picked)"
+    },
+    {
+      "type": "text",
+      "id": "link_1_label",
+      "label": "Link 1 label"
+    },
+    {
+      "type": "url",
+      "id": "link_1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_2_label",
+      "label": "Link 2 label"
+    },
+    {
+      "type": "url",
+      "id": "link_2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_3_label",
+      "label": "Link 3 label"
+    },
+    {
+      "type": "url",
+      "id": "link_3_url",
+      "label": "Link 3 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_4_label",
+      "label": "Link 4 label"
+    },
+    {
+      "type": "url",
+      "id": "link_4_url",
+      "label": "Link 4 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_5_label",
+      "label": "Link 5 label"
+    },
+    {
+      "type": "url",
+      "id": "link_5_url",
+      "label": "Link 5 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_6_label",
+      "label": "Link 6 label"
+    },
+    {
+      "type": "url",
+      "id": "link_6_url",
+      "label": "Link 6 URL"
+    }
+  ],
+  "default": {
+    "settings": {
+      "shop_url": "/collections/all",
+      "social_url": "https://www.instagram.com/oddritual.gc/",
+      "link_1_label": "Our Shop",
+      "link_1_url": "/collections/all",
+      "link_2_label": "Home",
+      "link_2_url": "/",
+      "link_3_label": "About us",
+      "link_3_url": "/pages/about",
+      "link_4_label": "Contact",
+      "link_4_url": "/pages/contact-us"
+    }
+  }
+}
+{% endschema %}

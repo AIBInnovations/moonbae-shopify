@@ -1,0 +1,217 @@
+/* Odd Ritual — additive theme layer.
+ *
+ * The design ships unmodified in styles.css (normalize + Webflow + theme) and
+ * styles-2026.css (the site's override/animation layer). NOTHING in this file
+ * touches a selector those two define — it only styles the templates the
+ * reference build did not contain: product, collection, search, customer pages
+ * and the built-in newsletter form.
+ */
+
+/* --------------------------------------------------------------------------- */
+/* Only the handful of hooks the reference stylesheets do not define, because     */
+/* these views did not exist on the reference site: the cart page table, the      */
+/* search form, customer forms, and pagination. Everything else on every page     */
+/* comes from styles.css / styles-2026.css untouched.                             */
+/* --------------------------------------------------------------------------- */
+
+.brand-mark {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.page-cart .cart-page_item {
+  padding: var(--size--1-5rem, 1.5rem) 0;
+  border-bottom: 1px solid currentColor;
+  align-items: start;
+}
+
+.page-cart .cart-page_item .checkout-img_wrap {
+  display: block;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  max-width: 9rem;
+  overflow: hidden;
+}
+
+.page-cart .cart-page_item .checkout-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.page-cart .cart-page_footer {
+  padding-top: var(--size--3rem, 3rem);
+}
+
+.page-cart .cart-line_item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+}
+
+.page-cart .w-commerce-commercecartquantity {
+  width: 4em;
+  margin: 0.75em 0;
+}
+
+.checkout-actions {
+  display: flex;
+  gap: 0.75em;
+  flex-wrap: wrap;
+  margin-top: 1.5em;
+}
+
+.checkout-button {
+  cursor: pointer;
+}
+.checkout-button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.checkout-button.is-secondary {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+  max-width: 32em;
+}
+
+.search-form input,
+.customer-page input {
+  width: 100%;
+  padding: 0.75em 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.customer-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 32em;
+}
+
+.pagination {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  padding: 4em 0;
+}
+
+.form-error {
+  color: #c0392b;
+}
+
+/* --------------------------------------------------------------------------- */
+/* Signup popup body copy and bullets. The reference left this panel empty for  */
+/* Klaviyo to fill, so these few rules are the only ones the design does not    */
+/* already provide; everything else uses .signup-* / .popup-* from styles.css.  */
+/* --------------------------------------------------------------------------- */
+
+.u-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.signup-content .signup-body {
+  margin-top: var(--size--1rem, 1rem);
+  max-width: 34ch;
+}
+
+.signup-content .signup-list {
+  list-style: none;
+  margin: var(--size--1-25rem, 1.25rem) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.signup-content .signup-list li {
+  position: relative;
+  padding-left: 1.2em;
+}
+
+.signup-content .signup-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.45;
+}
+
+.signup-content .signup-bot {
+  margin-top: auto;
+  padding-top: var(--size--2rem, 2rem);
+}
+
+/* .signup-content is space-between, which spreads four children apart. Stack them
+   from the top and let .signup-bot's auto margin pin the form to the bottom. */
+.signup-popup .signup-content {
+  justify-content: flex-start;
+}
+
+/* The design's popup type colours assume a dark panel, but .signup-content is
+   light — so placeholder and fine print need a readable value here. */
+.signup-popup .signup-input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.signup-popup .popup-terms_text {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.signup-popup .signup-input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  background: transparent;
+}
+
+.signup-popup .popup-submit {
+  width: 100%;
+}
+
+.signup-form_wrap .signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.popup-btn_wrap {
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------- */
+/* .page-contain gave the home band its flex column — which is what keeps the    */
+/* sections' own margins (.or-info's 7rem, for one) from collapsing into each     */
+/* other — plus a 15rem bottom padding meant for the band as a whole. As JSON     */
+/* sections each carry it individually, so keep the flex column and neutralise    */
+/* the band padding; the per-section Spacing settings drive it instead.           */
+/* --------------------------------------------------------------------------- */
+.page-contain.is-section {
+  padding-top: 0;
+  padding-bottom: 0;
+}

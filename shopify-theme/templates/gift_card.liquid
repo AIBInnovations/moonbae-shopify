@@ -1,0 +1,25 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    {%- assign gift_card_value = gift_card.initial_value | money -%}
+    <title>{{ 'gift_cards.issued.title' | t: value: gift_card_value, shop: shop.name }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ 'styles.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  </head>
+  <body class="template-gift_card">
+    <div class="u-container gift-card_page">
+      <div class="or-info u-text-align-center">
+        <div class="full-logo_wrap">{% render 'icon-logo-crest-lg' %}</div>
+        <h1 class="u-text-style-h3">{{ 'gift_cards.issued.subtext' | t }}</h1>
+        <div class="text-style_alt-large">{{ gift_card.balance | money }}</div>
+        {{ gift_card.qr_identifier }}
+        <p class="body-upper">{{ gift_card.code | format_code }}</p>
+        <a href="{{ shop.url }}" class="checkout-button body-upper">{{ 'gift_cards.issued.shop_link' | t }}</a>
+      </div>
+    </div>
+  </body>
+</html>

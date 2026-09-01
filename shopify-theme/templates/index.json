@@ -1,0 +1,263 @@
+{
+  "sections": {
+    "home-hero": {
+      "type": "home-hero",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "title": "<p>Explore our First Collection</p>",
+            "link_label": "Shop Now",
+            "link_url": "/collections/all"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "title": "<p>A modern expression of heritage</p>",
+            "link_label": "About us",
+            "link_url": "/pages/about"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "title": "<p>Follow us on Instagram<br/>To join the journey</p>",
+            "link_label": "Community",
+            "link_url": "https://www.instagram.com/oddritual.gc/",
+            "new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3"
+      ]
+    },
+    "intro": {
+      "type": "intro-section",
+      "settings": {
+        "padding_top": 20
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "link_url": "/collections/all",
+        "padding_top": 160
+      }
+    },
+    "image-ctas": {
+      "type": "home-image-section",
+      "settings": {
+        "padding_top": 160
+      },
+      "blocks": {
+        "cta-1": {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Products",
+            "hover_title": "COLLECTION 01 & 02",
+            "hover_link_label": "Shop now",
+            "link_url": "/collections/all",
+            "width": "6",
+            "full_height": true
+          }
+        },
+        "cta-2": {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Story",
+            "hover_title": "About us",
+            "hover_link_label": "Read more",
+            "link_url": "/pages/about",
+            "width": "3",
+            "full_height": false
+          }
+        },
+        "cta-3": {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Community",
+            "hover_title": "Social",
+            "hover_link_label": "Instagram",
+            "link_url": "https://www.instagram.com/oddritual.gc/",
+            "new_tab": true,
+            "width": "3",
+            "full_height": true
+          }
+        }
+      },
+      "block_order": [
+        "cta-1",
+        "cta-2",
+        "cta-3"
+      ]
+    },
+    "made-locally": {
+      "type": "or-text-section",
+      "settings": {
+        "padding_top": 160,
+        "padding_bottom": 240
+      }
+    },
+    "gallery": {
+      "type": "home-slider",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-4": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-5": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-6": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-7": {
+          "type": "slide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3",
+        "slide-4",
+        "slide-5",
+        "slide-6",
+        "slide-7"
+      ]
+    },
+    "community": {
+      "type": "community-section",
+      "blocks": {
+        "partner-1": {
+          "type": "partner",
+          "settings": {
+            "title": "Fairways to africa",
+            "url": "https://fairwaystoafrica.com/",
+            "link_label": "Visit Website",
+            "text": "<p>Bespoke golf travel. Like our clients, we are golfers. We are young-at-heart and seek unique experiences whilst playing the sport we love around the world. We believe in quality above all else, and that is what we aim to deliver.</p>"
+          }
+        },
+        "partner-2": {
+          "type": "partner",
+          "settings": {
+            "title": "StartWell Foundation",
+            "url": "https://startwellfoundation.org/",
+            "link_label": "Visit Website",
+            "text": "<p>At StartWell, we're a passionate team making a measurable difference in the fight against a specific kind of malnutrition which is the leading cause of child stunting. We don't just talk about the problem – we take action.</p>"
+          }
+        },
+        "partner-3": {
+          "type": "partner",
+          "settings": {
+            "title": "242",
+            "url": "https://www.instagram.com/twofortytwo.co/",
+            "link_label": "Visit Website",
+            "text": "<p>The world moves fast, but we believe there's something powerful about slowing down. A moment to take in. To connect. To be present. It's a reminder of what happens when people gather around something simple, yet made with care: coffee &amp; connections.</p>"
+          }
+        },
+        "partner-4": {
+          "type": "partner",
+          "settings": {
+            "title": "running late club",
+            "url": "https://www.runninglateclub.com/",
+            "link_label": "Visit Website",
+            "text": "<p>The Running Late Club is a community where Everyday Athletes can find a place to belong. We cater to all paces and levels of fitness, and strive to provide the accountability and inspiration needed to reach your goals.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "partner-1",
+        "partner-2",
+        "partner-3",
+        "partner-4"
+      ]
+    },
+    "footer": {
+      "type": "footer-light",
+      "blocks": {
+        "column-1": {
+          "type": "column",
+          "settings": {
+            "heading": "Site Index",
+            "hover_images": true,
+            "link_1_label": "Shop now",
+            "link_1_url": "/collections/all",
+            "link_2_label": "Home",
+            "link_2_url": "/",
+            "link_3_label": "About us",
+            "link_3_url": "/pages/about",
+            "link_4_label": "Contact Us",
+            "link_4_url": "/pages/contact-us"
+          }
+        },
+        "column-2": {
+          "type": "column",
+          "settings": {
+            "heading": "Social",
+            "link_1_label": "Instagram",
+            "link_1_url": "https://www.instagram.com/oddritual.gc/"
+          }
+        },
+        "column-3": {
+          "type": "column",
+          "settings": {
+            "heading": "Get in touch",
+            "link_1_label": "hello@oddritualgolf.com",
+            "link_1_url": "mailto:hello@oddritualgolf.com?subject=ORGC%20-%20Customer%20Support",
+            "link_2_label": "+27 76 207 33 87",
+            "link_2_url": "tel:+27763091991"
+          }
+        },
+        "column-4": {
+          "type": "column",
+          "settings": {
+            "heading": "legal",
+            "link_1_label": "Privacy Policy",
+            "link_1_url": "/pages/privacy-policy",
+            "link_2_label": "Refunds",
+            "link_2_url": "/pages/refund-policy",
+            "link_3_label": "Shipping",
+            "link_3_url": "/pages/shipping-policy",
+            "link_4_label": "Terms of service",
+            "link_4_url": "/pages/terms-of-service"
+          }
+        }
+      },
+      "block_order": [
+        "column-1",
+        "column-2",
+        "column-3",
+        "column-4"
+      ]
+    }
+  },
+  "order": [
+    "home-hero",
+    "intro",
+    "featured-products",
+    "image-ctas",
+    "made-locally",
+    "gallery",
+    "community",
+    "footer"
+  ]
+}

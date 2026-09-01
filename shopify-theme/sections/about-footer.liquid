@@ -1,0 +1,226 @@
+{% render 'section-class', classes: 'footer about-footer u-theme-dark', attrs: 'footer-hover_wrap', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+<div class="footer-contain u-container">
+
+<div class="footer-bottom">
+  <div class="split-grid u-grid-desktop m-flex">
+    <div class="split-col u-column-3 m-col_6">
+      <div class="footer-col">
+        <div class="body-upper"><p>{{ section.settings.index_heading }}</p></div>
+      </div>
+    </div>
+    <div class="split-col u-column-3 m-col_6">
+      <div class="footer-col">
+        <div class="footer-link_list">
+          {%- assign menu_links = linklists[section.settings.menu].links -%}
+          {%- if section.settings.menu != blank and menu_links.size > 0 -%}
+            {%- for link in menu_links -%}
+              <a text-btn="" href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %} class="footer-link is-menu w-inline-block{% if link.active %} w--current{% endif %}">
+                <div class="footer-link_layout body-upper">
+                  <p>{{ link.title }}</p>
+                  <div text-btn-icon="" class="footer-link_icon">{% render 'icon-link-arrow' %}</div>
+                </div>
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- assign labels = 'Shop now,Home,About us,Contact us' | split: ',' -%}
+            {%- assign urls = '/collections/all,/,/pages/about,/pages/contact-us' | split: ',' -%}
+            {%- for label in labels -%}
+              <a text-btn="" href="{{ urls[forloop.index0] }}" class="footer-link is-menu w-inline-block">
+                <div class="footer-link_layout body-upper">
+                  <p>{{ label }}</p>
+                  <div text-btn-icon="" class="footer-link_icon">{% render 'icon-link-arrow' %}</div>
+                </div>
+              </a>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="split-col u-column-6 is-desktop">
+      <div class="footer-titles_layout u-grid-desktop">
+        <div class="u-column-4"><div class="body-upper"><p>{{ section.settings.col_code }}</p></div></div>
+        <div class="u-column-6"><div class="body-upper"><p>{{ section.settings.col_name }}</p></div></div>
+        <div class="u-column-2 u-text-align-right"><div class="body-upper"><p>{{ section.settings.col_price }}</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-footer_m-image">
+    {% render 'img', image: section.settings.mobile_image, fallback: 'or-menu-hover-1.jpg', class: 'img-fill' %}
+  </div>
+
+  <div class="split-grid u-grid-desktop v-align_bot">
+    <div class="split-col u-column-5 m-last">
+      <div class="footer-col">
+        <a href="{{ section.settings.cta_url }}" class="orgc-detail u-text-style-h2 is-light w-inline-block">
+          <div data-text="{{ section.settings.cta_label | escape }}" class="detail-wrap">
+            <div class="detail-text">{{ section.settings.cta_label }}</div>
+          </div>
+        </a>
+        <a btn-text_wrap="" href="{{ section.settings.cta_url }}" class="footer-large_link-wrap w-inline-block">
+          <h2 class="u-text-style-h2">{{ section.settings.cta_heading }}</h2>
+        </a>
+      </div>
+    </div>
+    <div class="split-col u-column-1 m-hide">
+      <div class="footer-img_follow-wrap"></div>
+    </div>
+    <div class="split-col u-column-6 m-hide">
+      <div class="footer-products_wrap w-dyn-list" udy-collection="product">
+        <div role="list" class="footer-products_list w-dyn-items">
+          {%- assign footer_products = collections[section.settings.collection].products -%}
+          {%- for product in footer_products limit: section.settings.product_count -%}
+            {%- assign hover_media = product.media[1] | default: product.featured_media -%}
+            <div footer-img_trigger="" role="listitem" class="footer-products_item w-dyn-item">
+              <a text-btn="" href="{{ product.url }}" class="footer-product_link u-grid-desktop m-hflex w-inline-block">
+                <div class="u-column-4 m-col_3">
+                  <div class="footer-text_item is-desktop">
+                    <p class="body-upper">({{ product.selected_or_first_available_variant.sku }})</p>
+                  </div>
+                  <div class="m-product-img_wrap">
+                    {%- if hover_media -%}
+                      <img loading="auto" src="{{ hover_media | image_url: width: 400 }}" alt="{{ product.title | escape }}" class="img-fill" data-commerce-type="variation-image">
+                    {%- endif -%}
+                  </div>
+                </div>
+                <div class="about-footer_grid">
+                  <div class="u-column-6">
+                    <div class="footer-link is-alt">
+                      <div class="footer-link_layout">
+                        <div text-btn-icon="" class="footer-link_icon">{% render 'icon-link-arrow' %}</div>
+                        <p class="body-upper">{{ product.title }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-column-2 u-text-align-right">
+                    <p data-commerce-type="variation-price" class="body-upper">{{ product.price | money }}</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "About footer",
+  "tag": "footer",
+  "class": "footer about-footer u-theme-dark",
+  "settings": [
+    {
+      "type": "text",
+      "id": "index_heading",
+      "label": "Index heading",
+      "default": "Site Index"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "info": "Leave empty for the built-in links."
+    },
+    {
+      "type": "header",
+      "content": "Product list"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_count",
+      "label": "How many",
+      "min": 1,
+      "max": 40,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "col_code",
+      "label": "Column 1 heading",
+      "default": "Code"
+    },
+    {
+      "type": "text",
+      "id": "col_name",
+      "label": "Column 2 heading",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "col_price",
+      "label": "Column 3 heading",
+      "default": "Price"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Link label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Heading",
+      "default": "Explore our range"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About footer",
+      "category": "About",
+      "settings": {
+        "cta_url": "/collections/all"
+      }
+    }
+  ]
+}
+{% endschema %}

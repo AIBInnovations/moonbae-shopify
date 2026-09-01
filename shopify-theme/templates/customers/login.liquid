@@ -1,0 +1,34 @@
+<div nav-light="" class="page-default">
+  <div class="page-inner">
+  <div class="page-intro">
+  <div class="shop-contain u-container customer-page">
+    <h1 class="u-text-style-h3">{{ 'customer.login.title' | t }}</h1>
+    {% form 'customer_login' %}
+      {{ form.errors | default_errors }}
+      <label for="CustomerEmail" class="body-upper">{{ 'customer.login.email' | t }}</label>
+      <input type="email" name="customer[email]" id="CustomerEmail" class="body-upper" autocomplete="email" required>
+      {% if form.password_needed %}
+        <label for="CustomerPassword" class="body-upper">{{ 'customer.login.password' | t }}</label>
+        <input type="password" name="customer[password]" id="CustomerPassword" class="body-upper" autocomplete="current-password">
+        <a href="#recover" class="body-upper">{{ 'customer.login.forgot_password' | t }}</a>
+      {% endif %}
+      <button type="submit" class="checkout-button body-upper">{{ 'customer.login.sign_in' | t }}</button>
+    {% endform %}
+
+    <div id="recover">
+      {% form 'recover_customer_password' %}
+        {{ form.errors | default_errors }}
+        {% if form.posted_successfully? %}<p class="body-upper">{{ 'customer.recover_password.success' | t }}</p>{% endif %}
+        <label for="RecoverEmail" class="body-upper">{{ 'customer.recover_password.email' | t }}</label>
+        <input type="email" name="email" id="RecoverEmail" class="body-upper" required>
+        <button type="submit" class="checkout-button body-upper">{{ 'customer.recover_password.submit' | t }}</button>
+      {% endform %}
+    </div>
+
+    <a href="{{ routes.account_register_url }}" class="body-upper">{{ 'customer.login.create_account' | t }}</a>
+  </div>
+  </div>
+  </div>
+</div>
+
+{% section 'footer-dark' %}

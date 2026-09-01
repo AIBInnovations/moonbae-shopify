@@ -1,0 +1,133 @@
+{% render 'section-class', classes: 'page-contain u-container is-section', attrs: 'nav-dark', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+<div class="product-draggable_wrap is-home">
+
+{%- assign products_list = section.settings.collection.products -%}
+
+<div class="or-info">
+  <div class="u-text-align-center">
+    <div class="text-style_alt-large">{{ section.settings.eyebrow }}</div>
+  </div>
+</div>
+
+<div product-slider="" class="product-draggable_el">
+  {%- comment -%} Two identical tracks so the marquee can loop seamlessly. {%- endcomment -%}
+  {%- for pass in (1..2) -%}
+    <div class="product-slider w-dyn-list" udy-collection="product">
+      <div role="list" class="product-slider_list w-dyn-items">
+        {%- if products_list.size > 0 -%}
+          {%- for product in products_list limit: section.settings.products_limit -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        {%- elsif section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.settings.product != blank -%}
+              {% render 'product-card', product: block.settings.product %}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- comment -%}
+            Nothing picked yet: fall back to the reference build's own line-up so a
+            brand-new store still renders the design exactly.
+          {%- endcomment -%}
+          {% render 'product-cards-reference' %}
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+
+<div class="products-all_wrap">
+  {% render 'orgc-detail', url: section.settings.link_url, label: section.settings.link_label, text_class: 'body-upper' %}
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured products",
+  "tag": "div",
+  "class": "page-contain u-container is-section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Leave empty to hand-pick products with the blocks below."
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products shown",
+      "min": 4,
+      "max": 50,
+      "step": 1,
+      "default": 38
+    },
+    {
+      "type": "richtext",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "<p>( Featured Products )</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "View all products"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "Featured products",
+      "category": "Products",
+      "settings": {
+        "link_url": "/collections/all"
+      }
+    }
+  ]
+}
+{% endschema %}

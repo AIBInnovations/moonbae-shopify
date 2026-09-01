@@ -1,0 +1,175 @@
+{% render 'section-class', classes: 'page-contain u-container is-section', attrs: 'nav-dark', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+<div class="split-grid u-grid-desktop">
+
+{%- assign cta_fallbacks = 'or-cta-1.jpg,or-cta-2.jpg,or-cta-3.jpg' | split: ',' -%}
+
+{%- for block in section.blocks -%}
+  {%- assign fb = cta_fallbacks[forloop.index0] | default: 'or-cta-1.jpg' -%}
+  <div class="split-col u-column-{{ block.settings.width }}{% if block.settings.full_height %} is-100{% endif %}" {{ block.shopify_attributes }}>
+    <a overlay="trigger" href="{{ block.settings.link_url }}"{% if block.settings.new_tab %} target="_blank"{% endif %} class="cta-block w-inline-block">
+      <div class="body-upper is-desktop">
+        <p{% if forloop.first %} class="body-upper is-desktop"{% endif %}>{{ block.settings.eyebrow }}</p>
+      </div>
+      <div cta-cursor_wrap="" class="cta-img_wrap">
+        {% render 'img', image: block.settings.image, fallback: fb, class: 'g_visual_img m-absolute' %}
+        <div overlay="el" class="img-overlay"></div>
+        <div cta-cursor_el="" class="cta-hover_el">
+          <div class="body-upper">{{ block.settings.hover_title }}</div>
+          <div class="orgc-detail body-upper">
+            {% render 'icon-bracket-left' %}
+            <div class="detail-text">{{ block.settings.hover_link_label }}</div>
+            {% render 'icon-bracket-right' %}
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+{%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Image CTAs",
+  "tag": "div",
+  "class": "page-contain u-container is-section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "cta",
+      "name": "CTA",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "Our Products"
+        },
+        {
+          "type": "text",
+          "id": "hover_title",
+          "label": "Hover title",
+          "default": "COLLECTION 01 & 02"
+        },
+        {
+          "type": "text",
+          "id": "hover_link_label",
+          "label": "Hover link label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "new_tab",
+          "label": "Open in new tab",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Column width",
+          "default": "6",
+          "options": [
+            {
+              "value": "3",
+              "label": "Quarter"
+            },
+            {
+              "value": "4",
+              "label": "Third"
+            },
+            {
+              "value": "6",
+              "label": "Half"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "full_height",
+          "label": "Full height",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image CTAs",
+      "category": "Home",
+      "blocks": [
+        {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Products",
+            "hover_title": "COLLECTION 01 & 02",
+            "hover_link_label": "Shop now",
+            "link_url": "/collections/all",
+            "width": "6",
+            "full_height": true
+          }
+        },
+        {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Story",
+            "hover_title": "About us",
+            "hover_link_label": "Read more",
+            "link_url": "/pages/about",
+            "width": "3",
+            "full_height": false
+          }
+        },
+        {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Community",
+            "hover_title": "Social",
+            "hover_link_label": "Instagram",
+            "link_url": "https://www.instagram.com/oddritual.gc/",
+            "new_tab": true,
+            "width": "3",
+            "full_height": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,98 @@
+{% render 'section-class', classes: 'about-hero', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+<div class="about-hero_contain u-container">
+  <div class="split-grid u-grid-desktop">
+    <div class="split-col u-column-3">
+      <div h-fadeout="" class="about-hero-logo_wrap">
+        {%- if section.settings.logo != blank -%}
+          <img src="{{ section.settings.logo | image_url: width: 1200 }}" alt="{{ shop.name | escape }}" class="brand-mark">
+        {%- else -%}
+          {% render 'icon-about-logo' %}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="split-col u-column-3 is-hidden"></div>
+    <div class="split-col u-column-6">
+      <div class="about-head_wrap">
+        <div class="about-body">
+          <div class="about-intro_copy u-text-style-small">
+            <div class="about-name u-text-style-alt">
+              <div>{{ section.settings.label }}</div>
+            </div>
+            <div class="about-inline">
+              <div class="p-contents">{{ section.settings.intro }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-head">
+          <h3 class="u-text-style-h2 p-contents">{{ section.settings.heading }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About hero",
+  "tag": "div",
+  "class": "about-hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo (falls back to the built-in mark)"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Eyebrow",
+      "default": "[ our name ]"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro copy",
+      "default": "<p>We named the brand after something everyone is familiar with, golfer or not: the small, personal habits we fall into when focus matters.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>A modern expression of heritage</p>"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About hero",
+      "category": "About"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,126 @@
+{% render 'section-class', classes: 'hero-slider is-large', attrs: 'full-slider,nav-light', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+{%- assign gallery_fallbacks = 'or-gallery-1.jpg,or-gallery-2.jpg,or-gallery-3.jpg,or-gallery-4.jpg,or-gallery-5.jpg,or-gallery-6.jpg,or-gallery-7.jpg' | split: ',' -%}
+
+<div class="slides-info is-large">
+  <div class="slide-left">
+    <p class="text-style_alt-med">{{ section.settings.label }}</p>
+  </div>
+  <div class="slide-indicator is-desktop">
+    <p class="text-style_alt-med">0<span class="slide-current">1</span></p>
+  </div>
+  <div class="swipe-eyebrow is-mobile">
+    <div class="orgc-detail body-upper">
+      {% render 'icon-bracket-left', white: true %}
+      <div class="detail-text">{{ section.settings.swipe_label }}</div>
+      {% render 'icon-bracket-right', white: true %}
+    </div>
+  </div>
+</div>
+
+<div class="hero-slider_wrap" nav-light="">
+  <div class="hero-slider_list">
+    {%- for block in section.blocks -%}
+      {%- assign i = forloop.index0 | modulo: 7 -%}
+      <div class="hero-slider_item" style="display: {% if forloop.first %}flex{% else %}none{% endif %};" {{ block.shopify_attributes }}>
+        <div class="hero-slide_visual u-cover-absolute is-large">
+          {% render 'img', image: block.settings.image, fallback: gallery_fallbacks[i], class: 'hero-visual_el u-cover-absolute' %}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+<div data-cursor="Prev" class="slider_btn is-prev"></div>
+<div data-cursor="Next" class="slider_btn is-next"></div>
+
+{% schema %}
+{
+  "name": "Gallery slider",
+  "tag": "section",
+  "class": "hero-slider is-large",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "ORGC_26"
+    },
+    {
+      "type": "text",
+      "id": "swipe_label",
+      "label": "Mobile hint",
+      "default": "Swipe"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gallery slider",
+      "category": "Home",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

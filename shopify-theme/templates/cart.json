@@ -1,0 +1,132 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart"
+    },
+    "intro": {
+      "type": "intro-section",
+      "settings": {
+        "padding_top": 40
+      }
+    },
+    "image-ctas": {
+      "type": "home-image-section",
+      "settings": {
+        "padding_top": 160
+      },
+      "blocks": {
+        "cta-1": {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Products",
+            "hover_title": "COLLECTION 01 & 02",
+            "hover_link_label": "Shop now",
+            "link_url": "/collections/all",
+            "width": "6",
+            "full_height": true
+          }
+        },
+        "cta-2": {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Story",
+            "hover_title": "About us",
+            "hover_link_label": "Read more",
+            "link_url": "/pages/about",
+            "width": "3",
+            "full_height": false
+          }
+        },
+        "cta-3": {
+          "type": "cta",
+          "settings": {
+            "eyebrow": "Our Community",
+            "hover_title": "Social",
+            "hover_link_label": "Instagram",
+            "link_url": "https://www.instagram.com/oddritual.gc/",
+            "new_tab": true,
+            "width": "3",
+            "full_height": true
+          }
+        }
+      },
+      "block_order": [
+        "cta-1",
+        "cta-2",
+        "cta-3"
+      ]
+    },
+    "made-locally": {
+      "type": "or-text-section",
+      "settings": {
+        "padding_top": 160,
+        "padding_bottom": 240
+      }
+    },
+    "footer": {
+      "type": "footer-light",
+      "blocks": {
+        "column-1": {
+          "type": "column",
+          "settings": {
+            "heading": "Site Index",
+            "hover_images": true,
+            "link_1_label": "Shop now",
+            "link_1_url": "/collections/all",
+            "link_2_label": "Home",
+            "link_2_url": "/",
+            "link_3_label": "About us",
+            "link_3_url": "/pages/about",
+            "link_4_label": "Contact Us",
+            "link_4_url": "/pages/contact-us"
+          }
+        },
+        "column-2": {
+          "type": "column",
+          "settings": {
+            "heading": "Social",
+            "link_1_label": "Instagram",
+            "link_1_url": "https://www.instagram.com/oddritual.gc/"
+          }
+        },
+        "column-3": {
+          "type": "column",
+          "settings": {
+            "heading": "Get in touch",
+            "link_1_label": "hello@oddritualgolf.com",
+            "link_1_url": "mailto:hello@oddritualgolf.com?subject=ORGC%20-%20Customer%20Support",
+            "link_2_label": "+27 76 207 33 87",
+            "link_2_url": "tel:+27763091991"
+          }
+        },
+        "column-4": {
+          "type": "column",
+          "settings": {
+            "heading": "legal",
+            "link_1_label": "Privacy Policy",
+            "link_1_url": "/pages/privacy-policy",
+            "link_2_label": "Refunds",
+            "link_2_url": "/pages/refund-policy",
+            "link_3_label": "Shipping",
+            "link_3_url": "/pages/shipping-policy",
+            "link_4_label": "Terms of service",
+            "link_4_url": "/pages/terms-of-service"
+          }
+        }
+      },
+      "block_order": [
+        "column-1",
+        "column-2",
+        "column-3",
+        "column-4"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "intro",
+    "image-ctas",
+    "made-locally",
+    "footer"
+  ]
+}

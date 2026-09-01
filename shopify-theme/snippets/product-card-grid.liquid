@@ -1,0 +1,42 @@
+{%- comment -%}
+  The grid product card used on the collection page and under a product ("more from").
+  Markup taken from the reference collection page.
+
+  Params: product, item_class (wrapper column classes)
+{%- endcomment -%}
+{%- assign item_class = item_class | default: 'product-col_item u-column-4' -%}
+<div role="listitem" class="{{ item_class }} w-dyn-item">
+  <a count-items="item" overlay="trigger" href="{{ product.url }}" class="cta-block w-inline-block">
+    <div cta-cursor_wrap="" class="product-img_wrap">
+      {%- if product.featured_media -%}
+        <img src="{{ product.featured_media | image_url: width: 1200 }}"
+             alt="{{ product.featured_media.alt | default: product.title | escape }}"
+             class="product-img"
+             data-commerce-type="variation-image"
+             srcset="{{ product.featured_media | image_url: width: 500 }} 500w, {{ product.featured_media | image_url: width: 800 }} 800w, {{ product.featured_media | image_url: width: 1200 }} 1200w"
+             sizes="(max-width: 767px) 50vw, 32vw">
+      {%- else -%}
+        <img src="{{ 'or-product-the-caddie-jacket-navy.jpg' | asset_url }}" alt="{{ product.title | escape }}" class="product-img" data-commerce-type="variation-image">
+      {%- endif -%}
+      {%- assign hover_media = product.media[1] -%}
+      {%- if hover_media -%}
+        <img src="{{ hover_media | image_url: width: 1200 }}" alt="" class="product-hover_img">
+      {%- endif -%}
+      <div overlay="el" class="product-overlay"></div>
+      <div cta-cursor_el="" class="cta-hover_el is-desktop">
+        <div class="body-upper">({{ product.selected_or_first_available_variant.sku }})</div>
+        <div class="orgc-detail body-upper">
+          {% render 'icon-bracket-left' %}
+          <div class="detail-text">{{ view_label | default: 'View Product' }}</div>
+          {% render 'icon-bracket-right' %}
+        </div>
+      </div>
+    </div>
+    <div class="product-block_info is-alt">
+      <div class="product-info">
+        <div class="body-upper">{{ product.title }}</div>
+      </div>
+      <p class="body-upper">{{ product.price | money }}</p>
+    </div>
+  </a>
+</div>

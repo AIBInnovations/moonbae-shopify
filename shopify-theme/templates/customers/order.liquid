@@ -1,0 +1,22 @@
+<div nav-light="" class="page-default">
+  <div class="page-inner">
+  <div class="page-intro">
+  <div class="shop-contain u-container customer-page">
+    <h1 class="u-text-style-h3">{{ 'customer.order.title' | t: name: order.name }}</h1>
+    <p class="body-upper">{{ order.created_at | date: format: 'date' }}</p>
+    {% for line_item in order.line_items %}
+      <div class="cart-line_item">
+        <div class="field_copy">{{ line_item.title }} × {{ line_item.quantity }}</div>
+        <div class="body-upper">{{ line_item.final_line_price | money_with_currency }}</div>
+      </div>
+    {% endfor %}
+    <div class="cart-line_item">
+      <div class="field_copy">{{ 'customer.order.total' | t }}</div>
+      <div class="body-upper">{{ order.total_price | money_with_currency }}</div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+
+{% section 'footer-dark' %}

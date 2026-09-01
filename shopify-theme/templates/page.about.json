@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "about-hero"
+    },
+    "image": {
+      "type": "image-section"
+    },
+    "story": {
+      "type": "about-main-section",
+      "settings": {
+        "outro_url": "https://www.instagram.com/oddritual.gc/"
+      }
+    },
+    "about-footer": {
+      "type": "about-footer",
+      "settings": {
+        "cta_url": "/collections/all"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "image",
+    "story",
+    "about-footer"
+  ]
+}
