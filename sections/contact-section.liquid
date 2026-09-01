@@ -1,0 +1,160 @@
+{% render 'section-class', classes: 'contact-section', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+<div class="contact_layout u-grid-desktop">
+  <div class="contact-imgs_scroll u-column-6">
+    {%- assign contact_fallbacks = 'or-contact-01.jpg,or-contact-02.jpg,or-contact-03.jpg,or-contact-04.jpg' | split: ',' -%}
+    {%- for block in section.blocks -%}
+      {%- assign i = forloop.index0 | modulo: 4 -%}
+      <div class="contact-image_wrap" {{ block.shopify_attributes }}>
+        {% render 'img', image: block.settings.image, fallback: contact_fallbacks[i], class: 'img-fill' %}
+      </div>
+    {%- endfor -%}
+  </div>
+  <div class="contact-info_layout u-column-6">
+    <div class="u-container">
+      <div class="contact-info">
+        <div class="logo-icon_wrap is-contact">{% render 'icon-contact-mark' %}</div>
+        <div class="text-style_alt-xlarge">{{ section.settings.heading }}</div>
+        <div class="u-vflex-center-top u-gap-1">
+          {%- if section.settings.email != blank -%}
+            <a h-flip="" href="mailto:{{ section.settings.email }}" class="text-link w-inline-block">
+              <div class="body-upper f-5">{{ section.settings.email }}</div>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.phone != blank -%}
+            <a h-flip="" href="tel:{{ section.settings.phone | remove: ' ' }}" class="text-link w-inline-block">
+              <div class="body-upper f-5">{{ section.settings.phone }}</div>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.signup_label != blank -%}
+            <div h-flip="" sub-trigger="" class="text-link">
+              <div class="body-upper f-5">{{ section.settings.signup_label }}</div>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.social_url != blank -%}
+            <a h-flip="" href="{{ section.settings.social_url }}" target="_blank" class="text-link w-inline-block">
+              <div class="body-upper f-5">{{ section.settings.social_label }}</div>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="contact-footer_el">
+      <div class="body-upper f-5">{{ section.settings.footnote }}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact",
+  "tag": "div",
+  "class": "contact-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Contact Us</p>"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "hello@oddritualgolf.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "076 207 3387"
+    },
+    {
+      "type": "text",
+      "id": "signup_label",
+      "label": "Newsletter trigger label",
+      "default": "Join our community"
+    },
+    {
+      "type": "text",
+      "id": "social_label",
+      "label": "Social label",
+      "default": "Instagram"
+    },
+    {
+      "type": "url",
+      "id": "social_url",
+      "label": "Social URL"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "ORGC©2025"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ],
+      "settings": {
+        "social_url": "https://www.instagram.com/oddritual.gc/"
+      }
+    }
+  ]
+}
+{% endschema %}

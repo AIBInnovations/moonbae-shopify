@@ -1,0 +1,60 @@
+{% render 'section-class', classes: 'page-contain u-container is-section', attrs: 'nav-dark', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+<div class="split-grid u-grid-desktop m-vflex">
+
+<div class="split-col u-column-6">
+  <div class="full-logo_wrap">{%- if settings.logo_intro_crest != blank -%}<img src="{{ settings.logo_intro_crest | image_url: width: 1200 }}" alt="{{ shop.name | escape }}" class="brand-mark">{%- else -%}{% render 'icon-logo-crest-lg' %}{%- endif -%}</div>
+</div>
+<div class="split-col u-column-6 m-top_10">
+  <div class="u-text-style-h3">
+    <h3 class="p-contents">{{ section.settings.text }}</h3>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Intro",
+  "tag": "div",
+  "class": "page-contain u-container is-section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Intro copy",
+      "default": "<p>Born from a shared love of the game, rooted in a vision of authenticity and creativity expressed through what we wear. For us, it's about the good times, on and off the course, self-expression, and an appreciation for the cultural overlaps we get to experience along the way.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Intro",
+      "category": "Home"
+    }
+  ]
+}
+{% endschema %}

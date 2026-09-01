@@ -1,0 +1,50 @@
+{% render 'section-class', classes: 'page-default', attrs: 'nav-light,count-items', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+<div class="page-inner">
+  <div class="shop-contain u-container">
+    <div class="split-grid u-grid-desktop is-default">
+      <div class="default-sticky u-column-6">
+        <p class="utility-title" data-page-item="title">{{ page.title }}</p>
+      </div>
+      <div class="default-relative u-column-6">
+        <div class="utility-rich w-richtext" data-page-item="content">{{ page.content }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page",
+  "tag": "div",
+  "class": "page-default",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ]
+}
+{% endschema %}

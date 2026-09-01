@@ -1,0 +1,22 @@
+{%- comment -%}
+  Renders an <img> from a section/block image setting, falling back to a bundled
+  placeholder asset so the theme looks complete on a brand-new store.
+
+  Params: image, fallback (asset filename), alt, class, sizes, loading
+{%- endcomment -%}
+{%- assign img_alt = alt | default: '' -%}
+{%- assign img_class = class | default: '' -%}
+{%- assign img_loading = loading | default: 'auto' -%}
+{%- if image != blank -%}
+  <img
+    src="{{ image | image_url: width: 1920 }}"
+    srcset="{{ image | image_url: width: 500 }} 500w, {{ image | image_url: width: 800 }} 800w, {{ image | image_url: width: 1080 }} 1080w, {{ image | image_url: width: 1600 }} 1600w, {{ image | image_url: width: 1920 }} 1920w"
+    sizes="{{ sizes | default: '100vw' }}"
+    alt="{{ img_alt | escape }}"
+    class="{{ img_class }}"
+    loading="{{ img_loading }}"
+    width="{{ image.width }}"
+    height="{{ image.height }}">
+{%- else -%}
+  <img src="{{ fallback | asset_url }}" alt="{{ img_alt | escape }}" class="{{ img_class }}" loading="{{ img_loading }}">
+{%- endif -%}

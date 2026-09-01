@@ -1,0 +1,25 @@
+{
+  "current": {
+    "newsletter_label": "Email",
+    "newsletter_placeholder": "your@email.com",
+    "newsletter_button": "Sign up",
+    "smooth_scroll": true,
+    "custom_cursor": true,
+    "show_preloader": true,
+    "cart_open_on_add": true,
+    "color_dark": "#000000",
+    "color_light": "#ffffff",
+    "color_brand": "#050fff",
+    "color_light_grey": "#f4f4f4",
+    "color_light_faded": "#818181",
+    "color_faded_text": "#cccccc",
+    "size_body": 16,
+    "size_h1": 42,
+    "size_h3": 42,
+    "size_h4": 22,
+    "site_width": 1920,
+    "site_margin": 20,
+    "site_gutter": 10,
+    "site_columns": 12
+  }
+}

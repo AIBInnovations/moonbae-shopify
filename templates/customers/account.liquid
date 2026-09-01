@@ -1,0 +1,24 @@
+<div nav-light="" class="page-default">
+  <div class="page-inner">
+  <div class="page-intro">
+  <div class="shop-contain u-container customer-page">
+    <h1 class="u-text-style-h3">{{ 'customer.account.title' | t }}</h1>
+    <a href="{{ routes.account_logout_url }}" class="body-upper">{{ 'customer.log_out' | t }}</a>
+    <a href="{{ routes.account_addresses_url }}" class="body-upper">{{ 'customer.account.view_addresses' | t }}</a>
+    {% paginate customer.orders by 20 %}
+      {% for order in customer.orders %}
+        <div class="cart-line_item">
+          <a href="{{ order.customer_url }}" class="body-upper">{{ order.name }}</a>
+          <div class="field_copy">{{ order.created_at | date: format: 'date' }}</div>
+          <div class="field_copy">{{ order.total_price | money_with_currency }}</div>
+        </div>
+      {% else %}
+        <p class="body-upper">{{ 'customer.orders.none' | t }}</p>
+      {% endfor %}
+    {% endpaginate %}
+  </div>
+  </div>
+  </div>
+</div>
+
+{% section 'footer-dark' %}

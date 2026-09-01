@@ -1,0 +1,85 @@
+{% render 'section-class', classes: 'page-collection u-container', attrs: 'count-items', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+{%- paginate search.results by 48 -%}
+<div class="page-inner">
+  <div nav-dark="" class="dark-section_wrap">
+    <div class="page-intro">
+      <div class="shop-contain u-container">
+        <div class="shop-intro_wrap">
+          <div class="split-grid u-grid-desktop m-flex m-gap_0">
+            <div class="split-col u-column-6 m-width_6">
+              <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+                <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="body-upper">
+                <button type="submit" class="body-upper">{{ 'general.search.submit' | t }}</button>
+              </form>
+            </div>
+            <div class="split-col u-column-6 u-text-align-right m-push_right m-col_6">
+              <p class="body-upper">(&nbsp;<span count-items="total">{{ search.results_count }}</span>&nbsp;)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-col_wrap w-dyn-list">
+      <div role="list" class="product-col_list u-grid-desktop w-dyn-items">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {% render 'product-card-grid', product: item %}
+          {%- else -%}
+            <div role="listitem" class="product-col_item u-column-4 w-dyn-item">
+              <a href="{{ item.url }}" class="cta-block w-inline-block">
+                <div class="product-block_info is-alt">
+                  <div class="product-info"><div class="body-upper">{{ item.title }}</div></div>
+                </div>
+              </a>
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <div class="product-col_item u-column-4">
+            <p class="body-upper">
+              {%- if search.performed -%}{{ 'general.search.no_results' | t: terms: search.terms }}{%- endif -%}
+            </p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Search",
+  "tag": "div",
+  "class": "page-collection u-container",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,13 @@
+{%- comment -%}
+  Bracketed "[ label ]" detail element.
+  Params: url, label, target, class (extra classes on the anchor/div), text_class, white
+{%- endcomment -%}
+{%- assign tag = 'div' -%}
+{%- if url != blank -%}{%- assign tag = 'a' -%}{%- endif -%}
+<{{ tag }}{% if url != blank %} href="{{ url }}"{% if target %} target="_blank"{% endif %}{% endif %} class="orgc-detail{% if class %} {{ class }}{% endif %}{% if url != blank %} w-inline-block{% endif %}">
+  {% render 'icon-bracket-left', white: white %}
+  <div data-text="{{ label }}" class="detail-wrap{% if text_class %} {{ text_class }}{% endif %}">
+    <div class="detail-text">{{ label }}</div>
+  </div>
+  {% render 'icon-bracket-right', white: white %}
+</{{ tag }}>

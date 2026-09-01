@@ -1,0 +1,83 @@
+{% render 'section-class', classes: 'img-section', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+{%- if section.settings.image != blank -%}
+  <img src="{{ section.settings.image | image_url: width: 2400 }}" alt="" h-fadeout="" class="img-fill">
+{%- else -%}
+  <img src="{{ 'or-about-hero.jpg' | asset_url }}" alt="" h-fadeout="" class="img-fill">
+{%- endif -%}
+<div h-fadeout="" class="img-section_eyebrow">
+  <div class="eyebrow-side">
+    <p class="text-style_alt-med">{{ section.settings.left }}</p>
+  </div>
+  <div class="eyebrow-center">
+    <p class="text-style_alt-med is-centered">{{ section.settings.center }}</p>
+  </div>
+  <div class="eyebrow-side u-text-align-right">
+    <p class="text-style_alt-med">{{ section.settings.right }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Full-width image",
+  "tag": "div",
+  "class": "img-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "left",
+      "label": "Left caption",
+      "default": "Cape Town"
+    },
+    {
+      "type": "text",
+      "id": "center",
+      "label": "Centre caption",
+      "default": "A modern expression of heritage"
+    },
+    {
+      "type": "text",
+      "id": "right",
+      "label": "Right caption",
+      "default": "South Africa"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full-width image",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

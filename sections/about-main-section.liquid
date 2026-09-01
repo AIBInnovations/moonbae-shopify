@@ -1,0 +1,271 @@
+{% render 'section-class', classes: 'page-contain u-container-full page-about_contain', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+<div class="split-grid u-grid-desktop">
+  <div class="split-col u-column-6">
+    <div img-scroll="" class="about-img_right">
+      {% render 'img', image: section.settings.portrait, fallback: 'or-about-portrait.jpg', class: 'img-fill' %}
+    </div>
+  </div>
+  <div nav-light="" class="split-col u-column-6">
+    <div flickthrough-wrap="" img-scroll="" class="about-img_left">
+      {%- assign flick_fallbacks = 'or-about-flick-1.jpg,or-about-flick-2.jpg,or-about-flick-3.jpg,or-about-flick-4.jpg,or-about-flick-5.jpg,or-about-flick-6.jpg,or-about-flick-7.jpg,or-about-flick-8.jpg' | split: ',' -%}
+      {%- for file in flick_fallbacks -%}
+        {%- assign key = 'flick_' | append: forloop.index -%}
+        {%- assign cls = 'flickthrough-img' -%}
+        {%- if forloop.first -%}{%- assign cls = 'flickthrough-img show' -%}{%- endif -%}
+        {% render 'img', image: section.settings[key], fallback: file, class: cls %}
+      {%- endfor -%}
+    </div>
+  </div>
+  <div nav-dark="" class="floating-icon">
+    <div class="floating-icon_svg-wrap">{% render 'icon-floating' %}</div>
+  </div>
+</div>
+
+<div class="vision-section">
+  <div class="split-grid u-grid-desktop">
+    <div class="split-col u-column-7"></div>
+  </div>
+  <div class="split-grid u-grid-desktop">
+    <div class="split-col u-column-6">
+      <div class="body-upper">
+        <p>{{ section.settings.story_label }}</p>
+      </div>
+    </div>
+    <div class="split-col u-column-6">
+      <div class="u-text-style-h2">
+        <h3 class="p-contents">{{ section.settings.story_heading }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="split-grid u-grid-desktop">
+    <div class="split-col u-column-6"></div>
+    <div class="split-col u-column-3">
+      <div class="u-text-style-small f-5">{{ section.settings.story_left }}</div>
+    </div>
+    <div class="split-col u-column-3">
+      <div class="u-text-style-small f-5">{{ section.settings.story_right }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="sticky-component">
+  <div class="sticky-wrap">
+    {%- assign sticky_fallbacks = 'or-about-sticky-1.jpg,or-about-sticky-2.jpg,or-about-sticky-3.jpg,or-about-sticky-4.jpg' | split: ',' -%}
+    {%- for file in sticky_fallbacks -%}
+      <div class="sticky-item is-{{ forloop.index }}">
+        <div class="sticky-item_img">
+          {%- assign key = 'sticky_' | append: forloop.index -%}
+          {% render 'img', image: section.settings[key], fallback: file, class: 'img-fill' %}
+        </div>
+      </div>
+    {%- endfor -%}
+
+    <div class="sticky-item is-5 last-sticky_item">
+      <div class="sticky-item_img">
+        <div class="sticky-svg">{% render 'icon-sticky' %}</div>
+      </div>
+      <div class="u-container">
+        <div class="or-info m-top-none">
+          <div class="u-text-align-center"></div>
+          <div class="split-grid u-grid-desktop">
+            <div class="u-column-3 is-hidden"></div>
+            <div class="u-column-6 text-width">
+              <div class="u-vflex-center-top u-text-align-center">
+                <div class="body-upper f-5">{{ section.settings.outro }}</div>
+              </div>
+            </div>
+            <div class="u-column-3 u-text-align-right is-hidden"></div>
+          </div>
+          <div class="text-btn_wrap m-push_2">
+            <a href="{{ section.settings.outro_url }}" target="_blank" class="orgc-detail w-inline-block">
+              <div data-text="{{ section.settings.outro_label | escape }}" class="detail-wrap body-upper">
+                <div class="detail-text">{{ section.settings.outro_label }}</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-footer_contain u-container">
+    {%- if section.settings.pillars != blank -%}
+      <img src="{{ section.settings.pillars | image_url: width: 1400 }}" alt="" sizes="(max-width: 1400px) 100vw, 1400px" class="orgc-logo">
+    {%- else -%}
+      <img src="{{ 'or-about-pillars.png' | asset_url }}" alt="" class="orgc-logo">
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About story",
+  "tag": "div",
+  "class": "page-contain u-container-full page-about_contain",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "portrait",
+      "label": "Portrait image"
+    },
+    {
+      "type": "header",
+      "content": "Flick-through images"
+    },
+    {
+      "type": "image_picker",
+      "id": "flick_1",
+      "label": "Flick 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "flick_2",
+      "label": "Flick 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "flick_3",
+      "label": "Flick 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "flick_4",
+      "label": "Flick 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "flick_5",
+      "label": "Flick 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "flick_6",
+      "label": "Flick 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "flick_7",
+      "label": "Flick 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "flick_8",
+      "label": "Flick 8"
+    },
+    {
+      "type": "header",
+      "content": "Story"
+    },
+    {
+      "type": "text",
+      "id": "story_label",
+      "label": "Eyebrow",
+      "default": "(     our story     )"
+    },
+    {
+      "type": "richtext",
+      "id": "story_heading",
+      "label": "Heading",
+      "default": "<p>Informed by tradition, within the context of today's culture, we want to help push the game of golf into new era of creativity.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "story_left",
+      "label": "Left column",
+      "default": "<p>We started Odd Ritual because we couldn't find a golf brand locally that spoke to us.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "story_right",
+      "label": "Right column",
+      "default": "<p>Odd Ritual is our way of building something new on the back of tradition.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Sticky images"
+    },
+    {
+      "type": "image_picker",
+      "id": "sticky_1",
+      "label": "Sticky 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "sticky_2",
+      "label": "Sticky 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "sticky_3",
+      "label": "Sticky 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "sticky_4",
+      "label": "Sticky 4"
+    },
+    {
+      "type": "header",
+      "content": "Outro"
+    },
+    {
+      "type": "richtext",
+      "id": "outro",
+      "label": "Copy",
+      "default": "<p>Join our community - New drops, old swings, behind-the-scenes stuff—we're building something different. Come walk the fairway with us on Instagram.</p>"
+    },
+    {
+      "type": "text",
+      "id": "outro_label",
+      "label": "Link label",
+      "default": "Instagram"
+    },
+    {
+      "type": "url",
+      "id": "outro_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "pillars",
+      "label": "Closing artwork"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About story",
+      "category": "About",
+      "settings": {
+        "outro_url": "https://www.instagram.com/oddritual.gc/"
+      }
+    }
+  ]
+}
+{% endschema %}

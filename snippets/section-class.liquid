@@ -1,0 +1,26 @@
+{%- comment -%}
+  Rewrites the wrapper <div class="shopify-section"> that Shopify emits around a
+  section so the published markup matches the design exactly, and applies the
+  section's own spacing settings to that wrapper.
+
+  Params: classes, attrs (comma separated bare attribute names), id, pt, pb
+{%- endcomment -%}
+<script>
+  (function () {
+    var s = document.currentScript.closest('.shopify-section');
+    if (!s) return;
+    {%- if id %}s.id = {{ id | json }};{% endif %}
+    s.setAttribute('class', {{ classes | json }});
+    {%- if attrs != blank -%}
+      {%- assign attr_list = attrs | split: ',' -%}
+      {%- for a in attr_list -%}s.setAttribute({{ a | strip | json }}, '');{%- endfor -%}
+    {%- endif -%}
+    {%- comment -%}
+      0 means "use the design's own spacing" — only override when the merchant has
+      actually dialled a value in, otherwise an inline 0 would wipe rules like the
+      about hero's padding-top: 50svh.
+    {%- endcomment -%}
+    {%- if pt != blank and pt > 0 %}s.style.paddingTop = {{ pt | append: 'px' | json }};{% endif %}
+    {%- if pb != blank and pb > 0 %}s.style.paddingBottom = {{ pb | append: 'px' | json }};{% endif %}
+  })();
+</script>

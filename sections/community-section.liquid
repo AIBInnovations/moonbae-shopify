@@ -1,0 +1,203 @@
+{% render 'section-class', classes: 'community-section', attrs: 'nav-dark', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+{%- assign community_fallbacks = 'or-community-1.jpg,or-community-2.jpg,or-community-3.jpg,or-community-4.jpg' | split: ',' -%}
+
+<div class="community-contain u-container" nav-dark="">
+  <div class="section-intro_wrap">
+    <div class="split-grid u-grid-desktop">
+      <div class="split-col u-column-6">{%- if settings.logo_community != blank -%}<img src="{{ settings.logo_community | image_url: width: 1200 }}" alt="{{ shop.name | escape }}" class="brand-mark">{%- else -%}{% render 'icon-community-heading' %}{%- endif -%}</div>
+    </div>
+  </div>
+
+  <div class="split-grid u-grid-desktop"></div>
+
+  <div class="split-grid u-grid-desktop is-giving">
+    <div class="split-col u-column-6">
+      <div solo-img="" class="small-img_wrap">
+        {% render 'img', image: section.settings.giving_image, fallback: 'or-giving.jpg', class: 'img-fill' %}
+      </div>
+    </div>
+    <div class="split-col u-column-5">
+      <div solo-trig="" class="community-col">
+        <h4 class="body-upper p-contents">{{ section.settings.giving_title }}</h4>
+        <div class="u-text-style-small f-4">{{ section.settings.giving_text }}</div>
+      </div>
+      <div class="community-head">
+        <p class="u-text-style-h4">{{ section.settings.list_heading }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="community-items_section">
+    {%- for block in section.blocks -%}
+      {%- assign i = forloop.index0 | modulo: 4 -%}
+      <div data-scroll-overlap="" class="community-item" {{ block.shopify_attributes }}>
+        <div class="community-h_line{% unless forloop.first %} is-hidden{% endunless %}"></div>
+        <div class="split-grid u-grid-desktop">
+          <div class="split-col u-column-6">
+            <div class="community-layout u-grid-column-2">
+              <div class="community-col is-hidden">
+                {% render 'orgc-detail', url: block.settings.url, label: block.settings.link_label, target: true, text_class: 'body-upper' %}
+              </div>
+              <div class="community-col">
+                <div class="body-upper"><h4>{{ block.settings.title }}</h4></div>
+                <div class="u-text-style-small f-4">{{ block.settings.text }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="split-col u-column-6">
+            <a href="{{ block.settings.url }}" target="_blank" class="community-img-wrap w-inline-block">
+              {% render 'img', image: block.settings.image, fallback: community_fallbacks[i], sizes: '(max-width: 695px) 100vw, 695px' %}
+              <div class="is-mobile">
+                <div class="orgc-detail body-upper">
+                  <div class="detail-text">{{ block.settings.link_label }}</div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+    <div class="community-item">
+      <div class="community-h_line is-hidden"></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Community",
+  "tag": "section",
+  "class": "community-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "giving_image",
+      "label": "Giving back image"
+    },
+    {
+      "type": "richtext",
+      "id": "giving_title",
+      "label": "Giving back title",
+      "default": "<p>Giving back</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "giving_text",
+      "label": "Giving back copy",
+      "default": "<p>We never set out to be just a golf brand. Odd Ritual is as much about culture as it is about the game — and part of that is showing up for the communities we belong to. From day one, we've believed in using the platform we're building to give back.</p>"
+    },
+    {
+      "type": "text",
+      "id": "list_heading",
+      "label": "List heading",
+      "default": "Our greater community"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "partner",
+      "name": "Partner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name",
+          "default": "Fairways to africa"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Website"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Visit Website"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "partner",
+          "settings": {
+            "title": "Fairways to africa",
+            "url": "https://fairwaystoafrica.com/",
+            "link_label": "Visit Website",
+            "text": "<p>Bespoke golf travel. Like our clients, we are golfers. We are young-at-heart and seek unique experiences whilst playing the sport we love around the world. We believe in quality above all else, and that is what we aim to deliver.</p>"
+          }
+        },
+        {
+          "type": "partner",
+          "settings": {
+            "title": "StartWell Foundation",
+            "url": "https://startwellfoundation.org/",
+            "link_label": "Visit Website",
+            "text": "<p>At StartWell, we're a passionate team making a measurable difference in the fight against a specific kind of malnutrition which is the leading cause of child stunting. We don't just talk about the problem – we take action.</p>"
+          }
+        },
+        {
+          "type": "partner",
+          "settings": {
+            "title": "242",
+            "url": "https://www.instagram.com/twofortytwo.co/",
+            "link_label": "Visit Website",
+            "text": "<p>The world moves fast, but we believe there's something powerful about slowing down. A moment to take in. To connect. To be present. It's a reminder of what happens when people gather around something simple, yet made with care: coffee &amp; connections.</p>"
+          }
+        },
+        {
+          "type": "partner",
+          "settings": {
+            "title": "running late club",
+            "url": "https://www.runninglateclub.com/",
+            "link_label": "Visit Website",
+            "text": "<p>The Running Late Club is a community where Everyday Athletes can find a place to belong. We cater to all paces and levels of fitness, and strive to provide the accountability and inspiration needed to reach your goals.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

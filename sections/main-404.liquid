@@ -1,0 +1,81 @@
+{% render 'section-class', classes: 'page-default', attrs: 'nav-light', pt: section.settings.padding_top, pb: section.settings.padding_bottom %}
+
+<div class="page-inner">
+  <div class="page-intro">
+    <div class="shop-contain u-container">
+    <div class="or-info">
+      <div class="u-text-align-center">
+        <div class="text-style_alt-xlarge"><p>{{ section.settings.code }}</p></div>
+        <h1 class="u-text-style-h2 p-contents">{{ section.settings.heading }}</h1>
+      </div>
+      <div class="text-btn_wrap">
+        {% render 'orgc-detail', url: section.settings.link_url, label: section.settings.link_label, text_class: 'body-upper' %}
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "404",
+  "tag": "div",
+  "class": "page-default",
+  "settings": [
+    {
+      "type": "text",
+      "id": "code",
+      "label": "Code",
+      "default": "404"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>This page has wandered off the fairway.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "info": "0 keeps the design default."
+    }
+  ],
+  "default": {
+    "settings": {
+      "link_url": "/collections/all"
+    }
+  }
+}
+{% endschema %}
