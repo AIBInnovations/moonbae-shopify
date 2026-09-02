@@ -52,7 +52,7 @@ connect in Shopify admin → Online Store → Themes → Add theme → Connect f
 `.github/workflows/sync-shopify-branch.yml` pushes the mirror on every change to
 `shopify-theme/` on main, so there is nothing to run by hand.
 
-The store is connected to `AIBInnovations/moonbae`, not to this repo: Shopify's
+The store is connected to `AIBInnovations/moonbae-shopify`, not to this repo: Shopify's
 GitHub App only lists repos *owned* by the account it is installed on, and the
 store's GitHub connection is bound to the AIBInnovations account. Both repos hold
 the same branches and the same sync workflow, so push main to both:
