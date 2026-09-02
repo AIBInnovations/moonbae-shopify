@@ -1,0 +1,51 @@
+name: Sync theme to shopify branch
+
+# Shopify's GitHub integration requires the theme at the root of a branch.
+# The theme lives in shopify-theme/ on main, so this mirrors it to `shopify`,
+# which is the branch connected to the store.
+on:
+  push:
+    branches: [main]
+    paths: ['shopify-theme/**']
+  workflow_dispatch:
+
+concurrency:
+  group: sync-shopify-branch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror shopify-theme/ onto the shopify branch
+        run: |
+          set -euo pipefail
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Build on top of the existing shopify branch so commits Shopify
+          # writes back (theme editor settings) stay in history and the push
+          # is always a fast-forward — never a force.
+          git checkout -B sync-work origin/shopify
+
+          # Clear the tracked tree, then lay down the current theme.
+          git rm -rq --ignore-unmatch .
+          cp -R shopify-theme/. .
+          rm -rf shopify-theme
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "Theme unchanged; nothing to sync."
+            exit 0
+          fi
+
+          git commit -m "Sync theme from main@${GITHUB_SHA:0:7}"
+          git push origin sync-work:shopify
