@@ -31,15 +31,19 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Stash the theme outside the repo: switching branches replaces the
+          # working tree, and the shopify branch has no shopify-theme/ in it.
+          THEME="$(mktemp -d)"
+          cp -R shopify-theme/. "$THEME"/
+
           # Build on top of the existing shopify branch so commits Shopify
           # writes back (theme editor settings) stay in history and the push
           # is always a fast-forward — never a force.
           git checkout -B sync-work origin/shopify
 
-          # Clear the tracked tree, then lay down the current theme.
+          # Replace the tracked tree wholesale so deletions propagate too.
           git rm -rq --ignore-unmatch .
-          cp -R shopify-theme/. .
-          rm -rf shopify-theme
+          cp -R "$THEME"/. .
           git add -A
 
           if git diff --cached --quiet; then
