@@ -58,7 +58,14 @@ the next sync overwrites them:
 
 ```sh
 git fetch origin shopify
-git checkout origin/shopify -- .
+git show origin/shopify:config/settings_data.json > shopify-theme/config/settings_data.json
+```
+
+To pull the whole branch back instead of just the settings:
+
+```sh
+git fetch origin shopify && rm -rf shopify-theme && mkdir shopify-theme
+git archive origin/shopify | tar -x -C shopify-theme
 ```
 
 ## Preview
