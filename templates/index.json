@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "home-hero": {
@@ -8,7 +17,8 @@
           "settings": {
             "title": "<p>Explore our First Collection</p>",
             "link_label": "Shop Now",
-            "link_url": "/collections"
+            "link_url": "/collections/all",
+            "new_tab": false
           }
         },
         "slide-2": {
@@ -16,7 +26,8 @@
           "settings": {
             "title": "<p>A modern expression of heritage</p>",
             "link_label": "About us",
-            "link_url": "/pages/about"
+            "link_url": "/pages/about",
+            "new_tab": false
           }
         },
         "slide-3": {
@@ -33,26 +44,55 @@
         "slide-1",
         "slide-2",
         "slide-3"
-      ]
+      ],
+      "settings": {
+        "scroll_label": "Scroll",
+        "next_label": "Next",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     },
     "intro": {
       "type": "intro-section",
       "settings": {
-        "padding_top": 20
+        "mark_size": 0,
+        "text": "<p>Born from a shared love of the game, rooted in a vision of authenticity and creativity expressed through what we wear. For us, it's about the good times, on and off the course, self-expression, and an appreciation for the cultural overlaps we get to experience along the way.</p>",
+        "padding_top": 20,
+        "padding_bottom": 0
       }
     },
     "featured-products": {
       "type": "featured-products",
+      "blocks": {
+        "product_XJdkkn": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_RKjJCP": {
+          "type": "product",
+          "settings": {
+            "product": "baby-tee"
+          }
+        }
+      },
+      "block_order": [
+        "product_XJdkkn",
+        "product_RKjJCP"
+      ],
       "settings": {
-        "link_url": "/collections",
-        "padding_top": 160
+        "collection": "",
+        "products_limit": 38,
+        "eyebrow": "<p>( Featured Products )</p>",
+        "link_label": "View all products",
+        "link_url": "/collections/all",
+        "padding_top": 160,
+        "padding_bottom": 0
       }
     },
     "image-ctas": {
       "type": "home-image-section",
-      "settings": {
-        "padding_top": 160
-      },
       "blocks": {
         "cta-1": {
           "type": "cta",
@@ -60,7 +100,8 @@
             "eyebrow": "Our Products",
             "hover_title": "COLLECTION 01 & 02",
             "hover_link_label": "Shop now",
-            "link_url": "/collections",
+            "link_url": "/collections/all",
+            "new_tab": false,
             "width": "6",
             "full_height": true
           }
@@ -72,6 +113,7 @@
             "hover_title": "About us",
             "hover_link_label": "Read more",
             "link_url": "/pages/about",
+            "new_tab": false,
             "width": "3",
             "full_height": false
           }
@@ -93,11 +135,20 @@
         "cta-1",
         "cta-2",
         "cta-3"
-      ]
+      ],
+      "settings": {
+        "padding_top": 160,
+        "padding_bottom": 0
+      }
     },
     "made-locally": {
       "type": "or-text-section",
       "settings": {
+        "mark_size": 0,
+        "eyebrow": "<p>moonbae ©2025<br/>Designed and made locally</p>",
+        "left_label": "Cape Town",
+        "right_label": "South Africa",
+        "text": "<p>Our country is rich in culture, diversity, and heritage — producing locally is how we carry home with us, wherever we go. Made for us. By us.</p>",
         "padding_top": 160,
         "padding_bottom": 240
       }
@@ -142,7 +193,13 @@
         "slide-5",
         "slide-6",
         "slide-7"
-      ]
+      ],
+      "settings": {
+        "label": "ORGC_26",
+        "swipe_label": "Swipe",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     },
     "community": {
       "type": "community-section",
@@ -151,36 +208,36 @@
           "type": "partner",
           "settings": {
             "title": "Fairways to africa",
+            "text": "<p>Bespoke golf travel. Like our clients, we are golfers. We are young-at-heart and seek unique experiences whilst playing the sport we love around the world. We believe in quality above all else, and that is what we aim to deliver.</p>",
             "url": "https://fairwaystoafrica.com/",
-            "link_label": "Visit Website",
-            "text": "<p>Bespoke golf travel. Like our clients, we are golfers. We are young-at-heart and seek unique experiences whilst playing the sport we love around the world. We believe in quality above all else, and that is what we aim to deliver.</p>"
+            "link_label": "Visit Website"
           }
         },
         "partner-2": {
           "type": "partner",
           "settings": {
             "title": "StartWell Foundation",
+            "text": "<p>At StartWell, we're a passionate team making a measurable difference in the fight against a specific kind of malnutrition which is the leading cause of child stunting. We don't just talk about the problem – we take action.</p>",
             "url": "https://startwellfoundation.org/",
-            "link_label": "Visit Website",
-            "text": "<p>At StartWell, we're a passionate team making a measurable difference in the fight against a specific kind of malnutrition which is the leading cause of child stunting. We don't just talk about the problem – we take action.</p>"
+            "link_label": "Visit Website"
           }
         },
         "partner-3": {
           "type": "partner",
           "settings": {
             "title": "242",
+            "text": "<p>The world moves fast, but we believe there's something powerful about slowing down. A moment to take in. To connect. To be present. It's a reminder of what happens when people gather around something simple, yet made with care: coffee &amp; connections.</p>",
             "url": "https://www.instagram.com/twofortytwo.co/",
-            "link_label": "Visit Website",
-            "text": "<p>The world moves fast, but we believe there's something powerful about slowing down. A moment to take in. To connect. To be present. It's a reminder of what happens when people gather around something simple, yet made with care: coffee &amp; connections.</p>"
+            "link_label": "Visit Website"
           }
         },
         "partner-4": {
           "type": "partner",
           "settings": {
             "title": "running late club",
+            "text": "<p>The Running Late Club is a community where Everyday Athletes can find a place to belong. We cater to all paces and levels of fitness, and strive to provide the accountability and inspiration needed to reach your goals.</p>",
             "url": "https://www.runninglateclub.com/",
-            "link_label": "Visit Website",
-            "text": "<p>The Running Late Club is a community where Everyday Athletes can find a place to belong. We cater to all paces and levels of fitness, and strive to provide the accountability and inspiration needed to reach your goals.</p>"
+            "link_label": "Visit Website"
           }
         }
       },
@@ -189,7 +246,14 @@
         "partner-2",
         "partner-3",
         "partner-4"
-      ]
+      ],
+      "settings": {
+        "giving_title": "<p>Giving back</p>",
+        "giving_text": "<p>We never set out to be just a golf brand. moonbae is as much about culture as it is about the game — and part of that is showing up for the communities we belong to. From day one, we've believed in using the platform we're building to give back.</p>",
+        "list_heading": "Our greater community",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     },
     "footer": {
       "type": "footer-light",
@@ -198,9 +262,10 @@
           "type": "column",
           "settings": {
             "heading": "Site Index",
+            "menu": "",
             "hover_images": true,
             "link_1_label": "Shop now",
-            "link_1_url": "/collections",
+            "link_1_url": "/collections/all",
             "link_2_label": "Home",
             "link_2_url": "/",
             "link_3_label": "About us",
@@ -213,24 +278,40 @@
           "type": "column",
           "settings": {
             "heading": "Social",
+            "menu": "",
+            "hover_images": false,
             "link_1_label": "Instagram",
-            "link_1_url": "https://www.instagram.com/oddritual.gc/"
+            "link_1_url": "https://www.instagram.com/oddritual.gc/",
+            "link_2_label": "",
+            "link_2_url": "",
+            "link_3_label": "",
+            "link_3_url": "",
+            "link_4_label": "",
+            "link_4_url": ""
           }
         },
         "column-3": {
           "type": "column",
           "settings": {
             "heading": "Get in touch",
+            "menu": "",
+            "hover_images": false,
             "link_1_label": "hello@oddritualgolf.com",
-            "link_1_url": "mailto:hello@oddritualgolf.com?subject=moonbae%20-%20Customer%20Support",
+            "link_1_url": "mailto:hello@oddritualgolf.com?subject=ORGC%20-%20Customer%20Support",
             "link_2_label": "+27 76 207 33 87",
-            "link_2_url": "tel:+27763091991"
+            "link_2_url": "tel:+27763091991",
+            "link_3_label": "",
+            "link_3_url": "",
+            "link_4_label": "",
+            "link_4_url": ""
           }
         },
         "column-4": {
           "type": "column",
           "settings": {
             "heading": "legal",
+            "menu": "",
+            "hover_images": false,
             "link_1_label": "Privacy Policy",
             "link_1_url": "/pages/privacy-policy",
             "link_2_label": "Refunds",
@@ -240,34 +321,22 @@
             "link_4_label": "Terms of service",
             "link_4_url": "/pages/terms-of-service"
           }
-        },
-        "hover_image-1": {
-          "type": "hover_image",
-          "settings": {}
-        },
-        "hover_image-2": {
-          "type": "hover_image",
-          "settings": {}
-        },
-        "hover_image-3": {
-          "type": "hover_image",
-          "settings": {}
-        },
-        "hover_image-4": {
-          "type": "hover_image",
-          "settings": {}
         }
       },
       "block_order": [
         "column-1",
         "column-2",
         "column-3",
-        "column-4",
-        "hover_image-1",
-        "hover_image-2",
-        "hover_image-3",
-        "hover_image-4"
-      ]
+        "column-4"
+      ],
+      "settings": {
+        "logo_size": 0,
+        "tagline": "<p>moonbae<br/>a modern expression of heritage</p>",
+        "signup_heading": "",
+        "copyright": "All rights reserved _ moonbae ©2025",
+        "credit_label": "Website by malvah",
+        "credit_url": ""
+      }
     }
   },
   "order": [
