@@ -1,7 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
-      "type": "main-list-collections"
+      "type": "main-list-collections",
+      "settings": {}
     },
     "footer": {
       "type": "footer-dark",
@@ -12,7 +22,7 @@
             "heading": "Site Index",
             "hover_images": true,
             "link_1_label": "Shop now",
-            "link_1_url": "/collections",
+            "link_1_url": "/collections/all",
             "link_2_label": "Home",
             "link_2_url": "/",
             "link_3_label": "About us",
@@ -34,7 +44,7 @@
           "settings": {
             "heading": "Get in touch",
             "link_1_label": "hello@oddritualgolf.com",
-            "link_1_url": "mailto:hello@oddritualgolf.com?subject=moonbae%20-%20Customer%20Support",
+            "link_1_url": "mailto:hello@oddritualgolf.com?subject=ORGC%20-%20Customer%20Support",
             "link_2_label": "+27 76 207 33 87",
             "link_2_url": "tel:+27763091991"
           }
@@ -44,42 +54,23 @@
           "settings": {
             "heading": "legal",
             "link_1_label": "Privacy Policy",
-            "link_1_url": "/pages/privacy-policy",
+            "link_1_url": "/policies/privacy-policy",
             "link_2_label": "Refunds",
-            "link_2_url": "/pages/refund-policy",
+            "link_2_url": "/policies/refund-policy",
             "link_3_label": "Shipping",
-            "link_3_url": "/pages/shipping-policy",
+            "link_3_url": "/policies/shipping-policy",
             "link_4_label": "Terms of service",
-            "link_4_url": "/pages/terms-of-service"
+            "link_4_url": "/policies/terms-of-service"
           }
-        },
-        "hover_image-1": {
-          "type": "hover_image",
-          "settings": {}
-        },
-        "hover_image-2": {
-          "type": "hover_image",
-          "settings": {}
-        },
-        "hover_image-3": {
-          "type": "hover_image",
-          "settings": {}
-        },
-        "hover_image-4": {
-          "type": "hover_image",
-          "settings": {}
         }
       },
       "block_order": [
         "column-1",
         "column-2",
         "column-3",
-        "column-4",
-        "hover_image-1",
-        "hover_image-2",
-        "hover_image-3",
-        "hover_image-4"
-      ]
+        "column-4"
+      ],
+      "settings": {}
     }
   },
   "order": [
