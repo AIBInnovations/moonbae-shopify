@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -7,27 +16,27 @@
           "type": "accordion",
           "settings": {
             "title": "Garment Details",
+            "text": "<p>• Outer: 100% cotton twill (230gsm)<br/>• Relaxed fit<br/>• Embroidered chest branding<br/>• Designed to age beautifully</p>",
             "metafield_namespace": "custom",
-            "metafield_key": "garment_details",
-            "text": "<p>• Outer: 100% cotton twill (230gsm)<br/>• Relaxed fit<br/>• Embroidered chest branding<br/>• Designed to age beautifully</p>"
+            "metafield_key": "garment_details"
           }
         },
         "accordion-2": {
           "type": "accordion",
           "settings": {
             "title": "Wash Care",
+            "text": "<p>Washing:<br/>• Machine wash cold with like colors<br/>• Gentle cycle<br/>• Do not bleach<br/><br/>Drying:<br/>• Tumble dry low / hang to dry<br/>• Do not dry clean</p>",
             "metafield_namespace": "custom",
-            "metafield_key": "wash_care",
-            "text": "<p>Washing:<br/>• Machine wash cold with like colors<br/>• Gentle cycle<br/>• Do not bleach<br/><br/>Drying:<br/>• Tumble dry low / hang to dry<br/>• Do not dry clean</p>"
+            "metafield_key": "wash_care"
           }
         },
         "accordion-3": {
           "type": "accordion",
           "settings": {
             "title": "Shipping & Returns",
+            "text": "<p>Made in India<br/>Shipping calculated at checkout.</p>",
             "metafield_namespace": "custom",
-            "metafield_key": "shipping_returns",
-            "text": "<p>Locally made | CT • RSA<br/>Shipping calculated at checkout.</p>"
+            "metafield_key": "shipping_returns"
           }
         }
       },
@@ -35,7 +44,8 @@
         "accordion-1",
         "accordion-2",
         "accordion-3"
-      ]
+      ],
+      "settings": {}
     },
     "footer": {
       "type": "footer-dark",
@@ -46,7 +56,7 @@
             "heading": "Site Index",
             "hover_images": true,
             "link_1_label": "Shop now",
-            "link_1_url": "/collections",
+            "link_1_url": "/collections/all",
             "link_2_label": "Home",
             "link_2_url": "/",
             "link_3_label": "About us",
@@ -60,17 +70,17 @@
           "settings": {
             "heading": "Social",
             "link_1_label": "Instagram",
-            "link_1_url": "https://www.instagram.com/oddritual.gc/"
+            "link_1_url": "https://www.instagram.com/moonbae.stores"
           }
         },
         "column-3": {
           "type": "column",
           "settings": {
             "heading": "Get in touch",
-            "link_1_label": "hello@oddritualgolf.com",
-            "link_1_url": "mailto:hello@oddritualgolf.com?subject=moonbae%20-%20Customer%20Support",
-            "link_2_label": "+27 76 207 33 87",
-            "link_2_url": "tel:+27763091991"
+            "link_1_label": "moonstorepod@gmail.com",
+            "link_1_url": "mailto:moonstorepod@gmail.com?subject=moonbae%20-%20Customer%20Support",
+            "link_2_label": "",
+            "link_2_url": ""
           }
         },
         "column-4": {
@@ -78,13 +88,13 @@
           "settings": {
             "heading": "legal",
             "link_1_label": "Privacy Policy",
-            "link_1_url": "/pages/privacy-policy",
+            "link_1_url": "/policies/privacy-policy",
             "link_2_label": "Refunds",
-            "link_2_url": "/pages/refund-policy",
+            "link_2_url": "/policies/refund-policy",
             "link_3_label": "Shipping",
-            "link_3_url": "/pages/shipping-policy",
+            "link_3_url": "/policies/shipping-policy",
             "link_4_label": "Terms of service",
-            "link_4_url": "/pages/terms-of-service"
+            "link_4_url": "/policies/terms-of-service"
           }
         },
         "hover_image-1": {
@@ -113,7 +123,8 @@
         "hover_image-2",
         "hover_image-3",
         "hover_image-4"
-      ]
+      ],
+      "settings": {}
     }
   },
   "order": [
