@@ -15,7 +15,7 @@
         "slide-1": {
           "type": "slide",
           "settings": {
-            "title": "<p>Explore our First Collection</p>",
+            "title": "<p>Our first collection has landed</p>",
             "link_label": "Shop Now",
             "link_url": "/collections/all",
             "new_tab": false
@@ -24,7 +24,7 @@
         "slide-2": {
           "type": "slide",
           "settings": {
-            "title": "<p>A modern expression of heritage</p>",
+            "title": "<p>Made slowly, in India</p>",
             "link_label": "About us",
             "link_url": "/pages/about",
             "new_tab": false
@@ -33,14 +33,18 @@
         "slide-3": {
           "type": "slide",
           "settings": {
-            "title": "<p>Follow us on Instagram<br/>To join the journey</p>",
+            "title": "<p>Follow along on Instagram<br/>for what comes next</p>",
             "link_label": "Community",
             "link_url": "https://www.instagram.com/moonbae.stores",
             "new_tab": true
           }
         }
       },
-      "block_order": ["slide-1", "slide-2", "slide-3"],
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3"
+      ],
       "settings": {
         "scroll_label": "Scroll",
         "next_label": "Next",
@@ -52,7 +56,7 @@
       "type": "intro-section",
       "settings": {
         "mark_size": 0,
-        "text": "<p>Born from a shared love of the game, rooted in a vision of authenticity and creativity expressed through what we wear. For us, it's about the good times, on and off the course, self-expression, and an appreciation for the cultural overlaps we get to experience along the way.</p>",
+        "text": "<p>moonbae began with a simple want: clothes that feel like evening. Considered cuts, honest cloth, colour that settles rather than shouts. Made in small runs in India, and made to be worn often — pieces that soften with you instead of wearing out.</p>",
         "padding_top": 20,
         "padding_bottom": 0
       }
@@ -109,8 +113,15 @@
           }
         }
       },
-      "block_order": ["cta-1", "cta-2", "cta-3"],
-      "settings": { "padding_top": 160, "padding_bottom": 0 }
+      "block_order": [
+        "cta-1",
+        "cta-2",
+        "cta-3"
+      ],
+      "settings": {
+        "padding_top": 160,
+        "padding_bottom": 0
+      }
     },
     "made-locally": {
       "type": "or-text-section",
@@ -119,7 +130,7 @@
         "eyebrow": "<p>moonbae ©2026<br/>Designed and made in India</p>",
         "left_label": "Moonbae",
         "right_label": "India",
-        "text": "<p>Our country is rich in culture, diversity, and heritage — producing locally is how we carry home with us, wherever we go. Made for us. By us.</p>",
+        "text": "<p>Everything is cut and sewn in India, close to the people who make it. Small runs, honest hours, cloth chosen by hand. Making it here is how we keep the work truthful — and how we keep home in everything we send out.</p>",
         "padding_top": 160,
         "padding_bottom": 240
       }
@@ -127,15 +138,44 @@
     "gallery": {
       "type": "home-slider",
       "blocks": {
-        "slide-1": { "type": "slide", "settings": {} },
-        "slide-2": { "type": "slide", "settings": {} },
-        "slide-3": { "type": "slide", "settings": {} },
-        "slide-4": { "type": "slide", "settings": {} },
-        "slide-5": { "type": "slide", "settings": {} },
-        "slide-6": { "type": "slide", "settings": {} },
-        "slide-7": { "type": "slide", "settings": {} }
+        "slide-1": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-4": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-5": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-6": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide-7": {
+          "type": "slide",
+          "settings": {}
+        }
       },
-      "block_order": ["slide-1", "slide-2", "slide-3", "slide-4", "slide-5", "slide-6", "slide-7"],
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3",
+        "slide-4",
+        "slide-5",
+        "slide-6",
+        "slide-7"
+      ],
       "settings": {
         "label": "MOONBAE_26",
         "swipe_label": "Swipe",
@@ -149,45 +189,50 @@
         "partner-1": {
           "type": "partner",
           "settings": {
-            "title": "Fairways to africa",
-            "text": "<p>Bespoke golf travel. Like our clients, we are golfers. We are young-at-heart and seek unique experiences whilst playing the sport we love around the world. We believe in quality above all else, and that is what we aim to deliver.</p>",
-            "url": "https://fairwaystoafrica.com/",
-            "link_label": "Visit Website"
+            "title": "Made slowly",
+            "text": "<p>Small runs, cut and sewn in India. We would rather make fewer pieces properly than many of them in a hurry.</p>",
+            "url": "",
+            "link_label": ""
           }
         },
         "partner-2": {
           "type": "partner",
           "settings": {
-            "title": "StartWell Foundation",
-            "text": "<p>At StartWell, we're a passionate team making a measurable difference in the fight against a specific kind of malnutrition which is the leading cause of child stunting. We don't just talk about the problem – we take action.</p>",
-            "url": "https://startwellfoundation.org/",
-            "link_label": "Visit Website"
+            "title": "Chosen by hand",
+            "text": "<p>Cloth picked in person, for how it falls and how it ages. Natural fibres wherever the piece allows it.</p>",
+            "url": "",
+            "link_label": ""
           }
         },
         "partner-3": {
           "type": "partner",
           "settings": {
-            "title": "242",
-            "text": "<p>The world moves fast, but we believe there's something powerful about slowing down. A moment to take in. To connect. To be present. It's a reminder of what happens when people gather around something simple, yet made with care: coffee &amp; connections.</p>",
-            "url": "https://www.instagram.com/twofortytwo.co/",
-            "link_label": "Visit Website"
+            "title": "Worn often",
+            "text": "<p>Cuts that sit easy and repeat well — made for the wardrobe you reach for, not the one you photograph.</p>",
+            "url": "",
+            "link_label": ""
           }
         },
         "partner-4": {
           "type": "partner",
           "settings": {
-            "title": "running late club",
-            "text": "<p>The Running Late Club is a community where Everyday Athletes can find a place to belong. We cater to all paces and levels of fitness, and strive to provide the accountability and inspiration needed to reach your goals.</p>",
-            "url": "https://www.runninglateclub.com/",
-            "link_label": "Visit Website"
+            "title": "Kept long",
+            "text": "<p>Finished to last and easy to mend. The best thing a piece of ours can do is soften, and stay.</p>",
+            "url": "",
+            "link_label": ""
           }
         }
       },
-      "block_order": ["partner-1", "partner-2", "partner-3", "partner-4"],
+      "block_order": [
+        "partner-1",
+        "partner-2",
+        "partner-3",
+        "partner-4"
+      ],
       "settings": {
         "giving_title": "<p>Giving back</p>",
-        "giving_text": "<p>We never set out to be just a golf brand. moonbae is as much about culture as it is about the game — and part of that is showing up for the communities we belong to. From day one, we've believed in using the platform we're building to give back.</p>",
-        "list_heading": "Our greater community",
+        "giving_text": "<p>moonbae was never only about clothes. It is the hands that cut and sew, the people who wear it, and the place it is made. We are building the giving side of this deliberately — small, local, and in the open.</p>",
+        "list_heading": "What we stand for",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -260,10 +305,15 @@
           }
         }
       },
-      "block_order": ["column-1", "column-2", "column-3", "column-4"],
+      "block_order": [
+        "column-1",
+        "column-2",
+        "column-3",
+        "column-4"
+      ],
       "settings": {
         "logo_size": 0,
-        "tagline": "<p>moonbae<br/>a modern expression of heritage</p>",
+        "tagline": "<p>moonbae<br/>dressed for the quiet hours</p>",
         "signup_heading": "",
         "copyright": "All rights reserved _ moonbae ©2026",
         "credit_label": "Website by malvah",
