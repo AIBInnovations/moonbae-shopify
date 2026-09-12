@@ -63,24 +63,6 @@
     },
     "featured-products": {
       "type": "featured-products",
-      "blocks": {
-        "product_XJdkkn": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_RKjJCP": {
-          "type": "product",
-          "settings": {
-            "product": "baby-tee"
-          }
-        }
-      },
-      "block_order": [
-        "product_XJdkkn",
-        "product_RKjJCP"
-      ],
       "settings": {
         "collection": "",
         "products_limit": 38,
