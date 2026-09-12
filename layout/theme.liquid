@@ -96,6 +96,9 @@ families: ["Instrument Serif:regular,italic"]
     </style>
 
     {{ content_for_header }}
+
+    {%- comment -%} Social link previews and structured data, after content_for_header so they win. {%- endcomment -%}
+    {% render 'meta-tags' %}
   </head>
 
   {%- comment -%}
