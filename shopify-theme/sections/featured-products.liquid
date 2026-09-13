@@ -7,19 +7,38 @@
     picked, otherwise everything the store sells. Nothing is hand-picked, so a
     product added in Shopify (or pushed in by an app such as Qikink) shows up
     here on its own, as soon as it is published to the Online Store channel.
+
+    The vendor setting narrows that further. Print-on-demand apps stamp every
+    product they create with the same vendor, so typing it here shows only
+    those and leaves the rest of the catalogue out.
   endcomment
   assign limit = section.settings.products_limit
+  assign vendor_filter = section.settings.vendor | strip | downcase
 
   if section.settings.collection != blank
     assign products_list = section.settings.collection.products
-    assign render_count = section.settings.collection.products_count
   else
     assign products_list = collections.all.products
-    assign render_count = collections.all.all_products_count
   endif
-  if render_count > limit
-    assign render_count = limit
-  endif
+-%}
+
+{%- comment -%}
+  Built before the marquee maths: the vendor filter means the number of cards
+  that actually render is not known from any count Shopify hands us.
+{%- endcomment -%}
+{%- capture cards_html -%}
+  {%- assign shown = 0 -%}
+  {%- for product in products_list -%}
+    {%- if shown >= limit -%}{%- break -%}{%- endif -%}
+    {%- assign this_vendor = product.vendor | strip | downcase -%}
+    {%- if vendor_filter != blank and this_vendor != vendor_filter -%}{%- continue -%}{%- endif -%}
+    {% render 'product-card', product: product %}
+    {%- assign shown = shown | plus: 1 -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign render_count = shown
 
   comment
     The marquee is two identical tracks and scrolls forever, so a track narrower
@@ -36,12 +55,6 @@
   endif
 -%}
 
-{%- capture cards_html -%}
-  {%- for product in products_list limit: limit -%}
-    {% render 'product-card', product: product %}
-  {%- endfor -%}
-{%- endcapture -%}
-
 <div class="or-info">
   <div class="u-text-align-center">
     <div class="text-style_alt-large">{{ section.settings.eyebrow }}</div>
@@ -52,7 +65,9 @@
   <div class="u-text-align-center" style="padding: 1rem; margin: 0 auto; max-width: 44rem; border: 1px solid currentColor;">
     <p class="body-upper">
       No products to show here yet.
-      {%- if section.settings.collection != blank %}
+      {%- if section.settings.vendor != blank %}
+        Nothing matches the vendor “{{ section.settings.vendor }}”. Check the spelling against the product's Vendor field in Shopify admin, or clear the box to show every product.
+      {%- elsif section.settings.collection != blank %}
         The “{{ section.settings.collection.title }}” collection is empty — pick another one, or clear it to show every product.
       {%- else %}
         Add a product in Shopify and publish it to the Online Store sales channel. Products created by apps such as Qikink are not published there by default.
@@ -89,6 +104,12 @@
       "id": "collection",
       "label": "Collection",
       "info": "Leave empty to show every product in the store. Products must be published to the Online Store sales channel to appear."
+    },
+    {
+      "type": "text",
+      "id": "vendor",
+      "label": "Only this vendor",
+      "info": "Optional. Shows only products whose Vendor matches, so a print-on-demand app's products can be shown on their own. Leave empty for every product."
     },
     {
       "type": "range",
