@@ -8,6 +8,15 @@
 {%- if light_ground_templates contains template.name -%}
   {%- assign nav_classes = 'nav-component dark' -%}
 {%- endif -%}
+{%- comment -%}
+  Except a collection, which always opens on a photograph now: that first screen
+  is not a light ground at all, and the dark nav painted black on black until
+  the first scroll told it otherwise. Every collection page renders a hero — see
+  main-collection.liquid for the three places it looks for the picture.
+{%- endcomment -%}
+{%- if template.name == 'collection' -%}
+  {%- assign nav_classes = 'nav-component' -%}
+{%- endif -%}
 {% render 'section-class', classes: nav_classes %}
 
 <div img-hover_wrap="" data-nav="closed" class="nav">

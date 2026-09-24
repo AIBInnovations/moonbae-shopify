@@ -66,9 +66,13 @@ $(".date").text(new Date().getFullYear());
   let queued = false;
   function apply() {
     queued = false;
+    if (!nav()) return;
+    // No banner is a real answer, not a reason to give up: the bar can be set
+    // to the home page only, and bailing out here left the last page's offset
+    // in place, so the header on every other page hung a banner's height below
+    // the top of the screen with nothing above it.
     const bar = document.querySelector(".announcement-bar");
-    if (!bar || !nav()) return;
-    const offset = Math.max(0, bar.getBoundingClientRect().bottom);
+    const offset = bar ? Math.max(0, bar.getBoundingClientRect().bottom) : 0;
     document.documentElement.style.setProperty("--announcement-offset", offset + "px");
   }
   function onScroll() {
@@ -277,7 +281,23 @@ function footerImgFollow() {
 }
 
 //Home Slider
+
+// globalScripts() runs on load and again after every Barba transition, and
+// until now it only ever built things. ScrollTriggers were killed between runs;
+// GSAP Observers, Hammer instances, ticker callbacks and document listeners
+// were not, so every page you visited left another live copy of itself behind.
+// Anything that wants undoing registers it here and the next run does it first.
+const teardowns = [];
+function onTeardown(fn) { teardowns.push(fn); }
+function runTeardowns() {
+  while (teardowns.length) {
+    const fn = teardowns.pop();
+    try { fn(); } catch (e) {}
+  }
+}
+
 function globalScripts() {
+  runTeardowns();
   lenis.resize();
   lenis.start();
   addLenisPreventAttribute();
@@ -639,6 +659,7 @@ function globalScripts() {
     });
 
     let hammer = new Hammer(this);
+    onTeardown(() => hammer.destroy());
     hammer.on("swipeleft", function () {
       let nextIndex = activeIndex + 1;
       if (nextIndex >= totalSlides) {
@@ -744,15 +765,20 @@ function globalScripts() {
     set(false);
     btn.addEventListener("click", () => set(wrap.getAttribute("data-open") !== "true"));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") set(false); });
-    document.addEventListener("click", (e) => { if (!wrap.contains(e.target)) set(false); });
+    const closeOnOutside = (e) => { if (!wrap.contains(e.target)) set(false); };
+    document.addEventListener("click", closeOnOutside);
+    onTeardown(() => document.removeEventListener("click", closeOnOutside));
   });
 
   // Free shipping progress. Rendered server-side for the first paint, then kept
   // in step with the cart as items are added without a page load.
   // Format paise the way the shop does, so the amount in the sentence matches
   // every other price on the page.
-  function formatMoney(cents) {
-    const fmt = document.documentElement.getAttribute("data-money-format") || "Rs. {{amount}}";
+  function formatMoney(cents, withCurrency) {
+    const attr = withCurrency ? "data-money-currency-format" : "data-money-format";
+    const fmt = document.documentElement.getAttribute(attr)
+      || document.documentElement.getAttribute("data-money-format")
+      || "Rs. {{amount}}";
     const n = (cents / 100).toFixed(2);
     const [whole, dec] = n.split(".");
     // Indian grouping: last three digits, then pairs.
@@ -769,23 +795,43 @@ function globalScripts() {
   // A short confetti burst, drawn as plain divs rather than pulling in a
   // library for one moment. Skipped entirely for anyone who asked for reduced
   // motion, and it removes itself so nothing accumulates in the DOM.
+  //
+  // The host is fixed to the viewport rather than parented to the progress
+  // block. Inside it the bits were clipped to a box a couple of centimetres
+  // tall, so the burst was over before it had cleared the bar — and the drawer
+  // is rendered twice (nav and menu), so whichever copy happened to be hidden
+  // could swallow the whole thing.
   window.celebrate = function (anchor) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const host = document.createElement("div");
     host.className = "confetti";
-    (anchor || document.body).appendChild(host);
+    // Burst from the bar that was just filled, when we can find it on screen;
+    // otherwise from the top of the viewport.
+    const box = anchor && anchor.getBoundingClientRect && anchor.getBoundingClientRect();
+    if (box && box.width > 0) {
+      host.style.left = box.left + "px";
+      host.style.top = box.top + "px";
+      host.style.width = box.width + "px";
+    }
+    document.body.appendChild(host);
     const colors = ["#050fff", "#ffffff", "#000000", "#9aa0ff"];
-    for (let i = 0; i < 28; i++) {
+    for (let i = 0; i < 46; i++) {
       const bit = document.createElement("i");
       bit.className = "confetti_bit";
       bit.style.left = Math.random() * 100 + "%";
       bit.style.background = colors[i % colors.length];
-      bit.style.animationDelay = Math.random() * 0.18 + "s";
+      bit.style.animationDelay = (Math.random() * 0.22).toFixed(2) + "s";
+      // A little variation in size and travel, so 46 identical rectangles do
+      // not fall as one block.
+      const scale = 0.7 + Math.random() * 0.8;
+      bit.style.width = (5 * scale).toFixed(1) + "px";
+      bit.style.height = (9 * scale).toFixed(1) + "px";
       bit.style.setProperty("--drift", (Math.random() * 2 - 1).toFixed(2));
-      bit.style.setProperty("--spin", Math.round(Math.random() * 720 - 360) + "deg");
+      bit.style.setProperty("--fall", Math.round(180 + Math.random() * 220) + "px");
+      bit.style.setProperty("--spin", Math.round(Math.random() * 900 - 450) + "deg");
       host.appendChild(bit);
     }
-    setTimeout(() => host.remove(), 2200);
+    setTimeout(() => host.remove(), 2400);
   };
 
   // The drawer is rendered twice — once for the nav, once for the menu — and
@@ -794,40 +840,86 @@ function globalScripts() {
   window.updateCartProgress = function (cart) {
     const total = cart && typeof cart.total_price === "number" ? cart.total_price : null;
     if (total === null) return;
-    document.querySelectorAll("[data-cart-progress]").forEach((el) => updateOneProgress(el, total));
+    const bars = [...document.querySelectorAll("[data-cart-progress]")];
+    bars.forEach((el) => updateOneProgress(el, total));
+    // Celebrating inside updateOneProgress fired once per copy of the drawer,
+    // and the first copy to run is not necessarily the one on screen. Collect
+    // the milestones crossed by this update instead, then fire once, at the bar
+    // the visitor can actually see.
+    const crossed = bars.reduce((acc, el) => acc.concat(el.__crossed || []), []);
+    if (!crossed.length) return;
+    const visible = bars.find((el) => el.getBoundingClientRect().width > 0) || bars[0];
+    window.celebrate(visible && visible.querySelector(".cart-progress_track"));
   };
 
-  function updateOneProgress(el, total) {
+  // Where a milestone sits on the track, and how full the bar is for a given
+  // total. Both are read off the legend the Liquid rendered, so the script and
+  // the server cannot drift apart on the geometry — see cart-progress.liquid
+  // for why the milestones are evenly spaced rather than scaled to the money.
+  function stopsOf(el) {
+    return [...el.querySelectorAll(".cart-milestone")]
+      .map((m) => ({
+        el: m,
+        at: parseInt(m.getAttribute("data-tier"), 10) || 0,
+        pos: parseFloat(m.getAttribute("data-pos")) || 0,
+        kind: m.getAttribute("data-kind") || "tier",
+        label: (m.getAttribute("data-label") || "").trim(),
+        code: (m.getAttribute("data-code") || "").trim(),
+      }))
+      .sort((a, b) => a.at - b.at);
+  }
 
-    const ship = parseInt(el.getAttribute("data-threshold"), 10) || 0;
-    const topGoal = parseInt(el.getAttribute("data-top-goal"), 10) || ship;
-    const tiers = (el.getAttribute("data-tiers") || "")
-      .split(",").filter(Boolean).map((n) => parseInt(n, 10) * 100);
-    const labels = (el.getAttribute("data-tier-labels") || "").split("|");
-    const codes = (el.getAttribute("data-tier-codes") || "").split("|");
-
-    if (topGoal > 0) {
-      const pct = Math.min(100, Math.round((total / topGoal) * 100));
-      const fill = el.querySelector("[data-cart-progress-fill]");
-      if (fill) fill.style.width = pct + "%";
-      const track = el.querySelector(".cart-progress_track");
-      if (track) track.setAttribute("aria-valuenow", pct);
+  function fillFor(total, stops) {
+    if (!stops.length) return 0;
+    if (total >= stops[stops.length - 1].at) return 100;
+    let prevAt = 0;
+    let prevPos = 0;
+    for (const s of stops) {
+      if (total < s.at) {
+        const span = s.at - prevAt;
+        return span > 0 ? prevPos + ((s.pos - prevPos) * (total - prevAt)) / span : prevPos;
+      }
+      prevAt = s.at;
+      prevPos = s.pos;
     }
+    return 100;
+  }
 
-    // Mark whichever milestones the cart has passed, and celebrate only the
-    // ones crossed just now — re-opening the drawer should not re-fire it.
-    el.querySelectorAll("[data-pip]").forEach((p) =>
-      p.classList.toggle("is-reached", total >= parseInt(p.getAttribute("data-pip"), 10))
-    );
-    el.querySelectorAll("[data-tier]").forEach((t) => {
-      // covers both the pips on the track and the legend entries below it
-      const at = parseInt(t.getAttribute("data-tier"), 10);
-      const reached = total >= at;
-      const was = t.classList.contains("is-reached");
-      t.classList.toggle("is-reached", reached);
-      if (reached && !was && !window.__celebrated?.has(at)) {
-        (window.__celebrated = window.__celebrated || new Set()).add(at);
-        window.celebrate(el);
+  function updateOneProgress(el, total) {
+    const stops = stopsOf(el);
+    el.__crossed = [];
+    if (!stops.length) return;
+
+    const pct = fillFor(total, stops);
+    const fill = el.querySelector("[data-cart-progress-fill]");
+    if (fill) fill.style.width = pct + "%";
+    const track = el.querySelector(".cart-progress_track");
+    if (track) track.setAttribute("aria-valuenow", Math.round(pct));
+    el.classList.toggle("is-complete", total >= stops[stops.length - 1].at);
+
+    // Mark whichever milestones the cart has passed, and note the ones crossed
+    // just now — re-opening the drawer should not re-fire the celebration, and
+    // neither should the second copy of the same drawer.
+    //
+    // A milestone is forgotten again the moment the cart drops back below it,
+    // so stepping the quantity down past a reward and back up celebrates the
+    // second unlock as well as the first. Remembering it forever meant the one
+    // person most likely to look — someone trying the steppers to see what the
+    // bar does — saw the confetti once and never again.
+    const seen = (window.__celebrated = window.__celebrated || new Set());
+    stops.forEach((s) => {
+      const reached = total >= s.at;
+      const was = s.el.classList.contains("is-reached");
+      s.el.classList.toggle("is-reached", reached);
+      const node = el.querySelector('[data-node="' + s.at + '"]');
+      if (node) node.classList.toggle("is-reached", reached);
+      if (!reached) {
+        seen.delete(s.at);
+        return;
+      }
+      if (!was && !seen.has(s.at)) {
+        seen.add(s.at);
+        el.__crossed.push(s.at);
       }
     });
 
@@ -835,41 +927,41 @@ function globalScripts() {
     // whichever comes first. Naming every unreached tier at once reads as noise.
     const text = el.querySelector("[data-cart-progress-text]");
     if (!text) return;
-    let nextAt = null, nextMsg = null;
-    if (ship > 0 && total < ship) {
-      nextAt = ship;
-      nextMsg = el.getAttribute("data-prefix") + " " + formatMoney(ship - total) + " " + el.getAttribute("data-suffix");
+    const next = stops.find((s) => total < s.at);
+    if (next) {
+      const away = formatMoney(next.at - total);
+      text.textContent =
+        next.kind === "ship"
+          ? el.getAttribute("data-prefix") + " " + away + " " + el.getAttribute("data-suffix")
+          : el.getAttribute("data-tier-prefix") + " " + away + " " +
+            el.getAttribute("data-tier-suffix") + " " + next.label +
+            (next.code ? " with code " + next.code : "");
+      return;
     }
-    tiers.forEach((amt, i) => {
-      if (total >= amt) return;
-      if (nextAt !== null && amt >= nextAt) return;
-      const code = (codes[i] || "").trim();
-      nextAt = amt;
-      nextMsg =
-        el.getAttribute("data-tier-prefix") + " " + formatMoney(amt - total) + " " +
-        el.getAttribute("data-tier-suffix") + " " + (labels[i] || "").trim() +
-        (code ? " with code " + code : "");
-    });
-    if (nextMsg) { text.textContent = nextMsg; return; }
     // Nothing left ahead: say what was unlocked rather than going blank.
-    const lastTier = tiers.length ? (labels[tiers.length - 1] || "").trim() : "";
-    text.textContent = ship > 0 && total >= ship
-      ? el.getAttribute("data-reached") + (lastTier ? " · " + lastTier : "")
-      : lastTier;
+    text.textContent = stops
+      .map((s) => (s.kind === "ship" ? el.getAttribute("data-reached") : s.label))
+      .filter(Boolean)
+      .join(" · ");
   }
 
   // "You may also like" — Shopify's own recommendations, keyed on what is
   // actually in the cart, so the list cannot go stale the way a hand-picked
   // one does.
-  let recsFor = null;
+  // On window rather than in the closure: globalScripts() re-runs after every
+  // transition and rebuilds these functions, but the click handlers are bound
+  // once and hold the first closure — so a plain local would have the add
+  // handler clearing one copy of this while updateCartRecs read another, and
+  // the suggestions would quietly stop refreshing after the first page change.
+  window.__cartRecsFor = window.__cartRecsFor || null;
   window.updateCartRecs = function (cart) {
     const wraps = [...document.querySelectorAll("[data-cart-recs]")];
     const lists = [...document.querySelectorAll("[data-cart-recs-list]")];
     if (!wraps.length || !lists.length) return;
     const first = cart && cart.items && cart.items[0];
     if (!first) { wraps.forEach((w) => (w.hidden = true)); return; }
-    if (recsFor === first.product_id) return; // already showing these
-    recsFor = first.product_id;
+    if (window.__cartRecsFor === first.product_id) return; // already showing these
+    window.__cartRecsFor = first.product_id;
     const inCart = new Set((cart.items || []).map((i) => i.product_id));
     // Shopify builds recommendations from order history and product
     // relationships, so a new store returns none. Fall back to the catalogue
@@ -887,26 +979,16 @@ function globalScripts() {
               '<span class="cart-rec_title body-upper">' + p.title + "</span>" +
               '<span class="cart-rec_price body-upper">' + formatMoney(p.price) + "</span>" +
               "</span></a>" +
-              // One variant adds straight away. Several opens a size list on
-              // the card itself — adding without asking would pick someone's
-              // size for them, and leaving the cart to choose it loses the sale.
+              // Straight into the cart, whichever variant it is. Asking for a
+              // size first put a second tap between a shopper and an impulse
+              // buy for the sake of a decision they can change in the line
+              // item a moment later — the select on the cart row does that,
+              // and it is in front of them rather than behind a button.
               (function () {
                 const vs = p.__variants || [];
                 if (!vs.length) return "";
-                if (vs.length === 1) {
-                  return '<button type="button" class="cart-rec_add" data-add-variant="' + vs[0].id +
-                    '" aria-label="Add ' + p.title.replace(/"/g, "&quot;") + ' to cart">+</button>';
-                }
-                return (
-                  '<button type="button" class="cart-rec_add" data-pick-variant aria-expanded="false"' +
-                  ' aria-label="Choose a size for ' + p.title.replace(/"/g, "&quot;") + '">+</button>' +
-                  '<div class="cart-rec_picker" hidden>' +
-                  vs.map((v) =>
-                    '<button type="button" class="cart-rec_size body-upper" data-add-variant="' + v.id + '">' +
-                    (v.title || "").replace(/</g, "&lt;") + "</button>"
-                  ).join("") +
-                  "</div>"
-                );
+                return '<button type="button" class="cart-rec_add" data-add-variant="' + vs[0].id +
+                  '" aria-label="Add ' + p.title.replace(/"/g, "&quot;") + ' to cart">+</button>';
               })() +
               "</div>"
             );
@@ -953,22 +1035,59 @@ function globalScripts() {
       .catch(fromCatalogue);
   };
 
-  function refreshCartProgress() {
+  // The cart bridge posts its own change and tells us nothing about when it
+  // lands, so a single fetch on a fixed timer is a race we lose often enough to
+  // notice: /cart.js answers with the total from before the change, the bar
+  // snaps back to where it was, and nothing comes along afterwards to correct
+  // it. That is the drawer bar glitching. When a nudge has told us what the
+  // total should be, keep asking until the server agrees.
+  function refreshCartProgress(tries) {
+    const left = typeof tries === "number" ? tries : 4;
     setTimeout(() => {
       fetch("/cart.js", { headers: { Accept: "application/json" } })
         .then((r) => r.json())
-        .then((cart) => { window.updateCartProgress(cart); window.updateCartRecs(cart); })
+        .then((cart) => {
+          const expected = window.__expectedTotal;
+          if (typeof expected === "number" && cart.total_price !== expected && left > 0) {
+            refreshCartProgress(left - 1);
+            return; // the answer is stale; leave the bar where the tap put it
+          }
+          window.__expectedTotal = null;
+          // Kept so the rows can be rebuilt after the bridge re-renders them
+          // without paying for another round trip to say the same thing.
+          window.__lastCart = cart;
+          window.updateCartProgress(cart);
+          window.updateCartRecs(cart);
+          window.updateCartVariants(cart);
+        })
         .catch(() => {});
-    }, 500);
+    }, left === 4 ? 450 : 350);
   }
+  // Everything from here to the matching close is delegated on document, so it
+  // wants binding exactly once. globalScripts() runs again after every Barba
+  // transition, and these were re-bound each time — by the third page a single
+  // tap on a recommendation's + posted four adds and put four of the thing in
+  // the cart.
+  if (!window.__cartHandlersBound) {
+    window.__cartHandlersBound = true;
+
   // The cart bridge fires no event we can listen for, so refresh after any
   // interaction that can change the cart: adding, opening the drawer, and
   // changing or removing a line inside it.
   document.addEventListener("click", (e) => {
+    const removing = e.target.closest('[data-node-type="cart-remove-link"]');
+    if (removing) {
+      // Same reasoning as the steppers: take the whole line off the bar now
+      // rather than letting it sit at the old total until the cart answers.
+      const id = parseInt(removing.getAttribute("data-product-id"), 10);
+      const cart = window.__lastCart;
+      const line = cart && (cart.items || []).find((i) => i.variant_id === id || i.id === id);
+      if (line) window.nudgeCartProgress(-(line.final_line_price || line.line_price || 0));
+    }
     if (
+      removing ||
       e.target.closest('[data-node-type="commerce-add-to-cart-button"]') ||
       e.target.closest('[data-node-type="commerce-cart-open-link"]') ||
-      e.target.closest('[data-node-type="cart-remove-link"]') ||
       e.target.closest("[data-sticky-atc-btn]")
     ) {
       refreshCartProgress();
@@ -978,22 +1097,99 @@ function globalScripts() {
     if (e.target.closest('[data-node-type="cart-quantity"]')) refreshCartProgress();
   });
 
-  // Open the size list on the card rather than navigating away.
-  document.addEventListener("click", (e) => {
-    const pick = e.target.closest("[data-pick-variant]");
-    if (pick) {
-      e.preventDefault();
-      const card = pick.closest(".cart-rec");
-      const picker = card && card.querySelector(".cart-rec_picker");
-      if (!picker) return;
-      document.querySelectorAll(".cart-rec_picker").forEach((p) => { if (p !== picker) p.hidden = true; });
-      picker.hidden = !picker.hidden;
-      pick.setAttribute("aria-expanded", picker.hidden ? "false" : "true");
-      return;
-    }
-    if (!e.target.closest(".cart-rec")) {
-      document.querySelectorAll(".cart-rec_picker").forEach((p) => (p.hidden = true));
-    }
+  // Size on the cart line, not in front of the add button.
+  //
+  // The drawer's rows are rendered by the cart bridge from a Webflow template
+  // that only knows the variant that is already in the cart — no siblings, no
+  // handle. So the other sizes have to be fetched: /cart.js for the handle and
+  // the variant id of each row, then the product's own .js for its variants,
+  // cached per product because three rows of the same tee is one request.
+  const variantCache = {};
+  function variantsFor(handle) {
+    if (variantCache[handle]) return variantCache[handle];
+    variantCache[handle] = fetch("/products/" + handle + ".js", { headers: { Accept: "application/json" } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((prod) => (prod && prod.variants) || [])
+      .catch(() => []);
+    return variantCache[handle];
+  }
+
+  window.updateCartVariants = function (cart) {
+    const items = (cart && cart.items) || [];
+    if (!items.length) return;
+    // The template puts the variant id on the remove link and on the quantity
+    // input's name, which is the only thread back from a row to a cart line.
+    document.querySelectorAll(".cart-item").forEach((row) => {
+      const idEl = row.querySelector("[data-product-id]") || row.querySelector(".w-commerce-commercecartquantity");
+      const id = parseInt(idEl && (idEl.getAttribute("data-product-id") || idEl.getAttribute("name")), 10);
+      if (!id) return;
+      const line = items.find((i) => i.variant_id === id || i.id === id);
+      if (!line || !line.handle) return;
+      // A product with nothing but Shopify's own Default Title has no size to
+      // offer, and a select with one meaningless option in it is just noise.
+      if (line.product_has_only_default_variant) return;
+      if (row.__variantFor === id) return; // already built for this variant
+      row.__variantFor = id;
+
+      variantsFor(line.handle).then((variants) => {
+        if (row.__variantFor !== id) return; // the row was re-rendered underneath us
+        const sellable = variants.filter((v) => v.available || v.id === id);
+        if (sellable.length < 2) return;
+        let select = row.querySelector(".cart-item_variant");
+        if (!select) {
+          select = document.createElement("select");
+          select.className = "cart-item_variant body-upper";
+          select.setAttribute("aria-label", "Size");
+          const host = row.querySelector(".cart-details_contain") || row;
+          const price = host.querySelector(".cart-item_price");
+          if (price && price.nextSibling) host.insertBefore(select, price.nextSibling);
+          else host.appendChild(select);
+        }
+        select.innerHTML = sellable
+          .map((v) =>
+            '<option value="' + v.id + '"' + (v.id === id ? " selected" : "") + ">" +
+            String(v.title || "").replace(/</g, "&lt;") + "</option>"
+          )
+          .join("");
+        select.dataset.from = String(id);
+      });
+    });
+  };
+
+  // Swapping a size is a remove and an add: Shopify has no call that changes
+  // the variant of a line in place. /cart/update.js takes both in one request,
+  // which keeps it atomic — a change.js pair can leave the cart empty of the
+  // row if the second call fails. Quantities are carried across, and folded in
+  // if the size being switched to is already in the cart on its own line.
+  document.addEventListener("change", (e) => {
+    const select = e.target.closest(".cart-item_variant");
+    if (!select) return;
+    const from = parseInt(select.dataset.from, 10);
+    const to = parseInt(select.value, 10);
+    if (!from || !to || from === to) return;
+    select.disabled = true;
+    fetch("/cart.js", { headers: { Accept: "application/json" } })
+      .then((r) => r.json())
+      .then((cart) => {
+        const items = cart.items || [];
+        const moving = items.find((i) => i.variant_id === from || i.id === from);
+        const already = items.find((i) => i.variant_id === to || i.id === to);
+        const updates = {};
+        updates[from] = 0;
+        updates[to] = (moving ? moving.quantity : 1) + (already ? already.quantity : 0);
+        return fetch("/cart/update.js", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ updates: updates }),
+        });
+      })
+      .then(() => {
+        window.__cartRecsFor = null;
+        refreshCartProgress();
+        if (window.Udesly && window.Udesly.dispatch) window.Udesly.dispatch("cart-should-be-updated");
+      })
+      .catch(() => {})
+      .finally(() => { select.disabled = false; });
   });
 
   // Quick add from a recommendation.
@@ -1009,19 +1205,112 @@ function globalScripts() {
     })
       .then((r) => r.json())
       .then(() => {
-        recsFor = null; // the cart changed, so the suggestions should too
+        window.__cartRecsFor = null; // the cart changed, so the suggestions should too
         refreshCartProgress();
-        document.querySelectorAll(".cart-rec_picker").forEach((p) => (p.hidden = true));
-        // Ask the cart bridge to re-render its line items where it stands. The
-        // drawer is already open — clicking the open link again would toggle it
-        // shut, which is why adding appeared to navigate away.
-        document.dispatchEvent(new CustomEvent("cart:updated"));
-        if (window.Shopify && window.Shopify.onCartUpdate) window.Shopify.onCartUpdate();
+        // Ask the cart bridge to re-render its line items where it stands.
+        // It renders them from its own copy of the cart and listens on its own
+        // event bus for exactly two names — neither of which is a DOM event on
+        // document. So the item reached Shopify and the drawer went on showing
+        // the cart as it was before the click, which reads as nothing having
+        // happened. cart-should-be-updated re-fetches and re-renders without
+        // touching whether the drawer is open, which matters because it is
+        // already open and toggling it would shut it.
+        if (window.Udesly && window.Udesly.dispatch) {
+          window.Udesly.dispatch("cart-should-be-updated");
+        }
       })
       .catch(() => {})
       .finally(() => { btn.disabled = false; });
   });
+
+  } // end of the bind-once block
+
+  // This one does run on every transition: the bars in the page that just
+  // arrived are rendered from the cart as it was when the page was cached.
   refreshCartProgress();
+
+  // What one of a line costs, read off the cart we last fetched. final_price is
+  // the per-unit price after line discounts, which is what the total moves by.
+  function unitPriceOf(input) {
+    // The cart page says so on the input itself. Its name is updates[], which
+    // is what the no-JavaScript Update button posts and tells us nothing about
+    // which line it is — so the bar there never moved at all.
+    const stated = parseInt(input.getAttribute("data-unit-price"), 10);
+    if (!isNaN(stated)) return stated;
+    const cart = window.__lastCart;
+    const id = parseInt(input.getAttribute("name"), 10);
+    const line = cart && (cart.items || []).find((i) => i.variant_id === id || i.id === id);
+    if (!line) return 0;
+    if (typeof line.final_price === "number") return line.final_price;
+    if (typeof line.price === "number") return line.price;
+    return line.quantity ? Math.round((line.final_line_price || line.line_price || 0) / line.quantity) : 0;
+  }
+
+  // Move the bar by a known amount now, and keep the running total in step so
+  // three taps in a row add up instead of each one starting from the same
+  // stale number.
+  window.nudgeCartProgress = function (deltaCents) {
+    const cart = window.__lastCart;
+    if (!cart || typeof cart.total_price !== "number" || !deltaCents) return;
+    cart.total_price = Math.max(0, cart.total_price + deltaCents);
+    // What the reconcile has to see before it is allowed to overwrite this.
+    window.__expectedTotal = cart.total_price;
+    window.updateCartProgress(cart);
+  };
+
+  // The cart page changes its own lines.
+  //
+  // Its quantity inputs are all called updates[], which is a form post waiting
+  // on the Update button — so pressing + moved a number and left the price, the
+  // subtotal, the count and the bar all saying what they said before, until you
+  // found a second button and pressed that too. The name stays for anyone
+  // without JavaScript; with it, the line changes where it stands.
+  // The subtotal is rendered with money_with_currency, so rewriting it with the
+  // plain format quietly dropped the INR off the end of it.
+  function money(cents, withCurrency) { return formatMoney(cents, withCurrency); }
+
+  document.addEventListener("change", (e) => {
+    const input = e.target.closest("[data-cart-line]");
+    if (!input) return;
+    const line = parseInt(input.getAttribute("data-cart-line"), 10);
+    const quantity = Math.max(0, parseInt(input.value, 10) || 0);
+    if (!line) return;
+    input.disabled = true;
+    fetch("/cart/change.js", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ line: line, quantity: quantity }),
+    })
+      .then((r) => r.json())
+      .then((cart) => {
+        // change.js answers with the whole cart, so this is the authoritative
+        // total rather than something to be reconciled later.
+        window.__expectedTotal = null;
+        window.__lastCart = cart;
+        window.__cartRecsFor = null;
+        window.updateCartProgress(cart);
+        window.updateCartRecs(cart);
+
+        const el = document.querySelector("[data-cart-subtotal]");
+        if (el) el.textContent = money(cart.total_price, true);
+        const count = document.querySelector("[data-cart-count]");
+        if (count) count.textContent = cart.item_count;
+        (cart.items || []).forEach((item, i) => {
+          const total = document.querySelector('[data-line-total="' + (i + 1) + '"]');
+          if (total) total.textContent = money(item.final_line_price);
+          const qty = document.querySelector('[data-cart-line="' + (i + 1) + '"]');
+          if (qty) {
+            qty.value = item.quantity;
+            qty.setAttribute("data-unit-price", item.final_price);
+          }
+        });
+        // A line removed outright renumbers everything after it, and patching
+        // that up in place is more ways to be wrong than it is worth.
+        if (quantity === 0) window.location.reload();
+      })
+      .catch(() => {})
+      .finally(() => { input.disabled = false; });
+  });
 
   // Quantity steppers. The number inputs stay exactly where they are — the
   // cart bridge listens for their change event and the cart page posts them as
@@ -1045,8 +1334,17 @@ function globalScripts() {
           const min = parseInt(input.getAttribute("min"), 10);
           const floor = isNaN(min) ? 0 : min;
           const next = Math.max(floor, (parseInt(input.value, 10) || 0) + dir);
-          if (next === (parseInt(input.value, 10) || 0)) return;
+          const was = parseInt(input.value, 10) || 0;
+          if (next === was) return;
           input.value = next;
+          // The bar moves on the tap, not on the answer. Nothing here can know
+          // the new total for certain — the cart lives on the server — but it
+          // can know the price of the line being stepped, and that is enough to
+          // be right about the arithmetic. The reconcile a moment later comes
+          // back to the same number, so the correction is invisible; without
+          // this the bar sat still for a beat and then jumped, which reads as
+          // the button not having worked.
+          window.nudgeCartProgress((next - was) * unitPriceOf(input));
           // Both, because the bridge and the cart form listen for different ones.
           input.dispatchEvent(new Event("input", { bubbles: true }));
           input.dispatchEvent(new Event("change", { bubbles: true }));
@@ -1066,7 +1364,13 @@ function globalScripts() {
   document.querySelectorAll('[data-node-type="commerce-cart-list"], .cart-list').forEach((list) => {
     if (list.__qtyObserved) return;
     list.__qtyObserved = true;
-    new MutationObserver(() => window.enhanceQuantity(list)).observe(list, { childList: true, subtree: true });
+    new MutationObserver(() => {
+      window.enhanceQuantity(list);
+      // The size selects are thrown away with the rows, and waiting for the
+      // next cart fetch to put them back left a row with no size on it for
+      // half a second every time anything changed.
+      if (window.__lastCart) window.updateCartVariants(window.__lastCart);
+    }).observe(list, { childList: true, subtree: true });
   });
 
   // Collection filters. The form is a real GET to the collection URL, so it
@@ -1202,30 +1506,39 @@ function globalScripts() {
     const sliderEl = $(this);
     const content = sliderEl.find("[product-slider]");
     // A short catalogue renders without the marquee attribute; with no track
-    // to measure, content.width() is undefined and the wrap maths yields NaN,
-    // which would translate the row off screen.
+    // to measure there is nothing to loop.
     if (!content.length) return;
     const cards = sliderEl.find(".product-card");
     let total = 0;
-    const itemValues = [];
+    let half = 0;
+    let xTo = null;
 
-    const cardsLength = cards.length / 2;
-    const half = content.width() / 2;
-
-    const wrap = gsap.utils.wrap(-half, 0);
-
-    const xTo = gsap.quickTo(content[0], "x", {
-      duration: 0.5, // transitions over 0.5s
-      ease: "power3", // non-linear easing
-      modifiers: {
-        x: gsap.utils.unitize(wrap),
-      },
-    });
-
-    // Generate an array of random values between -10 and 10
-    for (let i = 0; i < cardsLength; i++) {
-      itemValues.push((Math.random() - 0.5) * 20);
+    // The loop range is baked into both the wrap and the quickTo the moment
+    // they are made. The old code measured once, at init — before images had
+    // laid out, on a phone often at 0 — and a range of (-0, 0) wraps every
+    // position back to x=0: the row sat still, and any drag snapped straight
+    // back. Measure whenever the track's width actually changes instead, and
+    // rebuild the pair each time.
+    function measure() {
+      const w = content.width();
+      if (!w) return false;
+      const next = w / 2;
+      if (next === half && xTo) return true;
+      half = next;
+      const wrap = gsap.utils.wrap(-half, 0);
+      xTo = gsap.quickTo(content[0], "x", {
+        duration: 0.5,
+        ease: "power3",
+        modifiers: { x: gsap.utils.unitize(wrap) },
+      });
+      return true;
     }
+    measure();
+    const ro = new ResizeObserver(() => measure());
+    ro.observe(content[0]);
+    content.find("img").each(function () {
+      if (!this.complete) this.addEventListener("load", measure, { once: true });
+    });
 
     const tl = gsap.timeline({ paused: true });
     tl.to(cards, {
@@ -1235,16 +1548,23 @@ function globalScripts() {
       delay: 0.1,
     });
 
-    Observer.create({
+    // Past a click, well short of a deliberate drag.
+    const DRAG_SLOP = 6;
+
+    const observer = Observer.create({
       target: content[0],
-      type: "pointer,touch", // detect both pointer and touch events
+      type: "pointer,touch",
+      // Below this distance Observer reports no drag, so .dragging (which
+      // turns pointer-events off on the cards) is never applied for an
+      // ordinary click, and the product opens on the first tap.
+      dragMinimum: DRAG_SLOP,
       onPress: function () {
         tl.play();
       },
       onDrag: (self) => {
         self.target.classList.add("dragging");
         total += self.deltaX;
-        xTo(total);
+        if (xTo) xTo(total);
         lenis.stop();
       },
       onRelease: function (self) {
@@ -1255,13 +1575,23 @@ function globalScripts() {
       onStop: function (self) {
         tl.reverse();
         self.target.classList.remove("dragging");
+        lenis.start();
       },
     });
 
+    // The auto-scroll never pauses: a drag only adds to `total`, so the row
+    // carries on from wherever it was let go.
     gsap.ticker.add(tick);
+    onTeardown(() => {
+      observer.kill();
+      gsap.ticker.remove(tick);
+      ro.disconnect();
+      content[0].classList.remove("dragging");
+    });
 
     function tick(time, deltaTime) {
-      total -= deltaTime / 20; // Adjust the speed of automatic scrolling
+      if (!xTo && !measure()) return;
+      total -= deltaTime / 20; // speed of the automatic scroll
       xTo(total);
     }
   });
@@ -1994,13 +2324,79 @@ function reinitUdeslyCart() {
 }
 reinitUdeslyCart();
 
+// How far down the page the container sits once it is back in normal flow.
+// The announcement bar is outside the Barba container, in flow above it, so a
+// container pinned to top: 0 during the transition is sitting exactly one
+// banner higher than where it will land — and every page dropped by that much
+// the moment the transition released it. That is the lurch: the hero "moving
+// down after loading" on every page. Measure the banner and start there.
+function flowOffset(current) {
+  // The outgoing container is still sitting in flow at exactly the spot the
+  // incoming one will take, so measure that rather than adding up whatever
+  // happens to be above it. window.scrollY turns the viewport rect back into a
+  // document position — the visitor may well have scrolled before clicking.
+  if (current) {
+    const box = current.getBoundingClientRect();
+    // Not rounded: the banner's height is a rem value that rarely lands on a
+    // whole pixel, and rounding it left half a pixel of movement behind.
+    if (box.height > 0) return Math.max(0, box.top + window.scrollY);
+  }
+  const bar = document.querySelector(".announcement-bar");
+  return bar ? bar.offsetHeight || 0 : 0;
+}
+
+// The nav is position:fixed, but it lives inside the Barba container, and both
+// containers carry a transform for the length of the transition — which makes
+// the container, not the viewport, the containing block its top is measured
+// from. Neither header survives that on its own, so both are pinned by hand for
+// the duration and handed back to CSS in hooks.after.
 barba.hooks.enter((data) => {
+  const current = data.current && data.current.container;
+
+  // Measured before anything is moved: taking the container out of flow first
+  // would be measuring the answer after changing the question.
+  //
+  // The nav's resolved top, not its rect: the header carries a
+  // translateY(-100%) whenever it has hidden itself on the way down the page,
+  // and a rect includes that, so freezing on the rect would have applied the
+  // hide twice. While the containing block is still the viewport, the resolved
+  // top is exactly where the header sits on screen.
+  let leaving = null;
+  let leavingTop = 0;
+  if (current) {
+    leaving = current.querySelector(".orgc-nav");
+    if (leaving) {
+      const shown = parseFloat(getComputedStyle(leaving).top) || 0;
+      leavingTop = shown - current.getBoundingClientRect().top;
+    }
+  }
+
   gsap.set(data.next.container, {
     position: "fixed",
-    top: 0,
+    top: flowOffset(current),
     left: 0,
     width: "100%",
   });
+
+  // Arriving header: measured from its own container rather than the viewport
+  // for the same reason, so it wants the height of whatever sits above it
+  // inside that container. That is the banner on a page that has one and
+  // nothing at all on a page that does not — which is the whole point of the
+  // bar being in here.
+  // The rect's height, not offsetHeight: the bar is sized in rem and lands on
+  // 33.6px, which offsetHeight rounds to 34 and leaves half a pixel of movement
+  // behind at the end of every arrival.
+  const arrivingBar = data.next.container.querySelector(".announcement-bar");
+  const nav = data.next.container.querySelector(".orgc-nav");
+  if (nav) gsap.set(nav, { top: arrivingBar ? arrivingBar.getBoundingClientRect().height : 0 });
+
+  // Departing header: the same trap, and by far the more visible one, because
+  // it happens the instant you click rather than at the end. At the top of a
+  // page it threw the header down by a banner. Anywhere further down — which is
+  // where most clicks happen — it threw it off the top of the screen: 566px in
+  // a single frame on a page scrolled 600. Freeze it where the eye last saw it
+  // and let it slide away with the rest of the page.
+  if (leaving) gsap.set(leaving, { top: leavingTop });
 });
 barba.hooks.before((data) => {
   lenis.stop();
@@ -2058,7 +2454,12 @@ barba.hooks.beforeEnter((data) => {
 barba.hooks.afterEnter(() => {});
 
 barba.hooks.after((data) => {
+  // clearProps on the enter tween drops the container's own inline styles, but
+  // it never touched the nav — that one has to be handed back by hand, and in
+  // the same beat, or the header flashes at the top of the screen.
   gsap.set(data.next.container, { position: "relative" });
+  const nav = data.next.container.querySelector(".orgc-nav");
+  if (nav) gsap.set(nav, { clearProps: "top" });
   $(window).scrollTop(0);
   // The previous page's triggers were never killed, so each transition
   // stacked another set measured against a page that no longer exists.

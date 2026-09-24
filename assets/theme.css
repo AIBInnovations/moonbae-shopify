@@ -493,8 +493,9 @@ body:not(.show-preloader) .preloader_wrap {
 }
 
 /* ---- Announcement bar ---------------------------------------------------
-   Sits above the fixed nav, so the nav is offset by its height and the
-   page-template clearance accounts for both. */
+   Sits above the fixed nav, first inside the Barba container, so the nav is
+   offset by its height and the page-template clearance accounts for both. By
+   default it is on the home page only; the section's Show on setting decides. */
 .announcement-bar {
   /* Deliberately low. The cart drawer, the menu overlay and the preloader all
      sit above it; a banner that paints over the cart is worse than one that
@@ -505,9 +506,9 @@ body:not(.show-preloader) .preloader_wrap {
   font-size: .72rem; letter-spacing: .06em;
 
   /* Height is fixed rather than derived from the text. The bar is the first
-     thing in normal flow, so when the web font swapped in and the line box
-     grew a pixel, every section below it jumped down. A set height and line
-     height means the swap changes nothing. */
+     thing in normal flow on the pages that have it, so when the web font
+     swapped in and the line box grew a pixel, every section below it jumped
+     down. A set height and line height means the swap changes nothing. */
   --announcement-height: 2.1rem;
   height: var(--announcement-height);
   line-height: 1;
@@ -530,27 +531,20 @@ body:not(.show-preloader) .preloader_wrap {
    banner's real position into --announcement-offset each frame it changes.
 
    No extra padding is needed on page templates: the banner is in flow, so it
-   already pushes the content down by its own height. */
+   already pushes the content down by its own height.
+
+   Keyed on the banner actually being present, which is what gets a page
+   without one right on the very first paint: no banner, no match, and the nav
+   falls back to the flush inset it is given anyway. Nothing has to wait for
+   the script to measure something that is not there. */
 /* The fallback matters: the variable is only set once the script runs, and a
    fallback of 0 meant the nav painted over the banner for the first frames of
    every load. One line of banner is ~2.1rem, so start there and let the script
    refine it to the real measurement. */
 body:has(.announcement-bar) .orgc-nav { top: var(--announcement-offset, 2.1rem); }
 
-/* ---- Free shipping progress --------------------------------------------- */
-.cart-progress { display: flex; flex-direction: column; gap: .5rem; padding: .9rem 0; }
-.cart-progress_text { font-size: .72rem; letter-spacing: .06em; }
-.cart-progress_track {
-  position: relative; height: 2px; width: 100%;
-  background: currentColor; opacity: .25; overflow: hidden;
-}
-.cart-progress_fill {
-  position: absolute; inset: 0 auto 0 0; display: block; height: 100%;
-  background: currentColor; opacity: 1;
-  /* Long and eased, so crossing a milestone reads as the bar filling rather
-     than a number changing. */
-  transition: width 900ms cubic-bezier(.22,1,.36,1);
-}
+/* The cart drawer, progress bar included, is one block at the end of this
+   file — see "Cart drawer". */
 
 /* ---- Announcement marquee ----------------------------------------------- */
 .announcement-bar_marquee { display: flex; width: max-content; will-change: transform; }
@@ -594,7 +588,6 @@ body:has(.announcement-bar) .orgc-nav { top: var(--announcement-offset, 2.1rem);
    section, and a transform on any ancestor traps it in that stacking context.
    Pin it to the root so nothing above it in the DOM can cover it. */
 .w-commerce-commercecartcontainerwrapper { z-index: 1001; }
-body > .announcement-bar { isolation: auto; }
 
 /* ---- Frosted header ------------------------------------------------------
    The nav sits over photography, so a plain tint would muddy it. A blur with
@@ -689,66 +682,6 @@ body:has(.nav[data-nav="open"]) .orgc-nav::before { backdrop-filter: none; -webk
   .product-specs { grid-template-columns: repeat(2, 1fr); column-gap: var(--site--gutter); }
 }
 
-/* ---- Cart: promo line, tier milestones, recommendations ------------------- */
-.cart-promo {
-  font-size: .68rem; letter-spacing: .06em; opacity: .75;
-  padding: .6rem 0; border-bottom: 1px solid currentColor;
-  border-color: color-mix(in srgb, currentColor 20%, transparent);
-}
-.cart-progress_track { overflow: visible; }
-.cart-progress_pip {
-  position: absolute; top: 50%; width: 5px; height: 5px; margin-left: -2px;
-  transform: translateY(-50%) rotate(45deg);
-  background: currentColor; opacity: .35;
-}
-.cart-progress_pip.is-reached { opacity: 1; }
-
-/* Labels are absolutely placed under their own milestone, and the row is
-   given height so the following content does not sit on top of them. */
-.cart-tiers { position: relative; height: 2rem; margin-top: .45rem; }
-.cart-tier {
-  position: absolute; top: 0; transform: translateX(-50%);
-  display: flex; flex-direction: column; gap: .05rem; align-items: center;
-  opacity: .4; white-space: nowrap; transition: opacity 400ms ease;
-}
-/* Clamp the ends so a label at 0% or 100% is not half off the edge. */
-.cart-tier[style*="left: 100%"] { transform: translateX(-100%); align-items: flex-end; }
-.cart-tier[style*="left: 0%"] { transform: translateX(0); align-items: flex-start; }
-.cart-tier.is-reached { opacity: 1; }
-.cart-tier_amount { font-size: .66rem; }
-.cart-tier_label { font-size: .62rem; opacity: .7; }
-
-.cart-recs { padding: .9rem 0; border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
-.cart-recs_heading { font-size: .68rem; opacity: .55; margin-bottom: .6rem; }
-/* A horizontal rail: three suggestions read as a row of products, where a
-   stacked list reads as more cart items. Scrolls rather than wraps. */
-.cart-recs_list {
-  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(9.5rem, 1fr);
-  gap: .6rem; overflow-x: auto; scroll-snap-type: x proximity;
-  scrollbar-width: none; padding-bottom: .2rem;
-}
-.cart-recs_list::-webkit-scrollbar { display: none; }
-.cart-rec { position: relative; scroll-snap-align: start; }
-/* Row rather than column: the rail used to be ~150px tall, which left the
-   item list barely any height inside the drawer. */
-.cart-rec_link { display: flex; align-items: center; gap: .5rem; color: inherit; }
-.cart-rec:hover .cart-rec_title { text-decoration: underline; text-underline-offset: .2em; }
-.cart-rec_img { width: 2.6rem; height: 3.25rem; object-fit: cover; display: block; flex: none; }
-.cart-rec_info { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
-.cart-rec_title {
-  font-size: .64rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.cart-rec_price { font-size: .62rem; opacity: .6; }
-.cart-rec_add {
-  position: absolute; top: 50%; right: .1rem; transform: translateY(-50%);
-  width: 1.5rem; height: 1.5rem; display: flex; align-items: center; justify-content: center;
-  background: var(--swatch--light); color: var(--swatch--dark);
-  border: 1px solid color-mix(in srgb, var(--swatch--dark) 35%, transparent);
-  font: inherit; font-size: .9rem; line-height: 1; cursor: pointer; padding: 0;
-}
-.cart-rec_add:hover { background: var(--swatch--dark); color: var(--swatch--light); }
-.cart-rec_add[disabled] { opacity: .4; cursor: wait; }
-
 /* The open state moved from the shared wrapper to each option's own group, so
    the icon has to follow it rather than keying off the wrapper. */
 .option:has(.size-button_group.show) .toggle-line.is-vert { transform: scaleY(0); opacity: 0; }
@@ -781,52 +714,415 @@ body:has(.nav[data-nav="open"]) .orgc-nav::before { backdrop-filter: none; -webk
 }
 .qty-stepper .w-commerce-commercecartquantity:focus { outline: none; }
 
+
+/* ---- Cart drawer ---------------------------------------------------------
+   Every block inside the drawer — header, promo, progress, item list,
+   recommendations, footer, the empty and error states — used to carry its own
+   horizontal padding: 2rem here, --site--gutter there, nothing at all on the
+   recommendations, which is why the heading sat flush against the panel edge
+   while "My Cart" was half an inch in. One variable now sets that inset for
+   all of them, so everything in the drawer lines up on the same two rules.
+
+   --site--gutter is deliberately not reused: it is the page grid's gutter and
+   changes with the viewport, but the drawer is a fixed-width panel and should
+   not restyle itself because the window behind it got narrower. */
+.cart-container { --cart--pad: 1.75rem; }
+@media only screen and (max-width: 420px) { .cart-container { --cart--pad: 1.15rem; } }
+
+.cart-container .cart-header,
+.cart-container .cart-list,
+.cart-container .cart-footer,
+.cart-container .cart-progress,
+.cart-container .cart-promo,
+.cart-container .cart-recs,
+.cart-container .empty-state {
+  padding-left: var(--cart--pad);
+  padding-right: var(--cart--pad);
+}
+/* The error banner is a filled box rather than a band of content, so it takes
+   the inset as margin and keeps its own padding. */
+.cart-container .error-state { margin-left: var(--cart--pad); margin-right: var(--cart--pad); }
+
+.cart-container .cart-header { padding-top: 1.35rem; padding-bottom: 1.1rem; }
+
+/* The panel itself must not scroll: the item list is the scroller, so the
+   progress bar stays pinned under the header and the checkout button stays
+   pinned to the bottom however many lines are in the cart. Webflow's base
+   styles put overflow:auto on the container, which scrolled the whole drawer
+   as one long page instead. */
+.cart-container { overflow: hidden; }
+.cart-container .cart-form_wrap,
+.cart-container .w-commerce-commercecartform { min-height: 0; }
+.cart-container .cart-list {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto;
+  padding-top: .9rem; padding-bottom: .9rem;
+}
+/* Without this the list grew to fill the drawer and left a hand's width of
+   blank panel between the last item and the recommendations. Everything that
+   is not the list keeps its own height: as flex children they would otherwise
+   be squeezed first, and the bar and the checkout button are the two things
+   that must not be. */
+.cart-container .cart-promo,
+.cart-container .cart-progress,
+.cart-container .cart-recs,
+.cart-container .cart-footer,
+.cart-container .empty-state,
+.cart-container .error-state { flex: none; }
+
+/* ---- Cart drawer: promo line --------------------------------------------- */
+.cart-promo {
+  font-size: .68rem; letter-spacing: .06em; opacity: .75; text-align: center;
+  padding-top: .7rem; padding-bottom: .7rem;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+
+/* ---- Cart drawer: progress toward free shipping and the discount tiers ----
+   Milestones are evenly spaced along the track and each one sits at the centre
+   of its own legend column, so a node and its caption line up by construction.
+   cart-progress.liquid computes both and explains why. */
+.cart-progress {
+  position: relative;
+  padding-top: 1.15rem; padding-bottom: 1.25rem;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+.cart-progress_text {
+  font-size: .72rem; letter-spacing: .06em; line-height: 1.4;
+  text-align: center; margin: 0 0 1rem;
+}
+
+.cart-progress_track {
+  position: relative; height: 8px; width: 100%;
+  border-radius: 999px; overflow: visible;
+  /* Not opacity on the track: that dims its children too, so the fill — which
+     is the same colour — came out exactly as pale as the groove it was meant
+     to stand out from, and the bar looked like it never moved. */
+  background: color-mix(in srgb, currentColor 13%, transparent);
+}
+.cart-progress_fill {
+  position: absolute; inset: 0 auto 0 0; display: block; height: 100%;
+  min-width: 0; border-radius: inherit; overflow: hidden;
+  background: currentColor;
+  /* Long and eased, so crossing a milestone reads as the bar filling rather
+     than a number changing. */
+  transition: width 900ms cubic-bezier(.22, 1, .36, 1);
+}
+/* A highlight sweeping the filled length: the difference between a bar that
+   has a value and a bar that is working towards one. It stops once there is
+   nothing left to work towards. */
+.cart-progress_fill::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--swatch--light) 60%, transparent) 50%,
+    transparent 100%);
+  transform: translateX(-100%);
+  animation: cart-progress-sheen 2.6s cubic-bezier(.4, 0, .2, 1) infinite;
+}
+@keyframes cart-progress-sheen {
+  0%        { transform: translateX(-100%); }
+  55%, 100% { transform: translateX(100%); }
+}
+.cart-progress.is-complete .cart-progress_fill::after { animation: none; opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .cart-progress_fill { transition: none; }
+  .cart-progress_fill::after { animation: none; opacity: 0; }
+}
+
+/* Nodes sit proud of the groove so the bar can be read at a glance: hollow for
+   a goal still ahead, solid once it is banked. */
+.cart-progress_node {
+  position: absolute; top: 50%; width: 11px; height: 11px; margin-left: -5.5px;
+  transform: translateY(-50%) rotate(45deg);
+  background: var(--swatch--light);
+  border: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+  transition: background 400ms ease, border-color 400ms ease, transform 500ms cubic-bezier(.22, 1, .36, 1);
+}
+.cart-progress_node.is-reached {
+  background: currentColor; border-color: currentColor;
+  transform: translateY(-50%) rotate(45deg) scale(1.2);
+}
+
+/* One column per milestone, each caption centred under its own node. A single
+   tier therefore centres itself rather than landing in a corner. */
+.cart-progress_legend {
+  display: grid;
+  grid-template-columns: repeat(var(--cart-progress-cols, 2), minmax(0, 1fr));
+  margin-top: .85rem;
+}
+.cart-milestone {
+  display: flex; flex-direction: column; gap: .12rem;
+  align-items: center; text-align: center;
+  padding: 0 .3rem; opacity: .4; transition: opacity 400ms ease;
+}
+.cart-milestone.is-reached { opacity: 1; }
+.cart-milestone_amount { font-size: .64rem; }
+.cart-milestone_label { font-size: .6rem; opacity: .7; line-height: 1.25; }
+
+/* ---- Cart drawer: recommendations ---------------------------------------- */
+.cart-recs {
+  padding-top: 1rem; padding-bottom: 1rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+.cart-recs_heading { font-size: .68rem; opacity: .55; margin-bottom: .65rem; }
+/* A horizontal rail: three suggestions read as a row of products, where a
+   stacked list reads as more cart items. Scrolls rather than wraps. */
+.cart-recs_list {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(12rem, 1fr);
+  gap: .5rem; overflow-x: auto; scroll-snap-type: x proximity;
+  scrollbar-width: none; padding-bottom: .2rem;
+}
+.cart-recs_list::-webkit-scrollbar { display: none; }
+/* A row, not a stack: as a column the rail stood ~150px tall and took that
+   height straight off the item list. The add button is a flex child rather
+   than an overlay — floated on top it printed itself across the title. */
+.cart-rec {
+  position: relative; scroll-snap-align: start;
+  display: flex; align-items: center; gap: .5rem;
+  padding: .35rem .4rem .35rem .35rem;
+  background: var(--swatch--light-grey); border-radius: 3px;
+}
+.cart-rec_link { display: flex; align-items: center; gap: .5rem; color: inherit; flex: 1; min-width: 0; }
+.cart-rec:hover .cart-rec_title { text-decoration: underline; text-underline-offset: .2em; }
+.cart-rec_img { width: 2.4rem; height: 3rem; object-fit: cover; display: block; flex: none; border-radius: 2px; }
+.cart-rec_info { display: flex; flex-direction: column; gap: .12rem; min-width: 0; }
+/* Two lines rather than an ellipsis: at rail width almost every real product
+   name was cut to "Yapper Ba…", which tells a shopper nothing. */
+.cart-rec_title {
+  font-size: .64rem; line-height: 1.25;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.cart-rec_price { font-size: .62rem; opacity: .6; }
+.cart-rec_add {
+  flex: none;
+  width: 1.6rem; height: 1.6rem; display: flex; align-items: center; justify-content: center;
+  background: var(--swatch--light); color: var(--swatch--dark);
+  border: 1px solid color-mix(in srgb, var(--swatch--dark) 35%, transparent);
+  border-radius: 2px;
+  font: inherit; font-size: .9rem; line-height: 1; cursor: pointer; padding: 0;
+  transition: background 200ms ease, color 200ms ease;
+}
+.cart-rec_add:hover { background: var(--swatch--dark); color: var(--swatch--light); }
+.cart-rec_add[disabled] { opacity: .4; cursor: wait; }
+
+/* ---- Cart drawer: size on the line item -----------------------------------
+   The + on a recommendation adds straight away rather than asking for a size
+   first, and the size becomes a control on the row it produced. A shopper who
+   wanted a different one changes it in front of them instead of making the
+   decision behind a button before the thing is even in the cart.
+
+   Styled as a field rather than left native: the browser default is a grey
+   system control that reads as a form on a panel that has none. */
+.cart-item_variant {
+  -webkit-appearance: none; appearance: none;
+  font: inherit; font-size: .68rem; letter-spacing: .06em;
+  color: inherit; background-color: var(--swatch--light);
+  border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 2px;
+  padding: .35rem 1.6rem .35rem .5rem;
+  margin: .1rem 0 .45rem;
+  width: max-content; max-width: 100%;
+  cursor: pointer;
+  /* The arrow is drawn here because appearance:none takes the native one away
+     and an inline SVG in the markup would have to be repeated into both of the
+     drawer's templates. */
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 0.85rem) 55%, calc(100% - 0.55rem) 55%;
+  background-size: .3rem .3rem, .3rem .3rem;
+  background-repeat: no-repeat;
+}
+.cart-item_variant:focus-visible { outline: 1px solid currentColor; outline-offset: 1px; }
+.cart-item_variant[disabled] { opacity: .45; cursor: wait; }
+
+/* ---- Cart drawer: footer -------------------------------------------------- */
+.cart-container .cart-footer {
+  padding-top: 1.1rem; padding-bottom: 1.35rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+/* .checkout-actions is a wrapping flex row so the cart page can sit Update and
+   Checkout side by side. The drawer has one button in that row, and as a flex
+   item it shrank to the width of the word "Checkout" — a thumb-sized target
+   floating in the corner of a 480px panel. Give it the row to itself. */
+.cart-container .checkout-actions .checkout-button { flex: 1 1 100%; }
+
 /* ---- Confetti ------------------------------------------------------------
-   Plain divs falling once, then removed. No library for one moment. */
-.confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 3; }
+   Plain divs falling once, then removed. No library for one moment.
+
+   Fixed to the viewport rather than parented to the progress block: inside it
+   the bits were clipped to a box a couple of centimetres tall, so the burst
+   was over before it had cleared the bar. z-index clears the drawer's 1001.
+   scripts-2026.js positions the host over whichever bar was just filled. */
+.confetti {
+  position: fixed; left: 0; top: 0; width: 100vw; height: 0;
+  overflow: visible; pointer-events: none; z-index: 1200;
+}
 .confetti_bit {
-  position: absolute; top: -10%; width: 6px; height: 10px; opacity: 0;
-  animation: confetti-fall 1.6s cubic-bezier(.3,.7,.4,1) forwards;
+  position: absolute; top: 0; width: 6px; height: 10px; opacity: 0;
+  animation: confetti-fall 1.8s cubic-bezier(.3, .7, .4, 1) forwards;
 }
 @keyframes confetti-fall {
   0%   { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
-  100% { opacity: 0; transform: translate3d(calc(var(--drift, 0) * 40px), 220px, 0) rotate(var(--spin, 180deg)); }
+  100% { opacity: 0; transform: translate3d(calc(var(--drift, 0) * 60px), var(--fall, 240px), 0) rotate(var(--spin, 180deg)); }
 }
 @media (prefers-reduced-motion: reduce) { .confetti { display: none; } }
 
-/* The bar is the first thing in the drawer now, so it needs its own room. */
-.cart-progress { position: relative; padding: 1rem var(--site--gutter); }
+/* ---- Collection: category hero -------------------------------------------
+   Built from the collection's own image, so a new category is designed by
+   uploading a picture to it in admin. main-collection.liquid renders it only
+   when there is one; without it the page keeps its typographic intro. */
+.collection-hero {
+  position: relative;
+  /* Full width because nothing above it is constraining it: on a hero page the
+     section wrapper drops u-container and the block below the hero takes it
+     instead. See main-collection.liquid for why that beats escaping a capped
+     container with vw. */
+  width: 100%;
+  /* The height is a theme setting per page — the cart wants less of it than a
+     category does, and where exactly that lands is a judgement about the
+     photograph, not something worth a code change each time. */
+  min-height: var(--hero-height, 60svh);
+  display: flex;
+  align-items: flex-end;
+  overflow: clip;
+  color: var(--swatch--light);
+  background: var(--swatch--dark);
+  margin-bottom: clamp(2.5rem, 7vw, 6rem);
+}
+/* Without u-container on the wrapper, the padding it used to contribute has to
+   be stated: 8rem below, matching what every other collection page gets, and
+   nothing above, because the hero starts at the top of the page. */
+.page-collection.has-hero,
+.page-cart.has-hero {
+  padding-top: 0;
+  padding-bottom: var(--size--8rem);
+}
+/* The cart page's own content is not inside a u-container the way a collection
+   page's grid is, so it keeps its centring here instead. */
+.page-cart.has-hero .page-intro { padding-top: clamp(2.5rem, 6vw, 5rem); }
 
-/* Size list opened from the + on a recommendation. */
-.cart-rec_picker {
-  position: absolute; right: 0; top: calc(100% + .2rem); z-index: 4;
-  display: flex; flex-wrap: wrap; gap: .2rem; padding: .3rem;
-  background: var(--swatch--light); color: var(--swatch--dark);
-  border: 1px solid color-mix(in srgb, var(--swatch--dark) 30%, transparent);
-  min-width: 100%;
+.collection-hero_visual { position: absolute; inset: 0; }
+.collection-hero_img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Photographs are not a background colour: without a scrim the copy is legible
+   over some of them and invisible over the rest, and which one a merchant
+   uploads is not something the theme gets to decide. */
+.collection-hero_scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--swatch--dark) 74%, transparent) 0%,
+    color-mix(in srgb, var(--swatch--dark) 30%, transparent) 46%,
+    transparent 100%);
 }
-.cart-rec_size {
-  background: none; border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
-  color: inherit; font: inherit; font-size: .6rem; padding: .25rem .4rem; cursor: pointer;
-}
-.cart-rec_size:hover { background: var(--swatch--dark); color: var(--swatch--light); }
 
-/* Milestone legend: evenly spread, ends pulled inward so nothing hugs a corner. */
-.cart-milestones {
-  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
-  margin-top: .5rem; gap: .5rem;
+.collection-hero_inner {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: .55rem;
+  padding: 0 var(--site--margin) clamp(1.75rem, 4vw, 3.25rem);
 }
-.cart-milestone {
-  display: flex; flex-direction: column; gap: .05rem;
-  opacity: .4; transition: opacity 400ms ease; white-space: nowrap;
+.collection-hero_eyebrow { margin: 0; font-size: .72rem; opacity: .75; }
+.collection-hero_title {
+  margin: 0;
+  font-family: var(--_typography---font--secondary-family, inherit);
+  font-size: var(--_typography---font-size--h1, 2.625rem);
+  line-height: 1.02;
+  color: var(--swatch--light);
 }
-.cart-milestone:first-child { align-items: flex-start; text-align: left; }
-.cart-milestone:last-child { align-items: flex-end; text-align: right; }
-.cart-milestone:only-child { align-items: center; text-align: center; }
-.cart-milestone.is-reached { opacity: 1; }
-.cart-milestone_amount { font-size: .62rem; }
-.cart-milestone_label { font-size: .6rem; opacity: .7; }
+.collection-hero_meta {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: var(--site--gutter); margin-top: .35rem;
+}
+.collection-hero_text {
+  margin: 0; max-width: 38ch; font-size: .82rem; line-height: 1.5; opacity: .85;
+}
+.collection-hero_count { margin: 0; font-size: .72rem; flex: none; }
 
-/* The status line reads as a caption for the bar, so centre it with the bar. */
-.cart-progress_text { text-align: center; }
-.cart-promo { text-align: center; }
+/* The cart is somewhere you pass through, so it gets the hero turned down
+   rather than a full screen of photograph between a shopper and their basket. */
+.collection-hero.is-compact { min-height: var(--hero-height, 45svh); }
+.collection-hero.is-centered { align-items: center; }
+.collection-hero.is-centered .collection-hero_inner {
+  align-items: center; text-align: center;
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+  padding-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* The cart page is not a 480px drawer: its recommendations sit in half a page
+   and looked like the drawer's rail shrunk into a corner. Give them the room
+   they have. */
+@media only screen and (min-width: 992px) {
+  .page-cart .cart-recs_list { grid-auto-columns: minmax(15rem, 1fr); gap: var(--site--gutter); }
+  .page-cart .cart-rec { padding: .5rem; gap: .7rem; }
+  .page-cart .cart-rec_img { width: 4.5rem; height: 5.6rem; }
+  .page-cart .cart-rec_title { font-size: .8rem; }
+  .page-cart .cart-rec_price { font-size: .75rem; }
+  .page-cart .cart-rec_add { width: 2.1rem; height: 2.1rem; font-size: 1.1rem; }
+  .page-cart .cart-recs_heading { font-size: .78rem; margin-bottom: .9rem; }
+}
+
+@media only screen and (max-width: 767px) {
+  .collection-hero { min-height: var(--hero-height, 60svh); }
+  .collection-hero.is-compact { min-height: var(--hero-height, 38svh); }
+  .collection-hero_meta { flex-direction: column; align-items: flex-start; gap: .45rem; }
+  .collection-hero_text { max-width: none; }
+}
+
+/* The "more products" row under a product page had no heading at all, so it
+   read as the page having simply continued into another grid. */
+.single-product-heading {
+  padding: 0 var(--site--margin);
+  margin-bottom: var(--size--1-25rem, 1.25rem);
+}
+.single-product-heading p { margin: 0; opacity: .55; }
+
+
+/* --- Product cards: hover shows the second image ------------------------
+   styles.css put :hover on the hover image itself, but an overlay link sits
+   above it on both card styles, so the image never received the pointer and
+   the second picture (the back of a tee) never showed. Hover the wrapper —
+   that element does get the pointer. */
+.product-img_wrap:hover .product-hover_img { opacity: 1; }
+
+/* --- Collection grid: two across on phones -------------------------------
+   .u-grid-desktop collapses to a flex column under 992px, which stacked one
+   card per row into a very long scroll. u-column-4 spans four tracks of a
+   twelve-track grid; in a two-track grid that span overflows, so it is reset. */
+@media only screen and (max-width: 991px) {
+  .product-col_list.u-grid-desktop {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--site--gutter);
+    row-gap: calc(var(--site--gutter) * 3);
+  }
+  .product-col_list .product-col_item.u-column-4 { grid-column: auto; width: 100%; }
+}
+
+/* --- Collection toolbar: sort and filter, top right ---------------------- */
+.collection-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 0 1.25rem;
+}
+.collection-toolbar_sort { display: inline-flex; align-items: center; gap: .5rem; }
+.collection-toolbar_select {
+  font: inherit; color: inherit; background: transparent; cursor: pointer;
+  border: 0; border-bottom: 1px solid currentColor; border-radius: 0;
+  padding: .35rem 0; text-transform: uppercase;
+}
+.collection-toolbar_filter {
+  display: none; font: inherit; color: inherit; background: transparent; cursor: pointer;
+  border: 1px solid currentColor; border-radius: 0; padding: .5rem .9rem;
+}
+/* With the rail on the left, the toolbar takes the full first row above both. */
+@media only screen and (min-width: 992px) {
+  .collection-layout.has-filters .collection-toolbar { grid-column: 1 / -1; }
+}
+@media only screen and (max-width: 991px) {
+  .collection-toolbar { padding: 0 var(--site--margin) 1.25rem; }
+  .collection-toolbar_filter { display: inline-flex; align-items: center; gap: .5rem; }
+  /* Toolbar, then the rail (its form only shows once opened), then the grid —
+     so an opened filter drops in between the controls and the products. */
+  .collection-layout.has-filters { display: flex; flex-direction: column; }
+}
