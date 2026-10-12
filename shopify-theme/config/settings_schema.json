@@ -194,8 +194,14 @@
       {
         "type": "color",
         "id": "color_sale",
-        "label": "Sale price and discount",
+        "label": "Sale price",
         "default": "#d62d20"
+      },
+      {
+        "type": "color",
+        "id": "color_sale_badge",
+        "label": "Save badge on product photos",
+        "default": "#050fff"
       }
     ]
   },

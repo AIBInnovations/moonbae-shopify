@@ -1,6 +1,6 @@
 {%- comment -%}
   One badge on a product photo, in this order: Sold out; the discount
-  ("31% OFF") when a Compare-at price is set; New for a product added in the
+  ("SAVE 31%") when a Compare-at price is set; New for a product added in the
   last few days. Both are switched in Theme settings > Product badges.
 
   Params: product, class (extra classes)
@@ -26,7 +26,7 @@
 {%- if product.available == false -%}
   <span class="p-badge is-muted body-upper{% if class != blank %} {{ class }}{% endif %}">Sold out</span>
 {%- elsif off > 0 -%}
-  <span class="p-badge is-sale body-upper{% if class != blank %} {{ class }}{% endif %}">{{ off }}% off</span>
+  <span class="p-badge is-sale body-upper{% if class != blank %} {{ class }}{% endif %}">Save {{ off }}%</span>
 {%- elsif is_new -%}
   <span class="p-badge body-upper{% if class != blank %} {{ class }}{% endif %}">New</span>
 {%- endif -%}
