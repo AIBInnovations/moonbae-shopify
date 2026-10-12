@@ -1721,7 +1721,7 @@ body:has(.announcement-bar) .page_wrap {
   font-size: .68rem; line-height: 1; letter-spacing: .06em;
   pointer-events: none;
 }
-.p-badge.is-sale { background: var(--swatch--sale, #d62d20); }
+.p-badge.is-sale { background: var(--swatch--sale-badge, #050fff); font-weight: 600; }
 .p-badge.is-muted { background: #fff; color: var(--swatch--dark, #000); }
 /* Collection grid: title on the left, price on the right; a discounted price
    is longer, so it may wrap under itself rather than squeeze the title. */
