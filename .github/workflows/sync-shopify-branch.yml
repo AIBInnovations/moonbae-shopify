@@ -44,12 +44,25 @@ jobs:
           # Replace the tracked tree wholesale so deletions propagate too.
           git rm -rq --ignore-unmatch .
           cp -R "$THEME"/. .
+
+          # The build stamp is written further down, so compare against the
+          # one already on the branch: a run that changes nothing else is
+          # still a no-op.
+          if git cat-file -e origin/shopify:snippets/theme-build.liquid 2>/dev/null; then
+            git show origin/shopify:snippets/theme-build.liquid > snippets/theme-build.liquid
+          fi
           git add -A
 
           if git diff --cached --quiet; then
             echo "Theme unchanged; nothing to sync."
             exit 0
           fi
+
+          # Record which main commit the store is running. layout/theme.liquid
+          # prints it as <meta name="theme-build">, so whether a push reached
+          # the live site can be checked by looking at the page source.
+          printf '%s' "${GITHUB_SHA:0:7}" > snippets/theme-build.liquid
+          git add snippets/theme-build.liquid
 
           git commit -m "Sync theme from main@${GITHUB_SHA:0:7}"
           git push origin sync-work:shopify
