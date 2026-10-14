@@ -36,33 +36,71 @@ jobs:
           THEME="$(mktemp -d)"
           cp -R shopify-theme/. "$THEME"/
 
-          # Build on top of the existing shopify branch so commits Shopify
-          # writes back (theme editor settings) stay in history and the push
-          # is always a fast-forward — never a force.
-          git checkout -B sync-work origin/shopify
+          # The theme editor writes to the shopify branch too (Shopify commits
+          # every save there). Laying main's theme over the branch tip used to
+          # undo those saves on every sync: on 13 Oct it wiped the Razorpay
+          # Magic Checkout app embeds. So main's theme goes on top of the last
+          # sync this job made, and whatever was written to the branch since is
+          # merged back in. The same file changed on both sides stops the sync
+          # instead of picking one.
+          BASE="$(git log origin/shopify --author='github-actions\[bot\]' --grep='^Sync theme from main@' -1 --format=%H)"
+          if [ -z "$BASE" ]; then BASE="$(git rev-parse origin/shopify)"; fi
+          git checkout -B sync-work "$BASE"
 
           # Replace the tracked tree wholesale so deletions propagate too.
           git rm -rq --ignore-unmatch .
           cp -R "$THEME"/. .
+          # Only the theme folders: shopify-theme/ also holds a README and
+          # reference images that are not part of the theme.
+          find . -mindepth 1 -maxdepth 1 ! -name .git \
+            ! -name assets ! -name blocks ! -name config ! -name layout \
+            ! -name locales ! -name sections ! -name snippets ! -name templates \
+            -exec rm -rf {} +
 
           # The build stamp is written further down, so compare against the
-          # one already on the branch: a run that changes nothing else is
-          # still a no-op.
-          if git cat-file -e origin/shopify:snippets/theme-build.liquid 2>/dev/null; then
-            git show origin/shopify:snippets/theme-build.liquid > snippets/theme-build.liquid
+          # one already there: a run that changes nothing else is a no-op.
+          if git cat-file -e "$BASE":snippets/theme-build.liquid 2>/dev/null; then
+            git show "$BASE":snippets/theme-build.liquid > snippets/theme-build.liquid
           fi
           git add -A
 
-          if git diff --cached --quiet; then
+          CHANGED=0
+          if ! git diff --cached --quiet; then
+            # Record which main commit the store is running. layout/theme.liquid
+            # prints it as <meta name="theme-build">, so whether a push reached
+            # the live site can be checked by looking at the page source.
+            printf '%s' "${GITHUB_SHA:0:7}" > snippets/theme-build.liquid
+            git add snippets/theme-build.liquid
+            git commit -q -m "Sync theme from main@${GITHUB_SHA:0:7}"
+            CHANGED=1
+          fi
+
+          if [ "$(git rev-parse "$BASE")" != "$(git rev-parse origin/shopify)" ]; then
+            if ! git merge -q --no-edit -m "Keep theme editor changes (sync from main@${GITHUB_SHA:0:7})" origin/shopify; then
+              CONFLICTS="$(git diff --name-only --diff-filter=U | tr '\n' ' ')"
+              git merge --abort
+              echo "::error::The theme editor and main both changed: ${CONFLICTS}. Copy the editor's version from the shopify branch into shopify-theme/ on main, then push again."
+              exit 1
+            fi
+            CHANGED=1
+          fi
+
+          # Only theme folders belong on this branch. Anything else (a .vscode
+          # task, a public/fonts folder) did not come from main or the editor.
+          STRAY="$(git ls-files | grep -Ev '^(assets|blocks|config|layout|locales|sections|snippets|templates)/' || true)"
+          if [ -n "$STRAY" ]; then
+            echo "Removing files outside the theme folders:"
+            echo "$STRAY"
+            echo "$STRAY" | tr '\n' '\0' | xargs -0 git rm -q --
+            git commit -q -m "Remove files outside the theme folders (sync from main@${GITHUB_SHA:0:7})"
+            CHANGED=1
+          fi
+
+          if [ "$CHANGED" = 0 ]; then
             echo "Theme unchanged; nothing to sync."
             exit 0
           fi
 
-          # Record which main commit the store is running. layout/theme.liquid
-          # prints it as <meta name="theme-build">, so whether a push reached
-          # the live site can be checked by looking at the page source.
-          printf '%s' "${GITHUB_SHA:0:7}" > snippets/theme-build.liquid
-          git add snippets/theme-build.liquid
-
-          git commit -m "Sync theme from main@${GITHUB_SHA:0:7}"
+          # Always a fast-forward: sync-work contains the branch tip whenever
+          # anything was written there since the last sync.
           git push origin sync-work:shopify
