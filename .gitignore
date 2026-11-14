@@ -7,3 +7,4 @@ odd-ritual-theme.zip
 # Local tooling
 node_modules/
 .mcp.json
+config.bat
