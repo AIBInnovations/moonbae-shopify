@@ -7,3 +7,7 @@ odd-ritual-theme.zip
 # Local tooling
 node_modules/
 .mcp.json
+
+# Local image-generation working files, snapshots, and research deliverables
+/output/
+/config.bat

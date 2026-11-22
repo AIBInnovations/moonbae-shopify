@@ -1,0 +1,2232 @@
+{
+  "date": "2026-11-22",
+  "store": "moonbae.store",
+  "generator": "built-in imagegen",
+  "generated_product_images": 115,
+  "catalogue_products": 32,
+  "original_images_preserved": 64,
+  "total_product_images": 179,
+  "minimum_images_per_product": 5,
+  "metafield_types": {
+    "moonbae.model_image_men": "file_reference",
+    "moonbae.model_image_women": "file_reference"
+  },
+  "audience_bindings": [
+    {
+      "product_id": "gid://shopify/Product/8264049360958",
+      "product_handle": "denim-washed-t-shirt",
+      "product_title": "Denim Washed T-Shirt",
+      "women": {
+        "asset_key": "denim-washed-t-shirt-sofa-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947485758",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-denim-washed-t-shirt-sofa-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "denim-washed-t-shirt-reference-front-v2",
+        "file_id": "gid://shopify/MediaImage/47002752614462",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-denim-washed-t-shirt-reference-front-v2-20261122.jpg?v=1795353033",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/8264753283134",
+      "product_handle": "yapper-baby-tee",
+      "product_title": "Yapper Baby Tee",
+      "women": {
+        "asset_key": "yapper-baby-tee-additional-sofa-v3",
+        "file_id": "gid://shopify/MediaImage/47002946830398",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-yapper-baby-tee-additional-sofa-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/10311278362686",
+      "product_handle": "purple-rebirth-boxy-fit-t-shirt",
+      "product_title": "Purple Rebirth Boxy Fit T-Shirt",
+      "women": {
+        "asset_key": "purple-rebirth-boxy-fit-t-shirt-additional-lifestyle-v3",
+        "file_id": "gid://shopify/MediaImage/47002946699326",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-purple-rebirth-boxy-fit-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "purple-rebirth-boxy-fit-t-shirt-reference-front-v2",
+        "file_id": "gid://shopify/MediaImage/47002446364734",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-purple-rebirth-boxy-fit-t-shirt-reference-front-v2-20261122.jpg?v=1795351449",
+          "width": 941,
+          "height": 1672
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/10311358709822",
+      "product_handle": "narcissist-boxy-fit-t-shirt",
+      "product_title": "Narcissist Boxy Fit T-Shirt",
+      "women": {
+        "asset_key": "narcissist-boxy-fit-t-shirt-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003084619838",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-narcissist-boxy-fit-t-shirt-women-v4-20261122.jpg?v=1795354948",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "narcissist-boxy-fit-t-shirt-additional-lifestyle-v3",
+        "file_id": "gid://shopify/MediaImage/47002946732094",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-narcissist-boxy-fit-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/10313011789886",
+      "product_handle": "artist-baby-tee-red",
+      "product_title": "Artist Baby Tee Red",
+      "women": {
+        "asset_key": "artist-baby-tee-red-additional-atm-v3",
+        "file_id": "gid://shopify/MediaImage/47002946863166",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-artist-baby-tee-red-additional-atm-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/10313013100606",
+      "product_handle": "moonstruck-cat-baby-tee-white",
+      "product_title": "Moonstruck Cat Baby Tee White",
+      "women": {
+        "asset_key": "moonstruck-cat-baby-tee-white-additional-beach-v3",
+        "file_id": "gid://shopify/MediaImage/47002946895934",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-moonstruck-cat-baby-tee-white-additional-beach-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/10313015623742",
+      "product_handle": "i-am-blue-baby-tee",
+      "product_title": "I am Blue Baby Tee",
+      "women": {
+        "asset_key": "i-am-blue-baby-tee-additional-atm-v3",
+        "file_id": "gid://shopify/MediaImage/47002946928702",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-i-am-blue-baby-tee-additional-atm-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/10313016180798",
+      "product_handle": "divine-feminine-baby-tee",
+      "product_title": "Divine Feminine Baby Tee",
+      "women": {
+        "asset_key": "divine-feminine-baby-tee-additional-sofa-v3",
+        "file_id": "gid://shopify/MediaImage/47002946961470",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-divine-feminine-baby-tee-additional-sofa-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/10313017065534",
+      "product_handle": "spiderman-baby-tee-red",
+      "product_title": "Spiderman Baby Tee Red",
+      "women": {
+        "asset_key": "spiderman-baby-tee-red-additional-beach-v3",
+        "file_id": "gid://shopify/MediaImage/47002946994238",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spiderman-baby-tee-red-additional-beach-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/10313385214014",
+      "product_handle": "rizz-baby-tee-white",
+      "product_title": "Rizz Baby Tee White",
+      "women": {
+        "asset_key": "rizz-baby-tee-white-additional-sofa-v3",
+        "file_id": "gid://shopify/MediaImage/47002947027006",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-rizz-baby-tee-white-additional-sofa-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/10313449963582",
+      "product_handle": "satorn-waffle-knit-oversize-full-sleeve",
+      "product_title": "Satorn Waffle Knit Oversize Full Sleeve",
+      "women": {
+        "asset_key": "satorn-waffle-knit-oversize-full-sleeve-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056406590",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-satorn-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg?v=1795354859",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "satorn-waffle-knit-oversize-full-sleeve-chair-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947289150",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-satorn-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/10313475850302",
+      "product_handle": "angel-eye-waffle-knit-oversize-full-sleeve",
+      "product_title": "Angel Eye Waffle Knit Oversize Full Sleeve",
+      "women": {
+        "asset_key": "angel-eye-waffle-knit-oversize-full-sleeve-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056537662",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-angel-eye-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg?v=1795354860",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "angel-eye-waffle-knit-oversize-full-sleeve-chair-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947387454",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-angel-eye-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/10313476112446",
+      "product_handle": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve",
+      "product_title": "What goes around Comes around Waffle Knit Oversize Full Sleeve",
+      "women": {
+        "asset_key": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056504894",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg?v=1795354859",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-chair-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947321918",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/10313481388094",
+      "product_handle": "freedom-waffle-knit-oversize-full-sleeve",
+      "product_title": "Freedom Waffle Knit Oversize Full Sleeve",
+      "women": {
+        "asset_key": "freedom-waffle-knit-oversize-full-sleeve-reference-women-v2",
+        "file_id": "gid://shopify/MediaImage/47002752581694",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-freedom-waffle-knit-oversize-full-sleeve-reference-women-v2-20261122.jpg?v=1795353033",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "freedom-waffle-knit-oversize-full-sleeve-chair-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947420222",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-freedom-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/10317842382910",
+      "product_handle": "nevermind-boxy-fit-oversized-t-shirt",
+      "product_title": "Nevermind Boxy Fit Oversized T-shirt",
+      "women": {
+        "asset_key": "nevermind-boxy-fit-oversized-t-shirt-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003084652606",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-nevermind-boxy-fit-oversized-t-shirt-women-v4-20261122.jpg?v=1795354948",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "nevermind-boxy-fit-oversized-t-shirt-additional-lifestyle-v3",
+        "file_id": "gid://shopify/MediaImage/47002946764862",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-nevermind-boxy-fit-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/10317844250686",
+      "product_handle": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt",
+      "product_title": "God Bless Those Who Bless Others Boxy Fit Oversized T-shirt",
+      "women": {
+        "asset_key": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003121909822",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-women-v4-20261122.jpg?v=1795355149",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-additional-lifestyle-v3",
+        "file_id": "gid://shopify/MediaImage/47002946797630",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/10317851492414",
+      "product_handle": "ambitious-oversized-t-shirt",
+      "product_title": "Ambitious Oversized T-shirt",
+      "women": {
+        "asset_key": "ambitious-oversized-t-shirt-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003121942590",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-ambitious-oversized-t-shirt-women-v4-20261122.jpg?v=1795355149",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "ambitious-oversized-t-shirt-additional-lifestyle-v3",
+        "file_id": "gid://shopify/MediaImage/47002963574846",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-ambitious-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354338",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15408240656446",
+      "product_handle": "hustler-boxy-hoodie-black",
+      "product_title": "Hustler Boxy Hoodie Black",
+      "women": {
+        "asset_key": "hustler-boxy-hoodie-black-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056242750",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-hustler-boxy-hoodie-black-women-v4-20261122.jpg?v=1795354859",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "hustler-boxy-hoodie-black-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947125310",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-hustler-boxy-hoodie-black-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15408242524222",
+      "product_handle": "eyes-of-life-boxy-hoodie",
+      "product_title": "Eyes Of Life Boxy Hoodie",
+      "women": {
+        "asset_key": "eyes-of-life-boxy-hoodie-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056209982",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-eyes-of-life-boxy-hoodie-women-v4-20261122.jpg?v=1795354860",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "eyes-of-life-boxy-hoodie-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947092542",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-eyes-of-life-boxy-hoodie-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15408243638334",
+      "product_handle": "spit-the-truth-boxy-hoodie",
+      "product_title": "Spit The Truth Boxy Hoodie",
+      "women": {
+        "asset_key": "spit-the-truth-boxy-hoodie-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056275518",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spit-the-truth-boxy-hoodie-women-v4-20261122.jpg?v=1795354860",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "spit-the-truth-boxy-hoodie-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947158078",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spit-the-truth-boxy-hoodie-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15408250552382",
+      "product_handle": "i-call-it-accuracy-baby-tee",
+      "product_title": "I Call It Accuracy Baby Tee",
+      "women": {
+        "asset_key": "i-call-it-accuracy-baby-tee-additional-atm-v3",
+        "file_id": "gid://shopify/MediaImage/47002947059774",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-i-call-it-accuracy-baby-tee-additional-atm-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/15408252190782",
+      "product_handle": "mind-over-noise-boxy-fit-oversize-tee",
+      "product_title": "Mind Over Noise Boxy-Fit Oversize Tee",
+      "women": {
+        "asset_key": "mind-over-noise-boxy-fit-oversize-tee-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056472126",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-mind-over-noise-boxy-fit-oversize-tee-women-v4-20261122.jpg?v=1795354860",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "mind-over-noise-boxy-fit-oversize-tee-street-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947256382",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-mind-over-noise-boxy-fit-oversize-tee-street-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15408253501502",
+      "product_handle": "butterfly-effect-baby-tee",
+      "product_title": "Butterfly Effect Baby Tee",
+      "women": {
+        "asset_key": "butterfly-effect-baby-tee-additional-beach-v3",
+        "file_id": "gid://shopify/MediaImage/47002963640382",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-butterfly-effect-baby-tee-additional-beach-v3-20261122.jpg?v=1795354338",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": null
+    },
+    {
+      "product_id": "gid://shopify/Product/15408259072062",
+      "product_handle": "above-boxy-fit-oversized-tee",
+      "product_title": "Above Boxy Fit Oversized Tee",
+      "women": {
+        "asset_key": "above-boxy-fit-oversized-tee-additional-lifestyle-v3",
+        "file_id": "gid://shopify/MediaImage/47002963607614",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-above-boxy-fit-oversized-tee-additional-lifestyle-v3-20261122.jpg?v=1795354338",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "above-boxy-fit-oversized-tee-reference-front-v2",
+        "file_id": "gid://shopify/MediaImage/47002721812542",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-above-boxy-fit-oversized-tee-reference-front-v2-20261122.jpg?v=1795352907",
+          "width": 941,
+          "height": 1672
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15414550528062",
+      "product_handle": "dying-for-something-real-boxy-fit-hoodie",
+      "product_title": "Dying For Something Real Boxy Fit Hoodie",
+      "women": {
+        "asset_key": "dying-for-something-real-boxy-fit-hoodie-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056308286",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dying-for-something-real-boxy-fit-hoodie-women-v4-20261122.jpg?v=1795354860",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "dying-for-something-real-boxy-fit-hoodie-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947190846",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dying-for-something-real-boxy-fit-hoodie-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15414551314494",
+      "product_handle": "tat-tvam-asi-boxy-fit-hoodie",
+      "product_title": "Tat Tvam Asi Boxy Fit Hoodie",
+      "women": {
+        "asset_key": "tat-tvam-asi-boxy-fit-hoodie-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056341054",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-tat-tvam-asi-boxy-fit-hoodie-women-v4-20261122.jpg?v=1795354859",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "tat-tvam-asi-boxy-fit-hoodie-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947223614",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-tat-tvam-asi-boxy-fit-hoodie-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15414552559678",
+      "product_handle": "stoicism-sleeve-print-boxy-hoodie",
+      "product_title": "Stoicism Sleeve Print Boxy Hoodie",
+      "women": {
+        "asset_key": "stoicism-sleeve-print-boxy-hoodie-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056373822",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-stoicism-sleeve-print-boxy-hoodie-women-v4-20261122.jpg?v=1795354860",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "stoicism-sleeve-print-boxy-hoodie-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002963673150",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-stoicism-sleeve-print-boxy-hoodie-editorial-v3-20261122.jpg?v=1795354338",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15414555770942",
+      "product_handle": "know-thyself-boxy-fit-hoodie",
+      "product_title": "Know Thyself Boxy Fit Hoodie",
+      "women": {
+        "asset_key": "know-thyself-boxy-fit-hoodie-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003084685374",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-know-thyself-boxy-fit-hoodie-women-v4-20261122.jpg?v=1795354948",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "know-thyself-boxy-fit-hoodie-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002963705918",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-know-thyself-boxy-fit-hoodie-editorial-v3-20261122.jpg?v=1795354338",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15414577168446",
+      "product_handle": "dogmatic-boxy-fit-hoodie",
+      "product_title": "Dogmatic Boxy Fit Hoodie",
+      "women": {
+        "asset_key": "dogmatic-boxy-fit-hoodie-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003121975358",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dogmatic-boxy-fit-hoodie-women-v4-20261122.jpg?v=1795355149",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "dogmatic-boxy-fit-hoodie-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47003013513278",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dogmatic-boxy-fit-hoodie-editorial-v3-20261122.jpg?v=1795354639",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15417158139966",
+      "product_handle": "unisex-terry-oversized-tee",
+      "product_title": "I Was Happy Oversized Tee",
+      "women": {
+        "asset_key": "unisex-terry-oversized-tee-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056439358",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-women-v4-20261122.jpg?v=1795354860",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "unisex-terry-oversized-tee-street-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947452990",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-street-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15417158271038",
+      "product_handle": "unisex-terry-oversized-tee-1",
+      "product_title": "I Am The Edge Case Oversized Tee",
+      "women": {
+        "asset_key": "unisex-terry-oversized-tee-1-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003056570430",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-1-women-v4-20261122.jpg?v=1795354860",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "unisex-terry-oversized-tee-1-street-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947354686",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-1-street-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    },
+    {
+      "product_id": "gid://shopify/Product/15417158434878",
+      "product_handle": "unisex-terry-oversized-tee-2",
+      "product_title": "Claude Git Commit Oversized Tee",
+      "women": {
+        "asset_key": "unisex-terry-oversized-tee-2-women-v4",
+        "file_id": "gid://shopify/MediaImage/47003084718142",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-2-women-v4-20261122.jpg?v=1795354948",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "woman"
+      },
+      "men": {
+        "asset_key": "unisex-terry-oversized-tee-2-street-editorial-v3",
+        "file_id": "gid://shopify/MediaImage/47002947518526",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-2-street-editorial-v3-20261122.jpg?v=1795354244",
+          "width": 1122,
+          "height": 1402
+        },
+        "model_presentation": "man"
+      }
+    }
+  ],
+  "product_images": [
+    {
+      "asset_key": "purple-rebirth-boxy-fit-t-shirt-reference-front-v2",
+      "product_handle": "purple-rebirth-boxy-fit-t-shirt",
+      "product_id": "gid://shopify/Product/10311278362686",
+      "file_id": "gid://shopify/MediaImage/47002446364734",
+      "filename": "moonbae-purple-rebirth-boxy-fit-t-shirt-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-purple-rebirth-boxy-fit-t-shirt-reference-front-v2-20261122.jpg?v=1795351449",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "purple-rebirth-boxy-fit-t-shirt-reference-back-v2",
+      "product_handle": "purple-rebirth-boxy-fit-t-shirt",
+      "product_id": "gid://shopify/Product/10311278362686",
+      "file_id": "gid://shopify/MediaImage/47002446397502",
+      "filename": "moonbae-purple-rebirth-boxy-fit-t-shirt-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-purple-rebirth-boxy-fit-t-shirt-reference-back-v2-20261122.jpg?v=1795351449",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "yapper-baby-tee-reference-studio-v2",
+      "product_handle": "yapper-baby-tee",
+      "product_id": "gid://shopify/Product/8264753283134",
+      "file_id": "gid://shopify/MediaImage/47002446430270",
+      "filename": "moonbae-yapper-baby-tee-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-yapper-baby-tee-reference-studio-v2-20261122.jpg?v=1795351449",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "yapper-baby-tee-reference-lifestyle-v2",
+      "product_handle": "yapper-baby-tee",
+      "product_id": "gid://shopify/Product/8264753283134",
+      "file_id": "gid://shopify/MediaImage/47002446463038",
+      "filename": "moonbae-yapper-baby-tee-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-yapper-baby-tee-reference-lifestyle-v2-20261122.jpg?v=1795351449",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "eyes-of-life-boxy-hoodie-reference-front-v2",
+      "product_handle": "eyes-of-life-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15408242524222",
+      "file_id": "gid://shopify/MediaImage/47002446495806",
+      "filename": "moonbae-eyes-of-life-boxy-hoodie-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-eyes-of-life-boxy-hoodie-reference-front-v2-20261122.jpg?v=1795351449",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "eyes-of-life-boxy-hoodie-reference-back-v2",
+      "product_handle": "eyes-of-life-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15408242524222",
+      "file_id": "gid://shopify/MediaImage/47002446528574",
+      "filename": "moonbae-eyes-of-life-boxy-hoodie-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-eyes-of-life-boxy-hoodie-reference-back-v2-20261122.jpg?v=1795351449",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "hustler-boxy-hoodie-black-reference-front-v2",
+      "product_handle": "hustler-boxy-hoodie-black",
+      "product_id": "gid://shopify/Product/15408240656446",
+      "file_id": "gid://shopify/MediaImage/47002446561342",
+      "filename": "moonbae-hustler-boxy-hoodie-black-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-hustler-boxy-hoodie-black-reference-front-v2-20261122.jpg?v=1795351449",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "satorn-waffle-knit-oversize-full-sleeve-reference-front-v2",
+      "product_handle": "satorn-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313449963582",
+      "file_id": "gid://shopify/MediaImage/47002446594110",
+      "filename": "moonbae-satorn-waffle-knit-oversize-full-sleeve-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-satorn-waffle-knit-oversize-full-sleeve-reference-front-v2-20261122.jpg?v=1795351449",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "narcissist-boxy-fit-t-shirt-reference-front-v2",
+      "product_handle": "narcissist-boxy-fit-t-shirt",
+      "product_id": "gid://shopify/Product/10311358709822",
+      "file_id": "gid://shopify/MediaImage/47002721550398",
+      "filename": "moonbae-narcissist-boxy-fit-t-shirt-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-narcissist-boxy-fit-t-shirt-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "narcissist-boxy-fit-t-shirt-reference-back-v2",
+      "product_handle": "narcissist-boxy-fit-t-shirt",
+      "product_id": "gid://shopify/Product/10311358709822",
+      "file_id": "gid://shopify/MediaImage/47002721583166",
+      "filename": "moonbae-narcissist-boxy-fit-t-shirt-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-narcissist-boxy-fit-t-shirt-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "nevermind-boxy-fit-oversized-t-shirt-reference-front-v2",
+      "product_handle": "nevermind-boxy-fit-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317842382910",
+      "file_id": "gid://shopify/MediaImage/47002721615934",
+      "filename": "moonbae-nevermind-boxy-fit-oversized-t-shirt-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-nevermind-boxy-fit-oversized-t-shirt-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "nevermind-boxy-fit-oversized-t-shirt-reference-back-v2",
+      "product_handle": "nevermind-boxy-fit-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317842382910",
+      "file_id": "gid://shopify/MediaImage/47002721648702",
+      "filename": "moonbae-nevermind-boxy-fit-oversized-t-shirt-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-nevermind-boxy-fit-oversized-t-shirt-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-reference-front-v2",
+      "product_handle": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317844250686",
+      "file_id": "gid://shopify/MediaImage/47002721681470",
+      "filename": "moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-reference-back-v2",
+      "product_handle": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317844250686",
+      "file_id": "gid://shopify/MediaImage/47002721714238",
+      "filename": "moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "ambitious-oversized-t-shirt-reference-front-v2",
+      "product_handle": "ambitious-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317851492414",
+      "file_id": "gid://shopify/MediaImage/47002721747006",
+      "filename": "moonbae-ambitious-oversized-t-shirt-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-ambitious-oversized-t-shirt-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "ambitious-oversized-t-shirt-reference-back-v2",
+      "product_handle": "ambitious-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317851492414",
+      "file_id": "gid://shopify/MediaImage/47002721779774",
+      "filename": "moonbae-ambitious-oversized-t-shirt-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-ambitious-oversized-t-shirt-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "above-boxy-fit-oversized-tee-reference-front-v2",
+      "product_handle": "above-boxy-fit-oversized-tee",
+      "product_id": "gid://shopify/Product/15408259072062",
+      "file_id": "gid://shopify/MediaImage/47002721812542",
+      "filename": "moonbae-above-boxy-fit-oversized-tee-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-above-boxy-fit-oversized-tee-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "above-boxy-fit-oversized-tee-reference-back-v2",
+      "product_handle": "above-boxy-fit-oversized-tee",
+      "product_id": "gid://shopify/Product/15408259072062",
+      "file_id": "gid://shopify/MediaImage/47002721845310",
+      "filename": "moonbae-above-boxy-fit-oversized-tee-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-above-boxy-fit-oversized-tee-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "artist-baby-tee-red-reference-studio-v2",
+      "product_handle": "artist-baby-tee-red",
+      "product_id": "gid://shopify/Product/10313011789886",
+      "file_id": "gid://shopify/MediaImage/47002721878078",
+      "filename": "moonbae-artist-baby-tee-red-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-artist-baby-tee-red-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "artist-baby-tee-red-reference-lifestyle-v2",
+      "product_handle": "artist-baby-tee-red",
+      "product_id": "gid://shopify/Product/10313011789886",
+      "file_id": "gid://shopify/MediaImage/47002721910846",
+      "filename": "moonbae-artist-baby-tee-red-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-artist-baby-tee-red-reference-lifestyle-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "moonstruck-cat-baby-tee-white-reference-studio-v2",
+      "product_handle": "moonstruck-cat-baby-tee-white",
+      "product_id": "gid://shopify/Product/10313013100606",
+      "file_id": "gid://shopify/MediaImage/47002721943614",
+      "filename": "moonbae-moonstruck-cat-baby-tee-white-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-moonstruck-cat-baby-tee-white-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "moonstruck-cat-baby-tee-white-reference-lifestyle-v2",
+      "product_handle": "moonstruck-cat-baby-tee-white",
+      "product_id": "gid://shopify/Product/10313013100606",
+      "file_id": "gid://shopify/MediaImage/47002721976382",
+      "filename": "moonbae-moonstruck-cat-baby-tee-white-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-moonstruck-cat-baby-tee-white-reference-lifestyle-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "i-am-blue-baby-tee-reference-studio-v2",
+      "product_handle": "i-am-blue-baby-tee",
+      "product_id": "gid://shopify/Product/10313015623742",
+      "file_id": "gid://shopify/MediaImage/47002722009150",
+      "filename": "moonbae-i-am-blue-baby-tee-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-i-am-blue-baby-tee-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "i-am-blue-baby-tee-reference-lifestyle-v2",
+      "product_handle": "i-am-blue-baby-tee",
+      "product_id": "gid://shopify/Product/10313015623742",
+      "file_id": "gid://shopify/MediaImage/47002722041918",
+      "filename": "moonbae-i-am-blue-baby-tee-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-i-am-blue-baby-tee-reference-lifestyle-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "butterfly-effect-baby-tee-reference-studio-v2",
+      "product_handle": "butterfly-effect-baby-tee",
+      "product_id": "gid://shopify/Product/15408253501502",
+      "file_id": "gid://shopify/MediaImage/47002722074686",
+      "filename": "moonbae-butterfly-effect-baby-tee-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-butterfly-effect-baby-tee-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "butterfly-effect-baby-tee-reference-lifestyle-v2",
+      "product_handle": "butterfly-effect-baby-tee",
+      "product_id": "gid://shopify/Product/15408253501502",
+      "file_id": "gid://shopify/MediaImage/47002722107454",
+      "filename": "moonbae-butterfly-effect-baby-tee-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-butterfly-effect-baby-tee-reference-lifestyle-v2-20261122.jpg?v=1795352907",
+        "width": 1021,
+        "height": 1540
+      }
+    },
+    {
+      "asset_key": "divine-feminine-baby-tee-reference-studio-v2",
+      "product_handle": "divine-feminine-baby-tee",
+      "product_id": "gid://shopify/Product/10313016180798",
+      "file_id": "gid://shopify/MediaImage/47002722140222",
+      "filename": "moonbae-divine-feminine-baby-tee-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-divine-feminine-baby-tee-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "divine-feminine-baby-tee-reference-lifestyle-v2",
+      "product_handle": "divine-feminine-baby-tee",
+      "product_id": "gid://shopify/Product/10313016180798",
+      "file_id": "gid://shopify/MediaImage/47002722172990",
+      "filename": "moonbae-divine-feminine-baby-tee-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-divine-feminine-baby-tee-reference-lifestyle-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "spiderman-baby-tee-red-reference-studio-v2",
+      "product_handle": "spiderman-baby-tee-red",
+      "product_id": "gid://shopify/Product/10313017065534",
+      "file_id": "gid://shopify/MediaImage/47002722205758",
+      "filename": "moonbae-spiderman-baby-tee-red-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spiderman-baby-tee-red-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "spiderman-baby-tee-red-reference-lifestyle-v2",
+      "product_handle": "spiderman-baby-tee-red",
+      "product_id": "gid://shopify/Product/10313017065534",
+      "file_id": "gid://shopify/MediaImage/47002722238526",
+      "filename": "moonbae-spiderman-baby-tee-red-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spiderman-baby-tee-red-reference-lifestyle-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "rizz-baby-tee-white-reference-studio-v2",
+      "product_handle": "rizz-baby-tee-white",
+      "product_id": "gid://shopify/Product/10313385214014",
+      "file_id": "gid://shopify/MediaImage/47002722271294",
+      "filename": "moonbae-rizz-baby-tee-white-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-rizz-baby-tee-white-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "rizz-baby-tee-white-reference-lifestyle-v2",
+      "product_handle": "rizz-baby-tee-white",
+      "product_id": "gid://shopify/Product/10313385214014",
+      "file_id": "gid://shopify/MediaImage/47002722304062",
+      "filename": "moonbae-rizz-baby-tee-white-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-rizz-baby-tee-white-reference-lifestyle-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "i-call-it-accuracy-baby-tee-reference-studio-v2",
+      "product_handle": "i-call-it-accuracy-baby-tee",
+      "product_id": "gid://shopify/Product/15408250552382",
+      "file_id": "gid://shopify/MediaImage/47002722336830",
+      "filename": "moonbae-i-call-it-accuracy-baby-tee-reference-studio-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-i-call-it-accuracy-baby-tee-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "i-call-it-accuracy-baby-tee-reference-lifestyle-v2",
+      "product_handle": "i-call-it-accuracy-baby-tee",
+      "product_id": "gid://shopify/Product/15408250552382",
+      "file_id": "gid://shopify/MediaImage/47002722369598",
+      "filename": "moonbae-i-call-it-accuracy-baby-tee-reference-lifestyle-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-i-call-it-accuracy-baby-tee-reference-lifestyle-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "hustler-boxy-hoodie-black-reference-back-v2",
+      "product_handle": "hustler-boxy-hoodie-black",
+      "product_id": "gid://shopify/Product/15408240656446",
+      "file_id": "gid://shopify/MediaImage/47002722402366",
+      "filename": "moonbae-hustler-boxy-hoodie-black-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-hustler-boxy-hoodie-black-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "spit-the-truth-boxy-hoodie-reference-front-v2",
+      "product_handle": "spit-the-truth-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15408243638334",
+      "file_id": "gid://shopify/MediaImage/47002722435134",
+      "filename": "moonbae-spit-the-truth-boxy-hoodie-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spit-the-truth-boxy-hoodie-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "spit-the-truth-boxy-hoodie-reference-back-v2",
+      "product_handle": "spit-the-truth-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15408243638334",
+      "file_id": "gid://shopify/MediaImage/47002722467902",
+      "filename": "moonbae-spit-the-truth-boxy-hoodie-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spit-the-truth-boxy-hoodie-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "dying-for-something-real-boxy-fit-hoodie-reference-front-v2",
+      "product_handle": "dying-for-something-real-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414550528062",
+      "file_id": "gid://shopify/MediaImage/47002722500670",
+      "filename": "moonbae-dying-for-something-real-boxy-fit-hoodie-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dying-for-something-real-boxy-fit-hoodie-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "dying-for-something-real-boxy-fit-hoodie-reference-back-v2",
+      "product_handle": "dying-for-something-real-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414550528062",
+      "file_id": "gid://shopify/MediaImage/47002722533438",
+      "filename": "moonbae-dying-for-something-real-boxy-fit-hoodie-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dying-for-something-real-boxy-fit-hoodie-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "tat-tvam-asi-boxy-fit-hoodie-reference-front-v2",
+      "product_handle": "tat-tvam-asi-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414551314494",
+      "file_id": "gid://shopify/MediaImage/47002722566206",
+      "filename": "moonbae-tat-tvam-asi-boxy-fit-hoodie-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-tat-tvam-asi-boxy-fit-hoodie-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "tat-tvam-asi-boxy-fit-hoodie-reference-back-v2",
+      "product_handle": "tat-tvam-asi-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414551314494",
+      "file_id": "gid://shopify/MediaImage/47002722598974",
+      "filename": "moonbae-tat-tvam-asi-boxy-fit-hoodie-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-tat-tvam-asi-boxy-fit-hoodie-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "stoicism-sleeve-print-boxy-hoodie-reference-front-v2",
+      "product_handle": "stoicism-sleeve-print-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15414552559678",
+      "file_id": "gid://shopify/MediaImage/47002722631742",
+      "filename": "moonbae-stoicism-sleeve-print-boxy-hoodie-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-stoicism-sleeve-print-boxy-hoodie-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "know-thyself-boxy-fit-hoodie-reference-front-v2",
+      "product_handle": "know-thyself-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414555770942",
+      "file_id": "gid://shopify/MediaImage/47002722664510",
+      "filename": "moonbae-know-thyself-boxy-fit-hoodie-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-know-thyself-boxy-fit-hoodie-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "know-thyself-boxy-fit-hoodie-reference-back-v2",
+      "product_handle": "know-thyself-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414555770942",
+      "file_id": "gid://shopify/MediaImage/47002722697278",
+      "filename": "moonbae-know-thyself-boxy-fit-hoodie-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-know-thyself-boxy-fit-hoodie-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "dogmatic-boxy-fit-hoodie-reference-front-v2",
+      "product_handle": "dogmatic-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414577168446",
+      "file_id": "gid://shopify/MediaImage/47002722730046",
+      "filename": "moonbae-dogmatic-boxy-fit-hoodie-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dogmatic-boxy-fit-hoodie-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "dogmatic-boxy-fit-hoodie-reference-back-v2",
+      "product_handle": "dogmatic-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414577168446",
+      "file_id": "gid://shopify/MediaImage/47002722762814",
+      "filename": "moonbae-dogmatic-boxy-fit-hoodie-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dogmatic-boxy-fit-hoodie-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-reference-front-v2",
+      "product_handle": "unisex-terry-oversized-tee",
+      "product_id": "gid://shopify/Product/15417158139966",
+      "file_id": "gid://shopify/MediaImage/47002722795582",
+      "filename": "moonbae-unisex-terry-oversized-tee-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-reference-front-v2-20261122.jpg?v=1795353866",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-reference-back-v2",
+      "product_handle": "unisex-terry-oversized-tee",
+      "product_id": "gid://shopify/Product/15417158139966",
+      "file_id": "gid://shopify/MediaImage/47002722828350",
+      "filename": "moonbae-unisex-terry-oversized-tee-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "freedom-waffle-knit-oversize-full-sleeve-reference-studio-v2",
+      "product_handle": "freedom-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313481388094",
+      "file_id": "gid://shopify/MediaImage/47002722861118",
+      "filename": "moonbae-freedom-waffle-knit-oversize-full-sleeve-reference-studio-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-freedom-waffle-knit-oversize-full-sleeve-reference-studio-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "angel-eye-waffle-knit-oversize-full-sleeve-reference-front-v2",
+      "product_handle": "angel-eye-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313475850302",
+      "file_id": "gid://shopify/MediaImage/47002722893886",
+      "filename": "moonbae-angel-eye-waffle-knit-oversize-full-sleeve-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-angel-eye-waffle-knit-oversize-full-sleeve-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "denim-washed-t-shirt-reference-back-v2",
+      "product_handle": "denim-washed-t-shirt",
+      "product_id": "gid://shopify/Product/8264049360958",
+      "file_id": "gid://shopify/MediaImage/47002722926654",
+      "filename": "moonbae-denim-washed-t-shirt-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-denim-washed-t-shirt-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-reference-front-v2",
+      "product_handle": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313476112446",
+      "file_id": "gid://shopify/MediaImage/47002722959422",
+      "filename": "moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 941,
+        "height": 1672
+      }
+    },
+    {
+      "asset_key": "satorn-waffle-knit-oversize-full-sleeve-reference-back-v2",
+      "product_handle": "satorn-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313449963582",
+      "file_id": "gid://shopify/MediaImage/47002722992190",
+      "filename": "moonbae-satorn-waffle-knit-oversize-full-sleeve-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-satorn-waffle-knit-oversize-full-sleeve-reference-back-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "mind-over-noise-boxy-fit-oversize-tee-reference-front-v2",
+      "product_handle": "mind-over-noise-boxy-fit-oversize-tee",
+      "product_id": "gid://shopify/Product/15408252190782",
+      "file_id": "gid://shopify/MediaImage/47002723024958",
+      "filename": "moonbae-mind-over-noise-boxy-fit-oversize-tee-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-mind-over-noise-boxy-fit-oversize-tee-reference-front-v2-20261122.jpg?v=1795352907",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-1-reference-front-v2",
+      "product_handle": "unisex-terry-oversized-tee-1",
+      "product_id": "gid://shopify/Product/15417158271038",
+      "file_id": "gid://shopify/MediaImage/47002752483390",
+      "filename": "moonbae-unisex-terry-oversized-tee-1-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-1-reference-front-v2-20261122.jpg?v=1795353866",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-1-reference-back-v2",
+      "product_handle": "unisex-terry-oversized-tee-1",
+      "product_id": "gid://shopify/Product/15417158271038",
+      "file_id": "gid://shopify/MediaImage/47002752516158",
+      "filename": "moonbae-unisex-terry-oversized-tee-1-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-1-reference-back-v2-20261122.jpg?v=1795353033",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-reference-back-v2",
+      "product_handle": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313476112446",
+      "file_id": "gid://shopify/MediaImage/47002752548926",
+      "filename": "moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-reference-back-v2-20261122.jpg?v=1795353033",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "freedom-waffle-knit-oversize-full-sleeve-reference-women-v2",
+      "product_handle": "freedom-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313481388094",
+      "file_id": "gid://shopify/MediaImage/47002752581694",
+      "filename": "moonbae-freedom-waffle-knit-oversize-full-sleeve-reference-women-v2-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-freedom-waffle-knit-oversize-full-sleeve-reference-women-v2-20261122.jpg?v=1795353033",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "denim-washed-t-shirt-reference-front-v2",
+      "product_handle": "denim-washed-t-shirt",
+      "product_id": "gid://shopify/Product/8264049360958",
+      "file_id": "gid://shopify/MediaImage/47002752614462",
+      "filename": "moonbae-denim-washed-t-shirt-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-denim-washed-t-shirt-reference-front-v2-20261122.jpg?v=1795353033",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "freedom-waffle-knit-oversize-full-sleeve-reference-seated-v2",
+      "product_handle": "freedom-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313481388094",
+      "file_id": "gid://shopify/MediaImage/47002752647230",
+      "filename": "moonbae-freedom-waffle-knit-oversize-full-sleeve-reference-seated-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-freedom-waffle-knit-oversize-full-sleeve-reference-seated-v2-20261122.jpg?v=1795353033",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "mind-over-noise-boxy-fit-oversize-tee-reference-back-v2",
+      "product_handle": "mind-over-noise-boxy-fit-oversize-tee",
+      "product_id": "gid://shopify/Product/15408252190782",
+      "file_id": "gid://shopify/MediaImage/47002752679998",
+      "filename": "moonbae-mind-over-noise-boxy-fit-oversize-tee-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-mind-over-noise-boxy-fit-oversize-tee-reference-back-v2-20261122.jpg?v=1795353033",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "angel-eye-waffle-knit-oversize-full-sleeve-reference-back-v2",
+      "product_handle": "angel-eye-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313475850302",
+      "file_id": "gid://shopify/MediaImage/47002752712766",
+      "filename": "moonbae-angel-eye-waffle-knit-oversize-full-sleeve-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-angel-eye-waffle-knit-oversize-full-sleeve-reference-back-v2-20261122.jpg?v=1795353033",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-2-reference-front-v2",
+      "product_handle": "unisex-terry-oversized-tee-2",
+      "product_id": "gid://shopify/Product/15417158434878",
+      "file_id": "gid://shopify/MediaImage/47002804224062",
+      "filename": "moonbae-unisex-terry-oversized-tee-2-reference-front-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-2-reference-front-v2-20261122.jpg?v=1795353364",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-2-reference-back-v2",
+      "product_handle": "unisex-terry-oversized-tee-2",
+      "product_id": "gid://shopify/Product/15417158434878",
+      "file_id": "gid://shopify/MediaImage/47002804256830",
+      "filename": "moonbae-unisex-terry-oversized-tee-2-reference-back-v2-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-2-reference-back-v2-20261122.jpg?v=1795353364",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "purple-rebirth-boxy-fit-t-shirt-additional-lifestyle-v3",
+      "product_handle": "purple-rebirth-boxy-fit-t-shirt",
+      "product_id": "gid://shopify/Product/10311278362686",
+      "file_id": "gid://shopify/MediaImage/47002946699326",
+      "filename": "moonbae-purple-rebirth-boxy-fit-t-shirt-additional-lifestyle-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-purple-rebirth-boxy-fit-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "narcissist-boxy-fit-t-shirt-additional-lifestyle-v3",
+      "product_handle": "narcissist-boxy-fit-t-shirt",
+      "product_id": "gid://shopify/Product/10311358709822",
+      "file_id": "gid://shopify/MediaImage/47002946732094",
+      "filename": "moonbae-narcissist-boxy-fit-t-shirt-additional-lifestyle-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-narcissist-boxy-fit-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "nevermind-boxy-fit-oversized-t-shirt-additional-lifestyle-v3",
+      "product_handle": "nevermind-boxy-fit-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317842382910",
+      "file_id": "gid://shopify/MediaImage/47002946764862",
+      "filename": "moonbae-nevermind-boxy-fit-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-nevermind-boxy-fit-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-additional-lifestyle-v3",
+      "product_handle": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317844250686",
+      "file_id": "gid://shopify/MediaImage/47002946797630",
+      "filename": "moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "yapper-baby-tee-additional-sofa-v3",
+      "product_handle": "yapper-baby-tee",
+      "product_id": "gid://shopify/Product/8264753283134",
+      "file_id": "gid://shopify/MediaImage/47002946830398",
+      "filename": "moonbae-yapper-baby-tee-additional-sofa-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-yapper-baby-tee-additional-sofa-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "artist-baby-tee-red-additional-atm-v3",
+      "product_handle": "artist-baby-tee-red",
+      "product_id": "gid://shopify/Product/10313011789886",
+      "file_id": "gid://shopify/MediaImage/47002946863166",
+      "filename": "moonbae-artist-baby-tee-red-additional-atm-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-artist-baby-tee-red-additional-atm-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "moonstruck-cat-baby-tee-white-additional-beach-v3",
+      "product_handle": "moonstruck-cat-baby-tee-white",
+      "product_id": "gid://shopify/Product/10313013100606",
+      "file_id": "gid://shopify/MediaImage/47002946895934",
+      "filename": "moonbae-moonstruck-cat-baby-tee-white-additional-beach-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-moonstruck-cat-baby-tee-white-additional-beach-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "i-am-blue-baby-tee-additional-atm-v3",
+      "product_handle": "i-am-blue-baby-tee",
+      "product_id": "gid://shopify/Product/10313015623742",
+      "file_id": "gid://shopify/MediaImage/47002946928702",
+      "filename": "moonbae-i-am-blue-baby-tee-additional-atm-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-i-am-blue-baby-tee-additional-atm-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "divine-feminine-baby-tee-additional-sofa-v3",
+      "product_handle": "divine-feminine-baby-tee",
+      "product_id": "gid://shopify/Product/10313016180798",
+      "file_id": "gid://shopify/MediaImage/47002946961470",
+      "filename": "moonbae-divine-feminine-baby-tee-additional-sofa-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-divine-feminine-baby-tee-additional-sofa-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "spiderman-baby-tee-red-additional-beach-v3",
+      "product_handle": "spiderman-baby-tee-red",
+      "product_id": "gid://shopify/Product/10313017065534",
+      "file_id": "gid://shopify/MediaImage/47002946994238",
+      "filename": "moonbae-spiderman-baby-tee-red-additional-beach-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spiderman-baby-tee-red-additional-beach-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "rizz-baby-tee-white-additional-sofa-v3",
+      "product_handle": "rizz-baby-tee-white",
+      "product_id": "gid://shopify/Product/10313385214014",
+      "file_id": "gid://shopify/MediaImage/47002947027006",
+      "filename": "moonbae-rizz-baby-tee-white-additional-sofa-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-rizz-baby-tee-white-additional-sofa-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "i-call-it-accuracy-baby-tee-additional-atm-v3",
+      "product_handle": "i-call-it-accuracy-baby-tee",
+      "product_id": "gid://shopify/Product/15408250552382",
+      "file_id": "gid://shopify/MediaImage/47002947059774",
+      "filename": "moonbae-i-call-it-accuracy-baby-tee-additional-atm-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-i-call-it-accuracy-baby-tee-additional-atm-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "eyes-of-life-boxy-hoodie-editorial-v3",
+      "product_handle": "eyes-of-life-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15408242524222",
+      "file_id": "gid://shopify/MediaImage/47002947092542",
+      "filename": "moonbae-eyes-of-life-boxy-hoodie-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-eyes-of-life-boxy-hoodie-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "hustler-boxy-hoodie-black-editorial-v3",
+      "product_handle": "hustler-boxy-hoodie-black",
+      "product_id": "gid://shopify/Product/15408240656446",
+      "file_id": "gid://shopify/MediaImage/47002947125310",
+      "filename": "moonbae-hustler-boxy-hoodie-black-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-hustler-boxy-hoodie-black-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "spit-the-truth-boxy-hoodie-editorial-v3",
+      "product_handle": "spit-the-truth-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15408243638334",
+      "file_id": "gid://shopify/MediaImage/47002947158078",
+      "filename": "moonbae-spit-the-truth-boxy-hoodie-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spit-the-truth-boxy-hoodie-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "dying-for-something-real-boxy-fit-hoodie-editorial-v3",
+      "product_handle": "dying-for-something-real-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414550528062",
+      "file_id": "gid://shopify/MediaImage/47002947190846",
+      "filename": "moonbae-dying-for-something-real-boxy-fit-hoodie-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dying-for-something-real-boxy-fit-hoodie-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "tat-tvam-asi-boxy-fit-hoodie-editorial-v3",
+      "product_handle": "tat-tvam-asi-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414551314494",
+      "file_id": "gid://shopify/MediaImage/47002947223614",
+      "filename": "moonbae-tat-tvam-asi-boxy-fit-hoodie-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-tat-tvam-asi-boxy-fit-hoodie-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "mind-over-noise-boxy-fit-oversize-tee-street-editorial-v3",
+      "product_handle": "mind-over-noise-boxy-fit-oversize-tee",
+      "product_id": "gid://shopify/Product/15408252190782",
+      "file_id": "gid://shopify/MediaImage/47002947256382",
+      "filename": "moonbae-mind-over-noise-boxy-fit-oversize-tee-street-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-mind-over-noise-boxy-fit-oversize-tee-street-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "satorn-waffle-knit-oversize-full-sleeve-chair-editorial-v3",
+      "product_handle": "satorn-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313449963582",
+      "file_id": "gid://shopify/MediaImage/47002947289150",
+      "filename": "moonbae-satorn-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-satorn-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-chair-editorial-v3",
+      "product_handle": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313476112446",
+      "file_id": "gid://shopify/MediaImage/47002947321918",
+      "filename": "moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-1-street-editorial-v3",
+      "product_handle": "unisex-terry-oversized-tee-1",
+      "product_id": "gid://shopify/Product/15417158271038",
+      "file_id": "gid://shopify/MediaImage/47002947354686",
+      "filename": "moonbae-unisex-terry-oversized-tee-1-street-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-1-street-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "angel-eye-waffle-knit-oversize-full-sleeve-chair-editorial-v3",
+      "product_handle": "angel-eye-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313475850302",
+      "file_id": "gid://shopify/MediaImage/47002947387454",
+      "filename": "moonbae-angel-eye-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-angel-eye-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "freedom-waffle-knit-oversize-full-sleeve-chair-editorial-v3",
+      "product_handle": "freedom-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313481388094",
+      "file_id": "gid://shopify/MediaImage/47002947420222",
+      "filename": "moonbae-freedom-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-freedom-waffle-knit-oversize-full-sleeve-chair-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-street-editorial-v3",
+      "product_handle": "unisex-terry-oversized-tee",
+      "product_id": "gid://shopify/Product/15417158139966",
+      "file_id": "gid://shopify/MediaImage/47002947452990",
+      "filename": "moonbae-unisex-terry-oversized-tee-street-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-street-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "denim-washed-t-shirt-sofa-editorial-v3",
+      "product_handle": "denim-washed-t-shirt",
+      "product_id": "gid://shopify/Product/8264049360958",
+      "file_id": "gid://shopify/MediaImage/47002947485758",
+      "filename": "moonbae-denim-washed-t-shirt-sofa-editorial-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-denim-washed-t-shirt-sofa-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-2-street-editorial-v3",
+      "product_handle": "unisex-terry-oversized-tee-2",
+      "product_id": "gid://shopify/Product/15417158434878",
+      "file_id": "gid://shopify/MediaImage/47002947518526",
+      "filename": "moonbae-unisex-terry-oversized-tee-2-street-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-2-street-editorial-v3-20261122.jpg?v=1795354244",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "ambitious-oversized-t-shirt-additional-lifestyle-v3",
+      "product_handle": "ambitious-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317851492414",
+      "file_id": "gid://shopify/MediaImage/47002963574846",
+      "filename": "moonbae-ambitious-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-ambitious-oversized-t-shirt-additional-lifestyle-v3-20261122.jpg?v=1795354338",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "above-boxy-fit-oversized-tee-additional-lifestyle-v3",
+      "product_handle": "above-boxy-fit-oversized-tee",
+      "product_id": "gid://shopify/Product/15408259072062",
+      "file_id": "gid://shopify/MediaImage/47002963607614",
+      "filename": "moonbae-above-boxy-fit-oversized-tee-additional-lifestyle-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-above-boxy-fit-oversized-tee-additional-lifestyle-v3-20261122.jpg?v=1795354338",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "butterfly-effect-baby-tee-additional-beach-v3",
+      "product_handle": "butterfly-effect-baby-tee",
+      "product_id": "gid://shopify/Product/15408253501502",
+      "file_id": "gid://shopify/MediaImage/47002963640382",
+      "filename": "moonbae-butterfly-effect-baby-tee-additional-beach-v3-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-butterfly-effect-baby-tee-additional-beach-v3-20261122.jpg?v=1795354338",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "stoicism-sleeve-print-boxy-hoodie-editorial-v3",
+      "product_handle": "stoicism-sleeve-print-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15414552559678",
+      "file_id": "gid://shopify/MediaImage/47002963673150",
+      "filename": "moonbae-stoicism-sleeve-print-boxy-hoodie-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-stoicism-sleeve-print-boxy-hoodie-editorial-v3-20261122.jpg?v=1795354338",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "know-thyself-boxy-fit-hoodie-editorial-v3",
+      "product_handle": "know-thyself-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414555770942",
+      "file_id": "gid://shopify/MediaImage/47002963705918",
+      "filename": "moonbae-know-thyself-boxy-fit-hoodie-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-know-thyself-boxy-fit-hoodie-editorial-v3-20261122.jpg?v=1795354338",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "dogmatic-boxy-fit-hoodie-editorial-v3",
+      "product_handle": "dogmatic-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414577168446",
+      "file_id": "gid://shopify/MediaImage/47003013513278",
+      "filename": "moonbae-dogmatic-boxy-fit-hoodie-editorial-v3-20261122.jpg",
+      "model_presentation": "man",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dogmatic-boxy-fit-hoodie-editorial-v3-20261122.jpg?v=1795354639",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "eyes-of-life-boxy-hoodie-women-v4",
+      "product_handle": "eyes-of-life-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15408242524222",
+      "file_id": "gid://shopify/MediaImage/47003056209982",
+      "filename": "moonbae-eyes-of-life-boxy-hoodie-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-eyes-of-life-boxy-hoodie-women-v4-20261122.jpg?v=1795354860",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "hustler-boxy-hoodie-black-women-v4",
+      "product_handle": "hustler-boxy-hoodie-black",
+      "product_id": "gid://shopify/Product/15408240656446",
+      "file_id": "gid://shopify/MediaImage/47003056242750",
+      "filename": "moonbae-hustler-boxy-hoodie-black-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-hustler-boxy-hoodie-black-women-v4-20261122.jpg?v=1795354859",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "spit-the-truth-boxy-hoodie-women-v4",
+      "product_handle": "spit-the-truth-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15408243638334",
+      "file_id": "gid://shopify/MediaImage/47003056275518",
+      "filename": "moonbae-spit-the-truth-boxy-hoodie-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-spit-the-truth-boxy-hoodie-women-v4-20261122.jpg?v=1795354860",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "dying-for-something-real-boxy-fit-hoodie-women-v4",
+      "product_handle": "dying-for-something-real-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414550528062",
+      "file_id": "gid://shopify/MediaImage/47003056308286",
+      "filename": "moonbae-dying-for-something-real-boxy-fit-hoodie-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dying-for-something-real-boxy-fit-hoodie-women-v4-20261122.jpg?v=1795354860",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "tat-tvam-asi-boxy-fit-hoodie-women-v4",
+      "product_handle": "tat-tvam-asi-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414551314494",
+      "file_id": "gid://shopify/MediaImage/47003056341054",
+      "filename": "moonbae-tat-tvam-asi-boxy-fit-hoodie-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-tat-tvam-asi-boxy-fit-hoodie-women-v4-20261122.jpg?v=1795354859",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "stoicism-sleeve-print-boxy-hoodie-women-v4",
+      "product_handle": "stoicism-sleeve-print-boxy-hoodie",
+      "product_id": "gid://shopify/Product/15414552559678",
+      "file_id": "gid://shopify/MediaImage/47003056373822",
+      "filename": "moonbae-stoicism-sleeve-print-boxy-hoodie-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-stoicism-sleeve-print-boxy-hoodie-women-v4-20261122.jpg?v=1795354860",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "satorn-waffle-knit-oversize-full-sleeve-women-v4",
+      "product_handle": "satorn-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313449963582",
+      "file_id": "gid://shopify/MediaImage/47003056406590",
+      "filename": "moonbae-satorn-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-satorn-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg?v=1795354859",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-women-v4",
+      "product_handle": "unisex-terry-oversized-tee",
+      "product_id": "gid://shopify/Product/15417158139966",
+      "file_id": "gid://shopify/MediaImage/47003056439358",
+      "filename": "moonbae-unisex-terry-oversized-tee-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-women-v4-20261122.jpg?v=1795354860",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "mind-over-noise-boxy-fit-oversize-tee-women-v4",
+      "product_handle": "mind-over-noise-boxy-fit-oversize-tee",
+      "product_id": "gid://shopify/Product/15408252190782",
+      "file_id": "gid://shopify/MediaImage/47003056472126",
+      "filename": "moonbae-mind-over-noise-boxy-fit-oversize-tee-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-mind-over-noise-boxy-fit-oversize-tee-women-v4-20261122.jpg?v=1795354860",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-women-v4",
+      "product_handle": "what-goes-around-comes-around-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313476112446",
+      "file_id": "gid://shopify/MediaImage/47003056504894",
+      "filename": "moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-what-goes-around-comes-around-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg?v=1795354859",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "angel-eye-waffle-knit-oversize-full-sleeve-women-v4",
+      "product_handle": "angel-eye-waffle-knit-oversize-full-sleeve",
+      "product_id": "gid://shopify/Product/10313475850302",
+      "file_id": "gid://shopify/MediaImage/47003056537662",
+      "filename": "moonbae-angel-eye-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-angel-eye-waffle-knit-oversize-full-sleeve-women-v4-20261122.jpg?v=1795354860",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-1-women-v4",
+      "product_handle": "unisex-terry-oversized-tee-1",
+      "product_id": "gid://shopify/Product/15417158271038",
+      "file_id": "gid://shopify/MediaImage/47003056570430",
+      "filename": "moonbae-unisex-terry-oversized-tee-1-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-1-women-v4-20261122.jpg?v=1795354860",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "narcissist-boxy-fit-t-shirt-women-v4",
+      "product_handle": "narcissist-boxy-fit-t-shirt",
+      "product_id": "gid://shopify/Product/10311358709822",
+      "file_id": "gid://shopify/MediaImage/47003084619838",
+      "filename": "moonbae-narcissist-boxy-fit-t-shirt-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-narcissist-boxy-fit-t-shirt-women-v4-20261122.jpg?v=1795354948",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "nevermind-boxy-fit-oversized-t-shirt-women-v4",
+      "product_handle": "nevermind-boxy-fit-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317842382910",
+      "file_id": "gid://shopify/MediaImage/47003084652606",
+      "filename": "moonbae-nevermind-boxy-fit-oversized-t-shirt-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-nevermind-boxy-fit-oversized-t-shirt-women-v4-20261122.jpg?v=1795354948",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "know-thyself-boxy-fit-hoodie-women-v4",
+      "product_handle": "know-thyself-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414555770942",
+      "file_id": "gid://shopify/MediaImage/47003084685374",
+      "filename": "moonbae-know-thyself-boxy-fit-hoodie-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-know-thyself-boxy-fit-hoodie-women-v4-20261122.jpg?v=1795354948",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "unisex-terry-oversized-tee-2-women-v4",
+      "product_handle": "unisex-terry-oversized-tee-2",
+      "product_id": "gid://shopify/Product/15417158434878",
+      "file_id": "gid://shopify/MediaImage/47003084718142",
+      "filename": "moonbae-unisex-terry-oversized-tee-2-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-unisex-terry-oversized-tee-2-women-v4-20261122.jpg?v=1795354948",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-women-v4",
+      "product_handle": "god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317844250686",
+      "file_id": "gid://shopify/MediaImage/47003121909822",
+      "filename": "moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-god-bless-those-who-bless-others-boxy-fit-oversized-t-shirt-women-v4-20261122.jpg?v=1795355149",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "ambitious-oversized-t-shirt-women-v4",
+      "product_handle": "ambitious-oversized-t-shirt",
+      "product_id": "gid://shopify/Product/10317851492414",
+      "file_id": "gid://shopify/MediaImage/47003121942590",
+      "filename": "moonbae-ambitious-oversized-t-shirt-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-ambitious-oversized-t-shirt-women-v4-20261122.jpg?v=1795355149",
+        "width": 1122,
+        "height": 1402
+      }
+    },
+    {
+      "asset_key": "dogmatic-boxy-fit-hoodie-women-v4",
+      "product_handle": "dogmatic-boxy-fit-hoodie",
+      "product_id": "gid://shopify/Product/15414577168446",
+      "file_id": "gid://shopify/MediaImage/47003121975358",
+      "filename": "moonbae-dogmatic-boxy-fit-hoodie-women-v4-20261122.jpg",
+      "model_presentation": "woman",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0681/4387/4110/files/moonbae-dogmatic-boxy-fit-hoodie-women-v4-20261122.jpg?v=1795355149",
+        "width": 1122,
+        "height": 1402
+      }
+    }
+  ]
+}
